@@ -78,7 +78,7 @@ Ireland. Every day it's Dublin." <br><br>
 <button type="reset">Reset the form!</button>
 <br><br> 
 <input type="button" value="Submit" id="btnsubmit" onclick="submitForm()">
-<meta http-equiv="refresh" content="0; url=/signupsuccess.html" />
+<!--meta http-equiv="refresh" content="0; url=/signupsuccess.html" /-->
 <script>
 function submitForm() {
    // Get the first form with the name
@@ -88,6 +88,7 @@ function submitForm() {
    var frm = document.getElementsByName('NameForm1')[0];
    frm.submit(); // Submit the form
    frm.reset();  // Reset all form data
+   window.open("/signupsuccess.html");
    return false; // Prevent page refresh
 }
 </script>
