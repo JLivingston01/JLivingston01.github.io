@@ -5,6 +5,9 @@
   width: 50%;
 }
 
-.carousel-inner {
-
+.jayimage {
+  height: 50px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
