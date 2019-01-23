@@ -71,12 +71,12 @@
 I used to focus about half of my working efforts on business analytics. I wanted to know, foremost, how marketing  <br>
 would affect the growth and health of businesses, but I also needed to understand how the maturity of businesses   <br>
 affects the effectiveness of marketing. I resolved that growth-curve modeling may be a reasonable approximation for<br>
-the maturity of a startup. <br><br>
+the maturity of a startup. <br>
 <h3>The Data</h3><br>
 In practice, I researched this concept and implemented a test using a company's Key Performance Indicator. In this <br>
 demonstration, have pulled normalized Google search volume from Google Trends for a different company (a start up) <br>
 in order to demonstrate the concepts I applied. It may be helpful to consider the KPI here "Cumulative Google      <br>
-Search Volume over time".<br><br>
+Search Volume over time".<br>
 <h3>Approach</h3><br>
 While working with Mixed Media Models, I was introduced to an interesting feature transformation function, the Hill<br>
 transformation, a sigmoidal equation that can assume many shapes as dictated by its parameters. The goal of my     <br>
@@ -85,15 +85,15 @@ intervals as the predictor, scale the resulting fit to the non-normalized KPI da
  <div class="item active">
       <img src="/images/hill.png" alt="Hill" class="jayimage">
     </div>
-<br><br>
+<br>
 Here, t represents the time unit, s is a shape parameter, k is the point t of T where Hill(t) is one-half of t, and<br>
 c is an introduced parameter to make this equation asymptotic between 0 and c, allowing projections of normalized  <br>
-data to surpass the historical maximum. <br><br>
-<h3>Designing the Machine to Learn</h3><br><br>
+data to surpass the historical maximum. <br>
+<h3>Designing the Machine to Learn</h3><br>
 In order to learn parameters k, s and c, where the cumulative data is represented by some function Hill(t,k,s,c), I<br>
 calculate the partial derivatives of some cost function in terms of each parameter, then use these partial         <br>
 derivatives to update parameter estimates in a gradient descent. In this implementation, I create an on-line       <br>
-gradient descent, updating parameter estimates when evaluating at each observation during each epoch. <br><br>
+gradient descent, updating parameter estimates when evaluating at each observation during each epoch. <br>
  <div class="item active">
       <img src="/images/error_gradients.png" alt="error_grads" class="jayimage">
     </div>
