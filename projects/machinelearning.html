@@ -103,6 +103,54 @@ It is clear that the first multiplicative term in each partial derivative is sim
 and the remaining terms are the partial derivatives of the Hill function itself. When I implement, I calculate the <br>
 error and the partial derivates of the Hill function in terms of each parameter, and multiply by the learning    <br>
 rate to update parameter estimates.<br>
+<h3>Functionalizing the Script</h3><br>
+Below are the functions I write to implement the fitting of this sigmoidal model.<br>
+<div class="indented">
+def HILL(x,k,s,c):
+    h = c/(1+(x/k)**(-s))
+    return h
+
+def normalize(d):
+    d = np.array(d)
+    dnorm = (d - min(d))/(max(d)-min(d))
+    min_norm = min(d)
+    max_norm = max(d)
+    return(dnorm,min_norm,max_norm)
+
+def de_normalize(dnorm,min_norm,max_norm):
+    dnorm = np.array(dnorm)
+    d = dnorm*(max_norm - min_norm)+min_norm
+    return(d)
+
+#This fit function normalizes the target Y between 0 and 1 (ynorm)
+#Calculates the Hill function of the initial k,s,c
+#Evaluates the error of Hill from ynorm
+#Updates estimates of k,s,c using learning rate a and the partial derivative of k,s,s.
+#Negating grad_k and grad_c 1/25
+def HILL_fit(d,epoch = 200, a = .1,init = 0, s = 1.9, k_perc = 2, c_init = 1.3):
+    y = d
+    k = len(d)/k_perc
+    s = s
+    c = c_init
+    ynorm,min_norm,max_norm = normalize(y)
+    for j in range(epoch):
+        for i in range(1+init,len(ynorm)+1+init):
+            h = HILL(i,k,s,c)
+            grad_k = c*((1/((1+(i/k)**(-s))**(2)))*(s)*(i/k)**((-s-1)))*(-i)/(k**2)
+            grad_s = c*(1/((1+(i/k)**(-s))**2))*math.log(i/k)*(i/k)**(-s)
+            grad_c = 1/((1+(i/k)**(-s)))
+            e = ynorm[i-1-init] - h
+            k = k + a*3*grad_k*e
+            s = s + a*grad_s*e
+            c = c + a*grad_c*e
+    
+    fit = []
+    for i in range(1+init,len(d)+1+init):
+        h_pred = HILL(i,k,s,c)
+        fit.append(h_pred)
+    
+    return fit,k,s,c,min_norm,max_norm
+	<div>
 </p>
 </body>
 </html>
