@@ -104,14 +104,17 @@ and the remaining terms are the partial derivatives of the Hill function itself.
 error and the partial derivates of the Hill function in terms of each parameter, and multiply by the learning    <br>
 rate to update parameter estimates.<br>
 <h3>Functionalizing the Script</h3><br>
-Below are the functions I write to implement the fitting of this sigmoidal model.<br>
+Below are the functions I write to implement the fitting of this sigmoidal model.<br><br>
 <style>.indented {
   padding-left: 50pt;
   padding-right: 50pt;
 }</style>
+<style>.tab {
+  margine-left: 40pt;
+}</style>
 <div class="indented">
 def HILL(x,k,s,c):<br>
-    h = c/(1+(x/k)**(-s))<br>
+<P class="tab">    h = c/(1+(x/k)**(-s))</P><br>
     return h<br>
 <br>
 def normalize(d):<br>
