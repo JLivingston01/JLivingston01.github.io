@@ -105,7 +105,10 @@ error and the partial derivates of the Hill function in terms of each parameter,
 rate to update parameter estimates.<br>
 <h3>Functionalizing the Script</h3><br>
 Below are the functions I write to implement the fitting of this sigmoidal model.<br>
-
+<style>.indented {
+  padding-left: 50pt;
+  padding-right: 50pt;
+}</style>
 <div class="indented">
 def HILL(x,k,s,c):<br>
     h = c/(1+(x/k)**(-s))<br>
