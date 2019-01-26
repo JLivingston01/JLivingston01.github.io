@@ -115,15 +115,15 @@ Below are the functions I write to implement the fitting of this sigmoidal model
 <div class="indented">
 def HILL(x,k,s,c):
 <p class="tab">    h = c/(1+(x/k)**(-s))<br>
-    return h<br></p>
-<br>
+    return h</p>
+
 def normalize(d):<br>
-    d = np.array(d)<br>
+<p class="tab">       d = np.array(d)<br>
     dnorm = (d - min(d))/(max(d)-min(d))<br>
     min_norm = min(d)<br>
     max_norm = max(d)<br>
-    return(dnorm,min_norm,max_norm)<br>
-<br>
+    return(dnorm,min_norm,max_norm)</p>
+
 def de_normalize(dnorm,min_norm,max_norm):<br>
     dnorm = np.array(dnorm)<br>
     d = dnorm*(max_norm - min_norm)+min_norm<br>
