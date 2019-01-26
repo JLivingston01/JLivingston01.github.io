@@ -110,12 +110,12 @@ Below are the functions I write to implement the fitting of this sigmoidal model
   padding-right: 50pt;
 }</style>
 <style>.tab {
-  margine-left: 40pt;
+  padding-left: 100pt;
 }</style>
 <div class="indented">
 def HILL(x,k,s,c):<br>
-<P class="tab">    h = c/(1+(x/k)**(-s))</P><br>
-    return h<br>
+<p class="tab">    h = c/(1+(x/k)**(-s))<br>
+    return h<br></p>
 <br>
 def normalize(d):<br>
     d = np.array(d)<br>
