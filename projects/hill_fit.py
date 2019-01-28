@@ -16,11 +16,6 @@ data['c1_cume'] = data['c1'].cumsum()
 data['c2_cume'] = data['c2'].cumsum()
 
 
-
-plt.plot(data['c1_cume'])
-plt.plot(data['c2_cume'])
-
-
 def HILL(x,k,s,c):
     h = c/(1+(x/k)**(-s))
     return h
