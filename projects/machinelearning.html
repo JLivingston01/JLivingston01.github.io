@@ -87,7 +87,7 @@ Here, t represents the time unit, s is a shape parameter, k is the point t of T 
 c is an introduced parameter to allow this equation to become asymptotic between 0 and c, enabling projections of  <br>
 normalized data to surpass the historical maximum. The target KPI data is to be normalized between 0 and 1 before  <br>
 attempting to fit the Hill function. The KPI minimum and maximum values can then be utilized for rescaling the Hill<br>
-fit to the scale of the non-normalized KPI data (the de_normalize function shown below).<br>
+fit to the scale of the non-normalized KPI data (the de_normalize function shown below in the code snippets).<br>
 <h3>Designing a Machine Learning Algorithm</h3>
 In order to learn parameters k, s and c, where the cumulative data is represented by some function Hill(t,k,s,c), I<br>
 calculate the partial derivatives of some cost function in terms of each parameter, then use these partial         <br>
@@ -104,10 +104,6 @@ to update parameter estimates. Parameter estimates are updated iteravely as:<br>
  <div class="item active">
       <img src="/images/param_updates.png" alt="Hill" class="jayimage">
     </div>
-Finally   <br>
-and the remaining terms are the partial derivatives of the Hill function itself. When I implement, I calculate the <br>
-error and the partial derivates of the Hill function in terms of each parameter, and multiply by the learning rate <br>
-to update parameter estimates. Parameter estimates are updated iteravely as:<br>
 <h3>Algorithm Functions</h3>
 Below are the functions I write to implement the fitting of this sigmoidal model.<br><br>
 <!--style>.indented {
