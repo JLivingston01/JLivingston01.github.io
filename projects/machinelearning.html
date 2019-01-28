@@ -116,19 +116,22 @@ Below are the functions I write to implement the fitting of this sigmoidal model
 <p><blockquote><pre>
 def HILL(x,k,s,c):
 	h = c/(1+(x/k)**(-s))
-    return h</pre></blockquote></p>
-
+	return h
+</pre></blockquote></p>
+<p><blockquote><pre>
 def normalize(d):
-<p class="tab">       d = np.array(d)<br>
-    dnorm = (d - min(d))/(max(d)-min(d))<br>
-    min_norm = min(d)<br>
-    max_norm = max(d)<br>
-    return(dnorm,min_norm,max_norm)</p>
-
+	d = np.array(d)
+	dnorm = (d - min(d))/(max(d)-min(d))
+	min_norm = min(d)
+	max_norm = max(d)
+	return(dnorm,min_norm,max_norm)
+</pre></blockquote></p>
+<p><blockquote><pre>
 def de_normalize(dnorm,min_norm,max_norm):
-<p class="tab">    dnorm = np.array(dnorm)<br>
-    d = dnorm*(max_norm - min_norm)+min_norm<br>
-    return(d)</p>
+	dnorm = np.array(dnorm)
+	d = dnorm*(max_norm - min_norm)+min_norm
+    return(d)
+</pre></blockquote></p>
 
 #This fit function normalizes the target Y between 0 and 1 (ynorm)<br>
 #Calculates the Hill function of the initial k,s,c<br>
