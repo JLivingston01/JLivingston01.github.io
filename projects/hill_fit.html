@@ -117,7 +117,7 @@ def HILL_fit(d,epoch = 200, a = .1,init = 0, s = 1.9, k_perc = 2, c_init = 1.3):
             grad_s = c*(1/((1+(i/k)**(-s))**2))*math.log(i/k)*(i/k)**(-s)
             grad_c = 1/((1+(i/k)**(-s)))
             e = ynorm[i-1-init] - h
-            k = k + a*3*grad_k*e
+            k = k + a*grad_k*e
             s = s + a*grad_s*e
             c = c + a*grad_c*e
     
