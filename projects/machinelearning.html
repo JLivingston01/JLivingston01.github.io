@@ -85,7 +85,10 @@ as the predictor, scale the resulting fit to the non-normalized KPI data, and pr
     </div>
 Here, t represents the time unit, s is a shape parameter, k is the point t of T where Hill(t) is one-half of t, and<br>
 c is an introduced parameter to make this equation asymptotic between 0 and c, allowing projections of normalized  <br>
-data to surpass the historical maximum. <br>
+data to surpass the historical maximum. Finally, parameter estimates are updated iteravely as:<br>
+ <div class="item active">
+      <img src="/images/param_updates.png" alt="Hill" class="jayimage">
+    </div>
 <h3>Designing a Machine Learning Algorithm</h3>
 In order to learn parameters k, s and c, where the cumulative data is represented by some function Hill(t,k,s,c), I<br>
 calculate the partial derivatives of some cost function in terms of each parameter, then use these partial         <br>
