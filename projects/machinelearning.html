@@ -169,11 +169,11 @@ def hill_proj(k,s,p, c,init = 0):
 hillfit,k,s,c,min_norm,max_norm = HILL_fit(d = data['KPI'],epoch = 2000,init = 0, s = 3,k_perc = 1)
 fit_to_scale = de_normalize(hillfit,min_norm,max_norm)
 </pre></blockquote></p>
-<h3>Outcomes and Implications</h3>
-
+<h3>Outcomes and Learnings</h3>
  <div class="item active">
       <img src="/images/c1_cume.png" alt="Hillfit" class="jayimage">
     </div>
+The Hill model describes the target data well in my estimation, with observation errors sentered near zero 
 	<div class="item active">
       <img src="/images/c1_error.png" alt="Hill Error 1" class="jayimage">
     </div>
