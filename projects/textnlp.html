@@ -73,6 +73,17 @@ tweets including certain key words, and recommend actionable next steps to clien
 affecting their brand messaging through advertising, or improving operational aspects of the business 
 where failures drive complaints and drive away customers.<br>
 <h3>The Data</h3>
+The data used here is optained from the standard Twitter developer search API. 
+
+A Note about accessing the Twitter standard API:
+In order to access this API, one must apply for a Twitter developer account using an existing Twitter 
+account, create an app and record for Twitter what you will use developer access to the API endpoints for, and 
+create a dev environment through the Twitter developer Dev Environments menu. Once your twitter app is 
+created, you access your access keys and tokens for authenticating and making requests to the API endpoint.
+
+The API will return a JSON of tweet information including meta data, related to the tweet and the user. 
+The JSON string is to be converted to a Python dictionary for manipulation, and certain meta data is 
+recorded along with the tweet text. 
 <br>
 <h3>Approach</h3>
 <br>
