@@ -66,40 +66,40 @@
 <p>
 <br>
 <h3>Background</h3>
-I used to focus about half of my working efforts on business analytics. I wanted to know, foremost, how marketing  <br>
-would affect the growth and health of businesses, but I also needed to understand how the maturity of businesses   <br>
-affects the effectiveness of marketing. I resolved that growth-curve modeling may be a reasonable approximation for<br>
+I used to focus about half of my working efforts on business analytics. I wanted to know, foremost, how marketing  
+would affect the growth and health of businesses, but I also needed to understand how the maturity of businesses   
+affects the effectiveness of marketing. I resolved that growth-curve modeling may be a reasonable approximation for
 the maturity of a startup. <br>
 <h3>The Data</h3>
-In practice, I researched this concept and implemented a test using a company's Key Performance Indicator. In this <br>
-demonstration, have pulled normalized Google search volume from Google Trends for two different companies          <br>
-(subscription model startups) in order to demonstrate the concepts I applied. It may be helpful to consider the KPI<br>
+In practice, I researched this concept and implemented a test using a company's Key Performance Indicator. In this 
+demonstration, have pulled normalized Google search volume from Google Trends for two different companies          
+(subscription model startups) in order to demonstrate the concepts I applied. It may be helpful to consider the KPI
 here "Cumulative Google Search Volume over time".<br>
 <h3>Approach</h3>
-While working with Mixed Media Models, I was introduced to an interesting feature transformation function, the Hill<br>
-transformation, a sigmoidal equation that can assume many shapes as dictated by its parameters. The goal of my     <br>
-exercise became to fit the Hill equation parameters to some normalized-cumulative business KPI data using time     <br>
+While working with Mixed Media Models, I was introduced to an interesting feature transformation function, the Hill
+transformation, a sigmoidal equation that can assume many shapes as dictated by its parameters. The goal of my     
+exercise became to fit the Hill equation parameters to some normalized-cumulative business KPI data using time     
 as the predictor, scale the resulting fit to the non-normalized KPI data, and project future KPI values.<br>
  <div class="item active">
       <img src="/images/hill.png" alt="Hill" class="jayimage">
     </div>
-Here, t represents the time unit, s is a shape parameter, k is the point t of T where Hill(t) is one-half of t, and<br>
-c is an introduced parameter to allow this equation to become asymptotic between 0 and c, enabling projections of  <br>
-normalized data to surpass the historical maximum. The target KPI data is to be normalized between 0 and 1 before  <br>
-attempting to fit the Hill function. The KPI minimum and maximum values can then be utilized for rescaling the Hill<br>
+Here, t represents the time unit, s is a shape parameter, k is the point t of T where Hill(t) is one-half of t, and
+c is an introduced parameter to allow this equation to become asymptotic between 0 and c, enabling projections of  
+normalized data to surpass the historical maximum. The target KPI data is to be normalized between 0 and 1 before  
+attempting to fit the Hill function. The KPI minimum and maximum values can then be utilized for rescaling the Hill
 fit to the scale of the non-normalized KPI data (the de_normalize function shown below in the code snippets).<br>
 <h3>Designing a Machine Learning Algorithm</h3>
-In order to learn parameters k, s and c, where the cumulative data is represented by some function Hill(t,k,s,c), I<br>
-calculate the partial derivatives of some cost function in terms of each parameter, then use these partial         <br>
-derivatives to update parameter estimates in a gradient descent. In this implementation, I create an on-line       <br>
-gradient descent, updating parameter estimates when evaluating at each observation during each epoch. Below are the<br>
+In order to learn parameters k, s and c, where the cumulative data is represented by some function Hill(t,k,s,c), I
+calculate the partial derivatives of some cost function in terms of each parameter, then use these partial         
+derivatives to update parameter estimates in a gradient descent. In this implementation, I create an on-line       
+gradient descent, updating parameter estimates when evaluating at each observation during each epoch. Below are the
 cost function and the partial derivatives that I am using. <br>
  <div class="item active">
       <img src="/images/error_gradients.png" alt="error_grads" class="jayimage">
     </div>
-It is clear that the first multiplicative term in each partial derivative is simply the error of the prediction,   <br>
-and the remaining terms are the partial derivatives of the Hill function itself. When I implement, I calculate the <br>
-error and the partial derivates of the Hill function in terms of each parameter, and multiply by the learning rate <br>
+It is clear that the first multiplicative term in each partial derivative is simply the error of the prediction,   
+and the remaining terms are the partial derivatives of the Hill function itself. When I implement, I calculate the 
+error and the partial derivates of the Hill function in terms of each parameter, and multiply by the learning rate 
 to update parameter estimates. Parameter estimates are updated iteravely as:<br>
  <div class="item active">
       <img src="/images/param_updates.png" alt="Hill" class="jayimage">
@@ -173,37 +173,37 @@ fit_to_scale = de_normalize(hillfit,min_norm,max_norm)
  <div class="item active">
       <img src="/images/c1_cume.png" alt="Hillfit" class="jayimage">
     </div>
-The Hill model describes the target data well in my estimation, with observation errors centered near zero, and some   <br>
-systemic over-prediction preceding the initial large growth of the KPI, which is not well described by this functional <br>
+The Hill model describes the target data well in my estimation, with observation errors centered near zero, and some   
+systemic over-prediction preceding the initial large growth of the KPI, which is not well described by this functional 
 form. <br>
 	<div class="item active">
       <img src="/images/c1_error.png" alt="Hill Error 1" class="jayimage">
     </div>
-The Hill model projection may indicate significant room for growth for this business. This model is asymptotic at ~60% <br>
-growth beyond the present, which may be significant and promising for a subscription based business with a limited     <br>
+The Hill model projection may indicate significant room for growth for this business. This model is asymptotic at ~60% 
+growth beyond the present, which may be significant and promising for a subscription based business with a limited     
 customer pool and strong retention and re-order rates. <br>
 	<div class="item active">
       <img src="/images/c1_proj.png" alt="Hill Projection 1" class="jayimage">
     </div>
-When fit a Hill model to our second company's Google Trend data, the Hill model is less optimistic about the           <br>
+When fit a Hill model to our second company's Google Trend data, the Hill model is less optimistic about the           
 organization's future: <br>
 	<div class="item active">
       <img src="/images/c2_proj.png" alt="Hill Projection 1" class="jayimage">
     </div>
-This model only projects ~16% growth in the future of the organization. This would be bad news for a subscription based<br>
-business, especially if the company has retention issues and is trying to offset the loss of existing customers with   <br>
-acquisitions. Further, the Google Trend data for both of these companies was indexed together and over the same time   <br>
-period. Company 1 generates much more search activity than Company 2 and is likely enjoying much better brand health.  <br>
+This model only projects ~16% growth in the future of the organization. This would be bad news for a subscription based
+business, especially if the company has retention issues and is trying to offset the loss of existing customers with   
+acquisitions. Further, the Google Trend data for both of these companies was indexed together and over the same time   
+period. Company 1 generates much more search activity than Company 2 and is likely enjoying much better brand health.  
 <h3>Summary and Takeaways</h3>
-I implemented this custom machine learning solution with the goal of roughly estimating the developmental stage of a   <br>
-brand, or the comparative health of brands. When faced with the reality of deteriorating advertising cost effectiveness<br>
-for one brand, I tested a metric derived from a fitted Hill model as a multiplier on marketing spend in a Media Mix    <br>
-Model. The resulting model described a decrease in the overall marketing effectiveness better than a model without this<br>
-multiplier, but the result did not predict as strongly as other multipliers I tested. I still think there are          <br>
-subscription model companies with limited customer pools for which this type of custom machine learning solution can   <br>
+I implemented this custom machine learning solution with the goal of roughly estimating the developmental stage of a   
+brand, or the comparative health of brands. When faced with the reality of deteriorating advertising cost effectiveness
+for one brand, I tested a metric derived from a fitted Hill model as a multiplier on marketing spend in a Media Mix   
+Model. The resulting model described a decrease in the overall marketing effectiveness better than a model without this
+multiplier, but the result did not predict as strongly as other multipliers I tested. I still think there are          
+subscription model companies with limited customer pools for which this type of custom machine learning solution can   
 help them understand their businesses and improve their Media Mix Models.<br><br>
 More on the Hill function for marketing transformations can be found in:<br>
-Bayesian Methods for Media Mix Modeling with Carryover and<br>
+Bayesian Methods for Media Mix Modeling with Carryover and
 Shape Effects<br>
 Yuxue Jin, Yueqing Wang, Yunting Sun, David Chan, Jim Koehler<br>
 Google Inc.<br>
