@@ -75,11 +75,13 @@ where failures drive complaints and drive away customers.<br>
 <h3>The Data</h3>
 The data used here is optained from the standard Twitter developer search API. <br><br>
 
-A Note about accessing the Twitter standard API:
+A Note about accessing the Twitter standard API:<br>
 In order to access this API, one must apply for a Twitter developer account using an existing Twitter 
 account, create an app and record for Twitter what you will use developer access to the API endpoints for, and 
 create a dev environment through the Twitter developer Dev Environments menu. Once your twitter app is 
-created, you access your access keys and tokens for authenticating and making requests to the API endpoint.
+created, you access your access keys and tokens for authenticating and making requests to the API endpoint. 
+This post does not guide the reader through accessing the Twitter Standard API, but an example of authenticating 
+is available in the code samples below.
 <br><br>
 The API will return a JSON of tweet information including meta data, related to the tweet and the user. 
 The JSON string is to be converted to a Python dictionary for manipulation, and certain meta data is 
@@ -89,6 +91,29 @@ comprehensive record of tweets. The brands I examine here are ride-sharing compe
 and Uber.
 <br>
 <h3>Approach</h3>
+The workflow of this analysis is detailed as follows:
+<p><blockquote><pre>
+Data Collection:
+	1. One-hundered tweets per day, for ten days and for each brand are accessed via the API endpoint.
+	2. Tweets are cleaned for stopwords and meaningless punctuation.
+	3. Tweets are fed to a VADER sentimentizer and negative, positive, neutral and compound scores are recorded with the tweet records
+
+Topic Classification:
+	1. For each brand, a random sample of 100 unique tweets are labeled as relating to Service/Product, Company News, Financial News or Advertising
+	2. The unique word corpus of all tweets is used to transform tweets into documents stating the True/False of words in the corpus being included in the tweet.
+	3. A Naive Bayes Classifier is trained on the labeled data and classifies the remaining data.
+	4. Tweets are segmented by label for wordclouding and sentiment comparison over time.	
+	
+Brand Comparison over Time:
+	1. Segmented Tweets are pivoted for daily average sentiment.
+	2. Segmented comparisons are evaluated to target nuances in brand health.
+	
+Word Cloud Analysis:
+	1. Unique words for each brand are recorded with frequency of appearances in samples, and average tweet sentiment given appearance. 
+	2. Average word sentiment is mapped to an RGB value such that negative compound scores are more red and positive scores are more green.
+	3. Plot a conditionally colored word cloud and examine.
+	
+</blockquote></pre></p>
 <br>
  <div class="item active">
       <img src="/images/hill.png" alt="Hill" class="jayimage">
