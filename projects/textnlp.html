@@ -119,7 +119,7 @@ Word Cloud Analysis:
       <img src="/images/hill.png" alt="Hill" class="jayimage">
     </div>
 <br>
-<h3>Designing a Machine Learning Algorithm</h3>
+<h3>Data Collection and Intro to VADER Sentimentizer</h3>
 <br>
  <div class="item active">
       <img src="/images/error_gradients.png" alt="error_grads" class="jayimage">
@@ -128,8 +128,8 @@ Word Cloud Analysis:
  <div class="item active">
       <img src="/images/param_updates.png" alt="Hill" class="jayimage">
     </div>
-<h3>Algorithm Functions</h3>
-Below are the functions I write to implement the fitting of this sigmoidal model.<br><br>
+<h3>Code Snippets</h3>
+Code Snippets Below<br><br>
 <!--style>.indented {
   padding-left: 50pt;
   padding-right: 50pt;
@@ -139,77 +139,10 @@ Below are the functions I write to implement the fitting of this sigmoidal model
 }</style>
 <div class="indented"-->
 <p><blockquote><pre>
-def HILL(x,k,s,c):
-    h = c/(1+(x/k)**(-s))
-    return h
-</pre></blockquote></p>
-<p><blockquote><pre>
-def normalize(d):
-    d = np.array(d)
-    dnorm = (d - min(d))/(max(d)-min(d))
-    min_norm = min(d)
-    max_norm = max(d)
-    return(dnorm,min_norm,max_norm)
-</pre></blockquote></p>
-<p><blockquote><pre>
-def de_normalize(dnorm,min_norm,max_norm):
-    dnorm = np.array(dnorm)
-    d = dnorm*(max_norm - min_norm)+min_norm
-    return(d)
-</pre></blockquote></p>
 
-<p><blockquote><pre>
-#This fit function normalizes the target Y between 0 and 1 (ynorm)
-#Calculates the Hill function of the initial k,s,c
-#Evaluates the error of Hill from ynorm
-#Updates estimates of k,s,c using learning rate a and the partial derivative of k,s,c
-
-def HILL_fit(d,epoch = 200, a = .1,init = 0, s = 1.9, k_perc = 2, c_init = 1.3):
-    y,k,s,c = d,len(d)/k_perc,s,c_init
-    ynorm,min_norm,max_norm = normalize(y)
-    for j in range(epoch):
-        for i in range(1+init,len(ynorm)+1+init):
-            k,s,c = k + a*(c*((1/((1+(i/k)**(-s))**(2)))*(s)*(i/k)**((-s-1)))*(-i)/(k**2))*(ynorm[i-1-init] - HILL(i,k,s,c)),\
-                    s + a*(c*(1/((1+(i/k)**(-s))**2))*math.log(i/k)*(i/k)**(-s))*(ynorm[i-1-init] - HILL(i,k,s,c)),\
-                    c + a*(1/((1+(i/k)**(-s))))*(ynorm[i-1-init] - HILL(i,k,s,c))
-
-    fit = []
-    for i in range(1+init,len(d)+1+init):
-        h_pred = HILL(i,k,s,c)
-        fit.append(h_pred)
-    
-    return fit,k,s,c,min_norm,max_norm
-	
-def hill_proj(k,s,p, c,init = 0):
-    k = k
-    s = s
-    projection = []
-    for i in p:
-        h = HILL(i+init+1,k,s,c)
-        projection.append(h)
-    return(projection)
-
-#The Hill fit at the non-normalized KPI scale can be obtained from:
-hillfit,k,s,c,min_norm,max_norm = HILL_fit(d = data['KPI'],epoch = 2000,init = 0, s = 3,k_perc = 1)
-fit_to_scale = de_normalize(hillfit,min_norm,max_norm)
 </pre></blockquote></p>
 <h3>Outcomes and Learnings</h3>
- <div class="item active">
-      <img src="/images/c1_cume.png" alt="Hillfit" class="jayimage">
-    </div>
-<br>
-	<div class="item active">
-      <img src="/images/c1_error.png" alt="Hill Error 1" class="jayimage">
-    </div>
-<br>
-	<div class="item active">
-      <img src="/images/c1_proj.png" alt="Hill Projection 1" class="jayimage">
-    </div>
-<br>
-	<div class="item active">
-      <img src="/images/c2_proj.png" alt="Hill Projection 1" class="jayimage">
-    </div>
-<br>
+ 
 <h3>Summary and Takeaways</h3>
 <br><br>
 
