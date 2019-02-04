@@ -99,10 +99,9 @@ Data Collection:
 	3. Tweets are fed to a VADER sentimentizer and negative, positive, neutral and compound scores are recorded with the tweet records
 
 Topic Classification:
-	1. For each brand, a random sample of 100 unique tweets are labeled as relating to Service/Product, Company News, Financial News or Advertising
-	2. The unique word corpus of all tweets is used to transform tweets into documents stating the True/False of words in the corpus being included in the tweet.
-	3. A Naive Bayes Classifier is trained on the labeled data and classifies the remaining data.
-	4. Tweets are segmented by label for wordclouding and sentiment comparison over time.	
+	1. Term Frequency * Inverse Document Frequency is evaluated for tweets (TF IDF) analysis, to group tweets into topics
+	2. Latent Dirichlet allocation is performed on tweets in the corpus, weighted by importance infered from TF IDF analysis.
+	3. A Naive Bayes Classifier is an alternative method for labeling document topics, used for comparative purposes.
 	
 Brand Comparison over Time:
 	1. Segmented Tweets are pivoted for daily average sentiment.
