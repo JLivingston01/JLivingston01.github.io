@@ -116,7 +116,6 @@ recorded along with the tweet itself. The Standard API returns a sample of 100 t
 recency of up to 10 days, so this analysis is conducted against a sample of tweets and not a 
 comprehensive record of tweets. The brands I examine here are ride-sharing competitors Lyft
 and Uber.
-<br>
 <h3>Approach</h3>
 This analysis primarily concerns data collection and deriving sentiment, topic classification, evaluating sentiment over time and generating word cloud reports as follows:
 <p><blockquote><pre>
@@ -146,6 +145,19 @@ Word Cloud Analysis:
     </div>
 <br>
 <h3>Data Collection and Intro to VADER Sentimentizer</h3>
+A sample of 100 tweets, a mixture of the most recent tweets and the most popular tweets, are collected each day for each brand using the
+Twitter Standard Search API. It is important to remember to search for tweets using the parameter "tweet_mode=extended" in your query 
+string to ensure all characters beyond number 140 are captured in your data. Another potentially tricky of pulling full tweets is that 
+retweeted tweets will contain a truncated tweet for the main tweet text, but will contain the full tweet in the nested retweeted data 
+within the JSON document. To account for this nuance, I use a try statement to read the tweet in the nested retweeted data of the 
+document, otherwise the main tweet text is read:
+<p><blockquote><pre>
+for i in range(len(statuses)):
+    try:
+        text.append(statuses[i]['retweeted_status']['full_text'])
+    except:
+         text.append(statuses[i]['full_text'])
+</pre></blockquote></p>
 
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
