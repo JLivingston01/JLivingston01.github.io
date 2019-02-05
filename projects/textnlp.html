@@ -243,6 +243,32 @@ for i in emoji_clean:
     y = y.replace("\\u2066","")
     tweetvector_clean.append(y)
 </pre></blockquote></p>
+The next process in this text cleaning exercise is to tokenize documents so meaningless stopwords can be evaluated and
+removed. I use the python Natural Language Tool Kit (NLTK) for much of this textual analysis, and I evaluate tweet 
+stop words using a stop word bank from NLTK. I also pass tweets through an NLTK tokenization function for tokenizing:
+<p><blockquote><pre>
+Import nltk
+
+stopwords = nltk.corpus.stopwords  
+stop_words = set(stopwords.words("english"))
+word_tokenize = nltk.tokenize.word_tokenize
+
+#Tokenize to remove stopwords
+tweetvector_tokenized = []
+for i in tweetvector_clean:
+    x = word_tokenize(i)
+    tweetvector_tokenized.append(x)
+tweetvector_stopped = []
+for i in tweetvector_tokenized:
+    newstatement = [j for j in i if j not in stop_words]
+    tweetvector_stopped.append(newstatement)
+
+#Rejoin tweets minus stopwords
+final_tweets = []
+for i in tweetvector_stopped:
+    x = " ".join(i)
+    final_tweets.append(x)
+</pre></blockquote></p>
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
 
