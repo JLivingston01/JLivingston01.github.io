@@ -154,7 +154,48 @@ for i in range(len(statuses)):
     except:
         text.append(statuses[i]['full_text'])
 </pre></blockquote></p>
+Tweets need to be cleaned for programatic readability. The first stage of my cleaning will involve replacing emojis and un-rendered emoji 
+unicode with descriptions of the emojis. I have sourced these from <li><a href="https://github.com/wooorm/gemoji/blob/master/support.md">here</a></li> by copying the table into a
+tab separated .txt file, and reading into python with pandas. I can then create a mapping from rendered emojis to decriptions, and another
+from unicode to descriptions, and replace emojis in tweets with these emojis: 
+<p><blockquote><pre>
+#Load Emoji Unicode TSV (Make sure TBL is saved in txt file as utf-8)
+emojis = pd.read_csv('C://Users/jliv/Downloads/emojis.txt',sep = '\t', encoding = 'utf-8')
+#Map of Unicode and Names
+emoji_map = pd.DataFrame()
+emoji_map['name'] = emojis['Name(s)']
+emoji_map['code'] = emojis['Escaped Unicode']
+#Map of Emojis and names
+emoji_map1 = pd.DataFrame()
+emoji_map1['name'] = emojis['Name(s)']
+emoji_map1['Emoji'] = emojis['Emoji']
+#Handle escape characters in unicode
+codes = [] 
+for i in list(emojis['Escaped Unicode']):
+    x = i.replace("\\","\\")
+    codes.append(x)
+    
 
+emojislist = emoji_map1['Emoji']
+#Convert CSVs of mappings to dict mappings
+emoji_map.index = codes
+emoji_dict = emoji_map.to_dict()
+emoji_dict = emoji_dict['name']
+
+emoji_map1.index = emojislist
+emoji_dict1 = emoji_map1.to_dict()
+emoji_dict1 = emoji_dict1['name']
+
+#Replace tweet emojis and unicode with descriptions of characters
+emoji_clean = []
+for i in text:
+    x = i
+    for k,v in emoji_dict1.items():
+        x = x.replace(k, v)
+    for k,v in emoji_dict.items():
+        x = x.replace(k, v)
+    emoji_clean.append(x)
+</pre></blockquote></p>
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
 
