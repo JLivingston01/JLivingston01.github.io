@@ -157,7 +157,7 @@ for i in range(len(statuses)):
 Tweets need to be cleaned for programatic readability. The first stage of my cleaning will involve replacing emojis and un-rendered emoji 
 unicode with descriptions of the emojis. I have sourced these from <a href="https://github.com/wooorm/gemoji/blob/master/support.md">here</a> by copying the table into a
 tab separated .txt file, and reading into python with pandas. I can then create a mapping from rendered emojis to decriptions, and another
-from unicode to descriptions, and replace emojis in tweets with these emojis: 
+from unicode to descriptions, and replace emojis in tweets with these descriptions: 
 <p><blockquote><pre>
 #Load Emoji Unicode TSV (Make sure TBL is saved in txt file as utf-8)
 emojis = pd.read_csv('C://Users/jliv/Downloads/emojis.txt',sep = '\t', encoding = 'utf-8')
