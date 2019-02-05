@@ -66,9 +66,9 @@
 <p>
 
 <style>.column {
-  display: inline-block;
-  width: 33.3%;
-  padding: 5px;
+  float: left;
+  width: 45%;
+  padding: 0px;
 }
 /* two image containers (use 25% for four, and 50% for two, etc) */
 /* Clear floats after image containers */
@@ -83,11 +83,11 @@
   }
 }-->
 </style>
-<div class="row" stype="margin:0 -16px">
-<div class="column">
+<div style="distplay:flex">
+<div style="flex:1;padding-right:5px;">
       <img src="/images/lyft_wordcloud.png" alt="lyft_wordcloud">
     </div>
-<div class="column">
+<div style="flex:1;padding-left:5px;">
       <img src="/images/uber_wordcloud.png" alt="uber_wordcloud">
     </div>
 </div>
