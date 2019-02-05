@@ -367,6 +367,27 @@ scores:
 <div>
       <img src="/images/conditional_formating.png" alt="formatting">
     </div>
+<pre><blockquote><p>
+#List Unique Words and Colors derived from Compound score together
+UW = []
+color = []
+for i,j in zip(list(wordssent[wordssent['count']>3]['words']),list(wordssent[wordssent['count']>3]['compound'])):
+    UW.append(i)
+    color.append('rgb('+str(int(255*(1- (j-compmin)/(compmax-compmin))))+','+str(int(155*(j-compmin)/(compmax-compmin)))+', 0)')
+
+#For distinct colors, map a list of all words to the rgb() key in a dict
+colorset = list(set(color))
+color_to_words = {}
+for i in colorset:
+    words_by_color = []
+    for j in range(len(UW)):
+        if color[j] == i:
+            words_by_color.append(UW[j])
+        else:
+            pass
+    color_to_words[i] = words_by_color
+	
+</pre></blockquote></p>
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
 
