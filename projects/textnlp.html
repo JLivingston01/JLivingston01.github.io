@@ -64,19 +64,25 @@
 				</header>
 <h1>An Analysis of Twitter Brand Sentiment and Topic Modeling</h1>
 <p>
-/* Three image containers (use 25% for four, and 50% for two, etc) */
+
 <style>.column {
   float: left;
   width: 33.33%;
   padding: 5px;
 }
-
+/* Three image containers (use 25% for four, and 50% for two, etc) */
 /* Clear floats after image containers */
 .row::after {
   content: "";
   clear: both;
   display: table;
-}</style>
+}
+@media screen and (max-width: 500px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
 <div class="row">
 <div class="column">
       <img src="/images/lyft_wordcloud.png" alt="lyft_wordcloud" class="jayimage">
