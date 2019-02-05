@@ -202,8 +202,8 @@ largely non-sentimentized punctuation in the same phase of cleaning (e.g. commas
 <p><blockquote><pre>
 tweetvector_clean = []
 for i in emoji_clean:
-    x = re.sub(r"htt\S+"," ", i)
-    #x = x.decode('utf-8')
+    x = re.sub(r"^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$"," ", i)
+    x = re.sub(r"htt\S+"," ", x) 
     x = re.sub(r"pic.twit\S+"," ", x)
     x = re.sub(r"www.\S+"," ", x)
     x = re.sub(r"www.\S+"," ", x)
