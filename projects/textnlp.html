@@ -302,7 +302,62 @@ With tweets now associated with sentiment scores, I can focus on answering a cou
 1. What keywords are associated with each brand, and how polarizing are the connotations?<br>
 
 2. How does sentiment compare between the brands on average and over time?
+<h3>Word Clouding and Comparing</h3>
+When developing a word cloud, I am interested in size representing the frequency of use and color representing the 
+polarity of the word when used. I don't simply want to color words by their crowd sourced valence scores. Rather, for 
+each word, I want to evaluate the average compound sentiment of tweets that used the word, and color-code by that 
+standard. With cleaned tweets mapped to compound scores following VADER sentimentizing, I can re-tokenize tweets, 
+map words the tweet compound scores where words appear, then use a pivot table to list distinct words by frequency 
+of occurance and average tweet compound sentiment when used:
+<p><blockquote><pre>
+tweetlist = list(tweetdf['final_tweets2'])
 
+tokenized = []
+compound = []
+negative = []
+neutral = []
+positive = []
+date = []
+for i in range(len(tweetlist)):
+    tokenized.append(tweetlist[i].split())
+    compound.append(tweetdf['compound'][i])
+    negative.append(tweetdf['negative'][i])
+    neutral.append(tweetdf['neutral'][i])
+    positive.append(tweetdf['positive'][i])
+    date.append(tweetdf['date'][i])
+    
+words = []
+compound2 = []
+negative2 = []
+neutral2 = []
+positive2 = []
+date2 = []
+for i in range(len(tokenized)):
+    for j in tokenized[i]:
+        words.append(j.lower())
+        compound2.append(compound[i])
+        negative2.append(negative[i])
+        neutral2.append(neutral[i])
+        positive2.append(positive[i])
+        date2.append(date[i])
+        
+wordsdf = pd.DataFrame()
+wordsdf['date'] = date2
+wordsdf['words'] = words
+wordsdf['compound'] = compound2
+wordsdf['negative'] = negative2
+wordsdf['neutral'] = neutral2
+wordsdf['positive'] = positive2
+
+#DFs of unique words with average score when used
+wordssent = pd.pivot_table(data = wordsdf, values = ['compound','negative','neutral','positive'], index = ['words'], aggfunc = 'mean')
+wordscount = pd.pivot_table(data = wordsdf, values = ['compound'], index = ['words'], aggfunc = 'count')
+wordssent['count'] = wordscount['compound']
+
+#Sorted by Use
+wordssent.sort_values(by = 'count', ascending = False, inplace = True)
+
+</pre></blockquote></p>
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
 
