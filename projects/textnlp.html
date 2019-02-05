@@ -272,6 +272,31 @@ for i in tweetvector_stopped:
     x = " ".join(i)
     final_tweets.append(x)
 </pre></blockquote></p>
+With tweets cleaned of meaningless words and symbols, text can then be fed to a sentimentizer to attempt to quantify 
+the sentiment of the statement. I use the VADER sentimentizer through the Natural Language Tool Kit. A detailed 
+account of VADER's development can be found <a href="http://comp.social.gatech.edu/papers/icwsm14.vader.hutto.pdf">here</a>. Vader stands for Valence Aware Dictionary for 
+sEntiment Reasoning, and is primarily focused on creating a sentiment lexicon where words are labeled as positive or 
+negatively connotated when used semantically. The developed lexicon is atuned for evaluating social media statements, and 
+word Valence scores are point estimates derived from crowd sourced sentiment assessments (Mechanical Turk). Tweets 
+can be evaluated for the percentage of words classified as positive, negative or neutral, and the normalized sum of word 
+valences can estimate the compound sentiment of the tweet. Accessing VADER sentiment scoring is simple with NLTK:
+<p><blockquote><pre>
+sid = nltk.sentiment.vader.SentimentIntensityAnalyzer()
+compound = []
+neutral = []
+negative = []
+positive = []
+for i in final_tweets:
+    ss = sid.polarity_scores(i)
+    comp = ss['compound']
+    neg = ss['neg']
+    neu = ss['neu']
+    pos = ss['pos']
+    compound.append(comp)
+    neutral.append(neu)
+    negative.append(neg)
+    positive.append(pos)
+</pre></blockquote></p>
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
 
