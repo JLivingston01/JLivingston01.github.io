@@ -196,6 +196,53 @@ for i in text:
         x = x.replace(k, v)
     emoji_clean.append(x)
 </pre></blockquote></p>
+The next step in my cleaning exercise is to use regular expressions to recognize many website URLs that may
+be present in tweets and remove these from the text. I search for 6 common URL patterns. I also remove 
+largely non-sentimentized punctuation in the same phase of cleaning (e.g. commas, colons, parentheses):
+<p><blockquote><pre>
+tweetvector_clean = []
+for i in emoji_clean:
+    x = re.sub(r"htt\S+"," ", i)
+    #x = x.decode('utf-8')
+    x = re.sub(r"pic.twit\S+"," ", x)
+    x = re.sub(r"www.\S+"," ", x)
+    x = re.sub(r"www.\S+"," ", x)
+    x = re.sub(r"@\S+"," ", x)
+    x = re.sub(r"\xa0"," ", x)
+    x = re.sub(r"\\u\S+"," ", x)
+    x = x.replace('#',' ')
+    x = x.replace('amp;','&')
+    x = x.replace('gt;',' ')
+    x = x.replace('\\n',' ')
+    y = x.replace('$',' ')
+    y = y.replace('(',' ')
+    y = y.replace('–',' ')
+    y = y.replace('‘',' ')
+    y = y.replace('“',' ')
+    y = y.replace('”',' ')
+    y = y.replace('`',' ')
+    y = y.replace(']',' ')
+    y = y.replace('[',' ')
+    y = y.replace(';',' ')
+    y = y.replace(')',' ')
+    y = y.replace('/',' ')
+    y = y.replace('*',' ')
+    y = y.replace(',',' ')
+    y = y.replace('’','')
+    y = y.replace('.','')
+    y = y.replace('-',' ')
+    y = y.replace("'",'')
+    y = y.replace(':',' ')
+    y = y.replace('@',' ')
+    y = y.replace('!',' ')
+    y = y.replace('…',' ')
+    y = y.replace('?',' ')
+    y = y.replace('>',' ')
+    y = y.replace('&',' ')
+    y = y.replace("\\","")
+    y = y.replace("\\u2066","")
+    tweetvector_clean.append(y)
+</pre></blockquote></p>
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
 
