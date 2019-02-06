@@ -467,13 +467,15 @@ plt.title("Lyft Word Cloud")
       <img src="/images/uber_wordcloud.png" alt="uber_wordcloud" class="img">
     </div>
 </div>
-For comparative purposes, the compmin and compmax are taken to be -1 and 1 for both brands, normalizing all data against the 
-same scale. The resulting word clouds for each brand reveal positive connotations around Lyft's free ride offers and promotional 
-codes, and positive connotations around use in Chicago and the idea of warming (this data was collected during a deep 
-freeze, during which, Lyft offered free rides to transport people to warming shelters in Chicago). I have always used these 
-word clouds as decent indicators of what aspects of a brand need improvement. For example, both brands are associated with
-negative contexts for drivers and driving. A key difference is these stemmed lemmas are largely more negative for Uber, as 
-the Uber cloud is much less green (less positive) than the lyft cloud. 
+Only lemmas with more than 30 appearances in each brand's word corpus are shown in these word clouds. For comparative purposes, 
+the compmin and compmax are taken to be -1 and 1 for both brands, normalizing all data against the same scale. The resulting 
+word clouds for each brand reveal positive connotations around Lyft's free ride offers and promotional codes, and positive 
+connotations around use in Chicago and the idea of warming (this data was collected during a deep freeze, during which, 
+Lyft offered free rides to transport people to warming shelters in Chicago). I have always used these word clouds as decent 
+indicators of what aspects of a brand need improvement. For example, both brands are associated with negative contexts for 
+drivers and driving. A key difference is these stemmed lemmas are largely more negative for Uber, as the Uber cloud is much 
+less green (less positive) than the Lyft cloud. Much of the green-ness of the Lyft cloud, though, is attributable to promotional 
+tweets, or informative tweets about a positive service Lyft offered during the limited collection window. 
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
 
