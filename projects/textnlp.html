@@ -297,6 +297,37 @@ for i in final_tweets:
     negative.append(neg)
     positive.append(pos)
 </pre></blockquote></p>
+Finally, with sentimentized tweets, I can evaluate the stems of words so that words of like-stems and lemmas can be 
+analyzed together (e.g. Say, Said, Says are all lemmatized to Say). This is largely necessary for LDA analysis, but
+also limits the scope of the wordclouding exercise to being more manageable. I do so using stemming and lemmatizing
+from NLTK. A note about the code sample, final_tweets2 is a version of data final_tweets with terms 'uber' and 'lyft'
+(exceedingly common) removed so these are not considered in topic models or word clouds:
+<p><blockquote><pre>
+from nltk.stem import WordNetLemmatizer
+from nltk.stem import SnowballStemmer
+from nltk.stem.porter import *
+
+import nltk
+nltk.download('wordnet')
+stemmer = SnowballStemmer('english')
+
+def lemmatize_stemming(text):
+    return stemmer.stem(WordNetLemmatizer().lemmatize(text, pos='v'))
+    
+
+def preprocess(text):
+    result = []
+    for token in gensim.utils.simple_preprocess(text):
+        if token not in gensim.parsing.preprocessing.STOPWORDS and len(token) > 3:
+            result.append(lemmatize_stemming(token))
+    return result
+    
+processed_docs = docdf['final_tweets2'].map(preprocess)
+merged = []
+for i in processed_docs:
+    merged.append(" ".join(i))
+docdf['final_tweets2_stemmed'] = merged
+</pre></blockquote></p>
 With tweets now associated with sentiment scores, I can focus on answering a couple of interesting questions:<br>
 
 1. What keywords are associated with each brand, and how polarizing are the connotations?<br>
@@ -436,7 +467,12 @@ plt.title("Lyft Word Cloud")
       <img src="/images/uber_wordcloud.png" alt="uber_wordcloud" class="img">
     </div>
 </div>
-The resulting word clouds for each brand reveal 
+For comparative purposes, the compmin and compmax are taken to be -1 and 1 for both brands, normalizing all data against the 
+same scale. The resulting word clouds for each brand reveal positive connotations around Lyft's free ride offers and promotional 
+codes, and positive connotations around use in Chicago and the idea of warming (this data was collected during a deep 
+freeze, during which, Lyft offered free rides to transport people to warming shelters in Chicago). I have always used these 
+word clouds as decent indicators of what aspects of a brand need improvement. For example, both brands are associated with
+negative contexts for drivers and driving.  
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
 
