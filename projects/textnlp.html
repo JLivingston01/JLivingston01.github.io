@@ -388,6 +388,45 @@ for i in colorset:
     color_to_words[i] = words_by_color
 	
 </pre></blockquote></p>
+The wordcloud package github provides examples for applying colors selectively to words in a number of ways. Here I use the simple 
+grouped color function class to create a word: color mapping from the color_to_words mapping already created. This function simply
+makes values in each value list within the color_to_words hash table the key for mapping back to the key value from the color_to_words 
+hash table. The resulting dict is used for recoloring words within the wordcloud package:
+<pre><blockquote><p>
+class SimpleGroupedColorFunc(object):
+    """Create a color function object which assigns EXACT colors
+       to certain words based on the color to words mapping
+       Parameters
+       ----------
+       color_to_words : dict(str -> list(str))
+         A dictionary that maps a color to the list of words.
+       default_color : str
+         Color that will be assigned to a word that's not a member
+         of any value from color_to_words.
+    """
+
+    def __init__(self, color_to_words, default_color):
+        self.word_to_color = {word: color
+                              for (color, words) in color_to_words.items()
+                              for word in words}
+
+        self.default_color = default_color
+
+    def __call__(self, word, **kwargs):
+        return self.word_to_color.get(word, self.default_color)
+		
+grouped_color_func = SimpleGroupedColorFunc(color_to_words, 'grey')
+
+
+wordcloud = WordCloud(collocations = False,width = 800, height = 500,background_color = "black").generate(text)
+wordcloud.recolor(color_func=grouped_color_func)
+# Matplotlib to display the cloud
+import matplotlib.pyplot as plt
+plt.figure( figsize=(8,6) )
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.title("Lyft Word Cloud")
+</p></blockquote></pre>
 <h3>TF IDF and LDA for Top Classification</h3>
 <br>
 
