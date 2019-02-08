@@ -530,11 +530,116 @@ p(Cat) > p(Dog), by the maximum a posteriori (MAP) rule, Cat is the selected lab
 The Naive Bayes Classifier can be imported from the NLTK package. My strategy for applying the package is to collect the 
 cleaned corpus of unique words in the training tweet corpus, limit the number of features to consider to the N most common 
 and meaningful words, and evaluate te likelihood of candidate labels against that feature vector. Here I limit the feature 
-vector to the most common 300 words (after removing stop words).
-
+vector to the most common 300 words (after removing stop words). Here is an example of implementing the NLTK Naive Bayes 
+Classifier:
 <p><blockquote><pre>
+#Function to state True/False if a feature is in a document
+def document_features(document):
+    document_words = set(document)
+    features = {}
+    for word in word_features:
+        features['contains({})'.format(word)] = (word in document_words)
+    return features
 
+#Corpus DF csv contains cleaned 'final_tweets' and labels, previously loaded as pandas DF
+corpusdf['count'] = 1
+corpusdf2 = pd.pivot_table(data = corpusdf, index = ['final_tweets','label'], values = ['count'], aggfunc = 'sum')
+corpusdf2.reset_index(inplace=True, drop = False)
+corpusdf2['final_tweets'] = corpusdf2['final_tweets'].fillna(" ")
+rand_tweets_labels = list(corpusdf2['label'])
+unique_tweets = list(corpusdf2['final_tweets'])
+
+#Tokenize Tweets
+tweet_doc = []
+for i in unique_tweets:
+    x = i.lower()
+    tweet_doc.append(x.split())
+   
+#All Words
+unique_words = []
+for i in unique_tweets:
+    x = i.split()
+    for j in x:
+        unique_words.append(j.lower())   
+		
+#Unique Words by Count 
+UW = pd.DataFrame()
+UW['unique_words'] = unique_words
+UW['count'] = 1
+UW_piv = pd.pivot_table(data = UW, values = 'count', index = 'unique_words', aggfunc = 'sum')
+UW_piv = UW_piv.sort_values(by = 'count', ascending = False)
+unique_words2 = list(UW_piv.index)
+#Drop a couple of stragler stop words from cleaning
+dropping = ['i','the','``',"''"]
+unique_words3 = [i for i in unique_words2 if i not in dropping]
+word_features =unique_words3[:300]
+
+#Create a list of tuples containing document features and labels
+tweet_featset = [(document_features(d), c) for (d,c) in zip(tweet_doc,rand_tweets_labels)]   
+   
+#Train a naive bayes classifier   
+train_set, test_set = tweet_featset[:len(tweet_featset)], tweet_featset[:len(tweet_featset)]
+classifier = nltk.NaiveBayesClassifier.train(train_set)
+classifier.show_most_informative_features(30)
+nltk.classify.accuracy(classifier, test_set)
+
+		Printed:
+Most Informative Features
+         contains(promo) = True           promot : financ =   1721.2 : 1.0
+          contains(code) = True           promot : news   =   1246.9 : 1.0
+    contains(complaints) = True           servic : news   =    692.8 : 1.0
+      contains(customer) = True           servic : news   =    633.8 : 1.0
+           contains(ipo) = True           financ : news   =    466.0 : 1.0
+      contains(startups) = True           financ : servic =    427.0 : 1.0
+           contains(fox) = True             news : financ =    338.7 : 1.0
+          contains(news) = True             news : promot =    184.7 : 1.0
+       contains(service) = True           servic : news   =    165.7 : 1.0
+      contains(breaking) = True             news : servic =    141.4 : 1.0
+        contains(driver) = True           servic : financ =    139.3 : 1.0
+     contains(headlines) = True             news : financ =    122.3 : 1.0
+        contains(market) = True           financ : servic =    118.1 : 1.0
+       contains(startup) = True           financ : news   =    108.4 : 1.0
+       contains(tickets) = True           promot : news   =    102.1 : 1.0
+           contains(cnn) = True             news : financ =    101.2 : 1.0
+          contains(save) = True           promot : financ =     95.8 : 1.0
+          contains(code) = False            news : promot =     93.4 : 1.0
+         contains(stock) = True           financ : news   =     89.9 : 1.0
+          contains(uber) = True           servic : news   =     87.1 : 1.0
+        contains(stocks) = True           financ : news   =     84.6 : 1.0
+         contains(trump) = True             news : servic =     66.8 : 1.0
+          contains(tech) = True           financ : news   =     58.4 : 1.0
+           contains(buy) = True           promot : news   =     54.6 : 1.0
+           contains(use) = True           promot : financ =     52.5 : 1.0
+            contains(50) = True           promot : news   =     50.6 : 1.0
+           contains(iot) = True           financ : news   =     48.9 : 1.0
+             contains(|) = True             news : servic =     48.6 : 1.0
+            contains(ai) = True           financ : news   =     46.5 : 1.0
+         contains(promo) = False            news : promot =     42.5 : 1.0
+0.9497302880752898
 </p></blockquote></pre>
+The classifier describes the training data with 95% accuracy. Similarly, when I randomize the tweet order and 
+hold out 25% for predicting the label, the classifier predicts with 94.3% accuracy on unseen tweets. The built 
+classifier is then used to label Lyft and Uber tweet topics:
+<p><blockquote><pre>
+#Tokenize UBer/Lyft Tweets for Classifying
+unique_tweets = tweetdf['final_tweets']
+tweets_split = []
+for i in unique_tweets:
+    tweets_split.append(i.split())
+
+#Predict Labels of Documents and report p(Label) for selected labels, save to df
+new_labels = []
+probs = []
+for i in tweets_split:
+    test_features = [(document_features(i), 'test')]
+    new_labels.append(classifier.classify(test_features[0][0]))
+    dist = classifier.prob_classify(test_features[0][0])
+    probs.append(dist.prob(classifier.classify(test_features[0][0])))
+
+tweetdf['NB_label'] = new_labels
+tweetdf['NB_label_prob'] = probs
+</p></blockquote></pre>
+
 <br>
 
 <h3>Code Snippets</h3>
