@@ -494,15 +494,38 @@ other. Using this model, one might define the probability of some Label_a for a 
 <div >
       <img src="/images/naive_bayes_classifier.png" alt="NBC" class="jayimage">
     </div>
+But because p(X) is a data dependent constant for all potential labels, only the numerator needs to be evaluated for each candidate 
+label for a document, and the largest result is selected as the document label. <br><br>
 Here is a simple example to conceptualize predicting labels with this model:
 <p><blockquote><pre>
 Consider 4 Sentences and labels:
 <table>
-<tr><td>He Is Lazy</td><td>Cat</td></tr>
-<tr><td>Give Him Treats</td><td>Dog</td></tr>
-<tr><td>The Dog Barked</td><td>Dog</td></tr>
-<tr><td>The Cat Meowed</td><td>Cat</td></tr>
+<tr><th>Sentence</th><th>Stemmed/Cleaned</th><th>Label</th></tr>
+<tr><td>He Is Lazy</td><td>He Lazy</td><td>Cat</td></tr>
+<tr><td>Give Him Treats</td><td>Give He Treat</td><td>Dog</td></tr>
+<tr><td>The Dog Barked</td><td>Dog Bark</td><td>Dog</td></tr>
+<tr><td>The Cat Meowed</td><td>Cat Meow</td><td>Cat</td></tr>
 </table>
+With the above as training data, how is this new sentence classified:
+Meows Are Cute
+
+The new sentence can be cleaned:
+Meow Cute
+
+Features for consideration include words in the training corpus:
+features = {He, Lazy, Give, Treat, Dog, Bark, Cat, Meow}
+
+Evaluating p(Dog) for 'Meow Cute':
+	p(Label): p(Dog) = .5  (evident in training data)
+	p(X|Label): p(Meow|Dog) = 0 (from training data, Note that only Meow is a feature extracted from Training, Cute is not)
+	p(Label_a|X) ~ p(Label)*p(X|Label): p(Dog)*p(Meow|Dog) = .5*0 = 0
+	
+Evaluating p(Cat) for 'Meow Cute':
+	p(Label): p(Cat) = .5  
+	p(X|Label): p(Meow|Cat) = .5 
+	p(Label_a|X) ~ p(Label)*p(X|Label): p(Cat)*p(Meow|Cat) = .5*.5 = .25
+	
+p(Cat) > p(Dog), by the maximum a posteriori (MAP) rule, Cat is the selected label.
 </p></blockquote></pre>
 <br>
 
