@@ -489,7 +489,21 @@ topics of tweets in an automated way, I use a general strategy of building a lab
 pull and text cleaning process used to pull and clean Uber and Lyft tweets, training models against this corpus, then predicting 
 the labels of Uber and Lyft tweets. The first topic model I use to predict labels is the Naive Bayes Classifier.<br><br>
 A Naive Bayes Classifier can be constructed using known probabilities of document features, and those of user defined labels in 
-training data:
+training data. This method is an application of Bayes Theorem, with the "Naive" assumption that features are indepentent of each 
+other. Using this model, one might define the probability of some Label_a for a document with features X as:
+<div >
+      <img src="/images/naive_bayes_classifier.png" alt="NBC" class="img">
+    </div>
+Here is a simple example to conceptualize predicting labels with this model:
+<p><blockquote><pre>
+Consider 4 Sentences and labels:
+<table>
+<tr><td>He Is Lazy</td><td>Cat</td></tr>
+<tr><td>Give Him Treats</td><td>Dog</td></tr>
+<tr><td>The Dog Barked</td><td>Dog</td></tr>
+<tr><td>The Cat Meowed</td><td>Cat</td></tr>
+</table>
+</p></blockquote></pre>
 <br>
 
 <h3>Code Snippets</h3>
