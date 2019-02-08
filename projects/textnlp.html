@@ -639,15 +639,26 @@ for i in tweets_split:
 tweetdf['NB_label'] = new_labels
 tweetdf['NB_label_prob'] = probs
 </p></blockquote></pre>
+Evaluating the average compound tweet sentiment by tweet topic may yield some interesting findings. Particularly, 
+much of Lyft's positive sentiment may be inflated by a surge of tweets related to promotional codes and free rides. 
+One would find that relatively few Uber tweets have been classified as promotional to begin with:
 <div >
       <img src="/images/Topics_Sentiment_NBC.png" alt="NBC" class="jayimage" width="500">
     </div>
+Over this limited time window, daily average sentiment is noisy for the two brands, but Lyft appears broadly 
+healthier. Do not forget that this may be related to being more promotional overall:
 <div >
       <img src="/images/Time_Sentiment_NBC.png" alt="NBC" class="jayimage" width="500">
     </div>
+In terms of financial tweets, Uber and Lyft demonstrate highly correlated sentiment, which passes the logic test 
+that market news about the ride share space is more likely to reference both brands and affect both businesses 
+than service complaints or promotions relating to one brand:
 <div >
       <img src="/images/Time_Sentiment_Financial_NBC.png" alt="NBC" class="jayimage" width="500">
     </div>
+Lyft may demonstrate some positivity diverging from Uber in news related tweets. This may motivate the data scientist 
+to perform a keyword analysis on these tweets in particular to understand the major differences. Another wordcloud may 
+serve well for this purpose:
 <div >
       <img src="/images/Time_Sentiment_News_NBC.png" alt="NBC" class="jayimage" width="500">
     </div>
