@@ -483,10 +483,13 @@ less green (less positive) than the Lyft cloud. Another observation of note is s
 words wage and worker, and an investigation shows Lyft's resistance to new minimum wage legislation in New York City has 
 been poorly received. Much of the green-ness of the Lyft cloud, though, is attributable to promotional tweets, or informative 
 tweets about a positive service Lyft offered during the limited collection window. 
-<h3>TF IDF and LDA for Top Classification</h3>
-Reading a sample of tweets leads me to search for ~4 broad topics by which to classify the documents. Tweets seem to be related 
-to the quality of service, news about the companies, financial news and articles about the companies, and promotional tweets by 
-users sharing promo codes. 
+<h3>Topic Modeling and Other Text Analytics</h3>
+Understanding the topics tweets relate to is important for targeting areas for brand-health improvement. In order to guess the 
+topics of tweets in an automated way, I use a general strategy of building a labeled collection of tweets through the same API
+pull and text cleaning process used to pull and clean Uber and Lyft tweets, training models against this corpus, then predicting 
+the labels of Uber and Lyft tweets. The first topic model I use to predict labels is the Naive Bayes Classifier.<br><br>
+A Naive Bayes Classifier can be constructed using known probabilities of document features, and those of user defined labels in 
+training data:
 <br>
 
 <h3>Code Snippets</h3>
