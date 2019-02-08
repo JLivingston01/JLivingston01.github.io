@@ -483,7 +483,7 @@ less green (less positive) than the Lyft cloud. Another observation of note is s
 words wage and worker, and an investigation shows Lyft's resistance to new minimum wage legislation in New York City has 
 been poorly received. Much of the green-ness of the Lyft cloud, though, is attributable to promotional tweets, or informative 
 tweets about a positive service Lyft offered during the limited collection window. 
-<h3>Topic Modeling and Other Text Analytics</h3>
+<h3>Naive Bayes Topic Modeling and Summary Analytics</h3>
 Understanding the topics tweets relate to is important for targeting areas for brand-health improvement. In order to guess the 
 topics of tweets in an automated way, I use a general strategy of building a labeled collection of tweets through the same API
 pull and text cleaning process used to pull and clean Uber and Lyft tweets, training models against this corpus, then predicting 
@@ -658,19 +658,28 @@ than service complaints or promotions relating to one brand:
     </div>
 Lyft may demonstrate some positivity diverging from Uber in news related tweets. This may motivate the data scientist 
 to perform a keyword analysis on these tweets in particular to understand the major differences. Another wordcloud may 
-serve well for this purpose:
+serve well for this purpose (I am not generating the new word clouds at this time):
 <div >
       <img src="/images/Time_Sentiment_News_NBC.png" alt="NBC" class="jayimage" width="500">
     </div>
+Uber registers far fewer promotional tweets as previously stated, but the Lyft promotional tweets provide a strong 
+baseline of positive sentmient to the tweet corpus:
 <div >
       <img src="/images/Time_Sentiment_Promotional_NBC.png" alt="NBC" class="jayimage" width="500">
     </div>
+Uber service tweets seem to have a downward inflection during this period, which seems to drive the larger decline 
+in Uber's brand sentiment during the period. I would also analyze keywords from these tweets to understand the 
+specifics of potential service failures:
 <div >
       <img src="/images/Time_Sentiment_Service_NBC.png" alt="NBC" class="jayimage" width="500">
     </div>
-<br>
+To verify these findings or discover any potential learnings from a second model that the Naive Bayes Classifier could 
+not distinguish, I also construct a neural network to learn the Uber and Lyft tweet topics from the corpus of collected 
+tweets. I do so to verify if meaningful classification improvements can be made when stepping away from the Naive 
+assumption of feature independence. 
+<h3>Neural Network Topic Modeling from Doc Features</h3>
 
-<h3>Code Snippets</h3>
+
 Code Snippets Below<br><br>
 <!--style>.indented {
   padding-left: 50pt;
