@@ -527,6 +527,14 @@ Evaluating p(Cat) for 'Meow Cute':
 	
 p(Cat) > p(Dog), by the maximum a posteriori (MAP) rule, Cat is the selected label.
 </p></blockquote></pre>
+The Naive Bayes Classifier can be imported from the NLTK package. My strategy for applying the package is to collect the 
+cleaned corpus of unique words in the training tweet corpus, limit the number of features to consider to the N most common 
+and meaningful words, and evaluate te likelihood of candidate labels against that feature vector. Here I limit the feature 
+vector to the most common 300 words (after removing stop words).
+
+<p><blockquote><pre>
+
+</p></blockquote></pre>
 <br>
 
 <h3>Code Snippets</h3>
