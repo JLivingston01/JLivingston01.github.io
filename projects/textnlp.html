@@ -530,8 +530,8 @@ p(Cat) > p(Dog), by the maximum a posteriori (MAP) rule, Cat is the selected lab
 The Naive Bayes Classifier can be imported from the NLTK package. My strategy for applying the package is to collect the 
 cleaned corpus of unique words in the training tweet corpus, limit the number of features to consider to the N most common 
 and meaningful words, and evaluate te likelihood of candidate labels against that feature vector. Here I limit the feature 
-vector to the most common 300 words (after removing stop words). Here is an example of implementing the NLTK Naive Bayes 
-Classifier:
+vector to the most common 300 words and words within the absolute frequency range within the corpus of 20 - 30 (after 
+removing stop words). Here is an example of implementing the NLTK Naive Bayes Classifier:
 <p><blockquote><pre>
 #Function to state True/False if a feature is in a document
 def document_features(document):
