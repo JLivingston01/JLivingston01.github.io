@@ -574,6 +574,12 @@ dropping = ['i','the','``',"''"]
 unique_words3 = [i for i in unique_words2 if i not in dropping]
 word_features =unique_words3[:300]
 
+ww = UW_piv.copy()
+
+ww.reset_index(inplace= True)
+ww = list(ww[(ww['count'] >= 20)&(ww['count'] <= 30)]['unique_words'])
+word_features = list(word_features)+ww
+
 #Create a list of tuples containing document features and labels
 tweet_featset = [(document_features(d), c) for (d,c) in zip(tweet_doc,rand_tweets_labels)]   
    
@@ -606,6 +612,7 @@ Most Informative Features
          contains(stock) = True           financ : news   =     89.9 : 1.0
           contains(uber) = True           servic : news   =     87.1 : 1.0
         contains(stocks) = True           financ : news   =     84.6 : 1.0
+         contains(enter) = True           promot : financ =     69.1 : 1.0
          contains(trump) = True             news : servic =     66.8 : 1.0
           contains(tech) = True           financ : news   =     58.4 : 1.0
            contains(buy) = True           promot : news   =     54.6 : 1.0
@@ -614,11 +621,10 @@ Most Informative Features
            contains(iot) = True           financ : news   =     48.9 : 1.0
              contains(|) = True             news : servic =     48.6 : 1.0
             contains(ai) = True           financ : news   =     46.5 : 1.0
-         contains(promo) = False            news : promot =     42.5 : 1.0
-0.9497302880752898
+0.9594858257775737
 </p></blockquote></pre>
-The classifier describes the training data with 95% accuracy. Similarly, when I randomize the tweet order and 
-hold out 25% for predicting the label, the classifier predicts with 94.3% accuracy on unseen tweets. The built 
+The classifier describes the training data with 96% accuracy. Similarly, when I randomize the tweet order and 
+hold out 25% for predicting the label, the classifier predicts with 95.4% accuracy on unseen tweets. The built 
 classifier is then used to label Lyft and Uber tweet topics:
 <p><blockquote><pre>
 #Tokenize UBer/Lyft Tweets for Classifying
