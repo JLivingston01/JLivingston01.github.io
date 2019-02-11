@@ -403,7 +403,7 @@ scores:
 <div>
       <img src="/images/conditional_formating.png" alt="formatting">
     </div>
-<pre><blockquote><p>
+<p><blockquote><pre>
 #List Unique Words and Colors derived from Compound score together
 UW = []
 color = []
@@ -428,7 +428,7 @@ The wordcloud package github provides examples for applying colors selectively t
 grouped color function class to create a word: color mapping from the color_to_words mapping already created. This function simply
 makes values in each value list within the color_to_words hash table the key for mapping back to the key value from the color_to_words 
 hash table. The resulting dict is used for recoloring words within the wordcloud package:
-<pre><blockquote><p>
+<p><blockquote><pre>
 class SimpleGroupedColorFunc(object):
     """Create a color function object which assigns EXACT colors
        to certain words based on the color to words mapping
@@ -462,7 +462,7 @@ plt.figure( figsize=(8,6) )
 plt.imshow(wordcloud)
 plt.axis("off")
 plt.title("Lyft Word Cloud")
-</p></blockquote></pre>
+</pre></blockquote></p>
 </style>
 <div class="row">
 <div class="column">
@@ -526,7 +526,7 @@ Evaluating p(Cat) for 'Meow Cute':
 	p(Label_a|X) ~ p(Label)*p(X|Label): p(Cat)*p(Meow|Cat) = .5*.5 = .25
 	
 p(Cat) > p(Dog), by the maximum a posteriori (MAP) rule, Cat is the selected label.
-</p></blockquote></pre>
+</pre></blockquote></p>
 The Naive Bayes Classifier can be imported from the NLTK package. My strategy for applying the package is to collect the 
 cleaned corpus of unique words in the training tweet corpus, limit the number of features to consider to the N most common 
 and meaningful words, and evaluate te likelihood of candidate labels against that feature vector. Here I limit the feature 
@@ -622,7 +622,7 @@ Most Informative Features
              contains(|) = True             news : servic =     48.6 : 1.0
             contains(ai) = True           financ : news   =     46.5 : 1.0
 0.9594858257775737
-</p></blockquote></pre>
+</pre></blockquote></p>
 The classifier describes the training data with 96% accuracy. Similarly, when I randomize the tweet order and 
 hold out 25% for predicting the label, the classifier predicts with 95.4% accuracy on unseen tweets. The built 
 classifier is then used to label Lyft and Uber tweet topics:
@@ -644,7 +644,7 @@ for i in tweets_split:
 
 tweetdf['NB_label'] = new_labels
 tweetdf['NB_label_prob'] = probs
-</p></blockquote></pre>
+</pre></blockquote></p>
 Evaluating the average compound tweet sentiment by tweet topic may yield some interesting findings. Particularly, 
 much of Lyft's positive sentiment may be inflated by a surge of tweets related to promotional codes and free rides. 
 One would find that relatively few Uber tweets have been classified as promotional to begin with:
@@ -709,9 +709,13 @@ the 50X50 information matrix by descending frequency, I wanted to represent word
 closer to words that are lexiconically similar. To do so, I implemented a Word2Vec model to represent similarly used words 
 as spatially close, performed a principle component analysis on the high dimensional Word2Vec numeric representation of 
 each word, to obtain two principle components, then rescaled these components to points in the 50X50 information matrix 
-space, recording a 1 for values in the matrix where a word is mapped, and a zero where no word is mapped. <br><br>
+space, recording a 1 for values in the matrix where a word is mapped, and a zero where no word is mapped. The Word2Vec 
+model is simple to implement from the Gensim package:
+<p><blockquote><pre>
+
+</pre></blockquote></p>
 This model described training data with 99% accuracy, and labeled holdout data with 93.5% accuracy, an improvement over 
-other designed networks thusfar, but still not as strong in classification as the Naive Bayes Classifier. 
+other designed networks thusfar, but still not as strong in classification as the Naive Bayes Classifier. <br><br>
 Code Snippets Below<br><br>
 <!--style>.indented {
   padding-left: 50pt;
