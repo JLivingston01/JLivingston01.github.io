@@ -701,7 +701,17 @@ network only predicts unseen labels with 89% accuracy.
 This second network design consideres the 2500 most common words from the training tweet corpus, arranges these binaries 
 into an ordered (L -> R, U -> D by word frequency) 50X50 matrix and convolves over the matrix in a similar fashion to an 
 image analysis, flattens the output of convolution to one dimension, and outputs that result to two hidden layers of 25 
-Relu neurons. Finally the output of the hidden layers is fed to the output layer of 4 Sigmoid neurons. 
+Relu neurons. Finally the output of the hidden layers is fed to the output layer of 4 Sigmoid neurons. This network 
+described training data with 98.4% accuracy, but only predicted with 91.6% accuracy. To this point, the Naive Bayes 
+Classifier is the strongest topic model.<br><br>
+I tested another network of the same design with different preprocessing to the documents. Rather than order features in 
+the 50X50 information matrix by descending frequency, I wanted to represent words on the 50X50 matrix as being spacially 
+closer to words that are lexiconically similar. To do so, I implemented a Word2Vec model to represent similarly used words 
+as spatially close, performed a principle component analysis on the high dimensional Word2Vec numeric representation of 
+each word, to obtain two principle components, then rescaled these components to points in the 50X50 information matrix 
+space, recording a 1 for values in the matrix where a word is mapped, and a zero where no word is mapped. <br><br>
+This model described training data with 99% accuracy, and labeled holdout data with 93.5% accuracy, an improvement over 
+other designed networks thusfar, but still not as strong in classification as the Naive Bayes Classifier. 
 Code Snippets Below<br><br>
 <!--style>.indented {
   padding-left: 50pt;
