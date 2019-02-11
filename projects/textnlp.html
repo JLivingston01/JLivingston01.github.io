@@ -712,8 +712,52 @@ each word, to obtain two principle components, then rescaled these components to
 space, recording a 1 for values in the matrix where a word is mapped, and a zero where no word is mapped. The Word2Vec 
 model is simple to implement from the Gensim package:
 <p><blockquote><pre>
+from gensim.models import Word2Vec
+from sklearn.decomposition import PCA
+sentences = list(corpusdf['processed_docs'])
+#Limit sentences to 2500 most common words (contained in list WL)
+sentences2 = []
+for i in sentences:
+    x = [j for j in i if j in WL]
+    sentences2.append(x)
 
+#Fit Word2Vec Model
+wvmodel = Word2Vec(sentences2, min_count=1)
+X = wvmodel[wvmodel.wv.vocab]
+	
+pca = PCA(n_components=2)
+result = pca.fit_transform(X)
+
+words = list(wvmodel.wv.vocab)
+
+#Map words in wvmodel vocabulary to Word2Vec PCA coordinates
+wordmap = {}
+for i in range(len(words)):
+    wordmap[words[i]] = list(result[i])
+	
+#Use Min and Max x and y of Word2Vec word model to scale to a point in (0:49,0:49)
+ minx = min(result[:, 0])
+maxx = max(result[:, 0])
+miny = min(result[:, 1])
+maxy = max(result[:, 1])
+docmats = []
+
+for i in list(tdf1['processed_docs']):
+    stc = np.array(np.zeros(2500)).reshape(50,50)
+    doc = np.array([wordmap[j] for j in i if j in wordmap.keys()])
+    try:
+        doc[:,0] = np.round((doc[:,0]-minx)*49/(maxx-minx))
+        doc[:,1] = np.round((doc[:,1]-miny)*49/(maxy-miny))
+        for k in doc:
+            stc[int(k[0])][int(k[1])] = 1
+        docmats.append(stc)
+    except:
+        docmats.append(stc)
+        pass
+
+docmats = np.array(docmats)
 </pre></blockquote></p>
+The resulting 'docmats' of tweets can be fed to convolutional or pooling layers.<br><br>
 This model described training data with 99% accuracy, and labeled holdout data with 93.5% accuracy, an improvement over 
 other designed networks thusfar, but still not as strong in classification as the Naive Bayes Classifier. <br><br>
 Code Snippets Below<br><br>
