@@ -698,6 +698,10 @@ network only predicts unseen labels with 89% accuracy.
 <div >
       <img src="/images/CNN2.png" alt="NBC" class="jayimage" width="500">
     </div>
+This second network design consideres the 2500 most common words from the training tweet corpus, arranges these binaries 
+into an ordered (L -> R, U -> D by word frequency) 50X50 matrix and convolves over the matrix in a similar fashion to an 
+image analysis, flattens the output of convolution to one dimension, and outputs that result to two hidden layers of 25 
+Relu neurons. Finally the output of the hidden layers is fed to the output layer of 4 Sigmoid neurons. 
 Code Snippets Below<br><br>
 <!--style>.indented {
   padding-left: 50pt;
