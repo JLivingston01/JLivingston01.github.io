@@ -688,7 +688,16 @@ assumption of feature independence.
 I approach Neural Network modeling using Tensorflow to develop a simple, deep feature model that considers the same inputs
 as the Naive Bayes Model, and to develop a network designed to convolve over embedded sentences before training with some 
 deepness. I do so for comparative purposes with the Naive Bayes method. 
-
+<div >
+      <img src="/images/NN1config.png" alt="NBC" class="jayimage" width="500">
+    </div>
+This example network represents one tested network against the 787 tweet features evaluated in the Naive Bayes analysis. 
+This network uses Rectivied Linear Unit activation in the hidden layers and sigmoid activation in the output layer for 
+predicting the four labels. While the network describes training data better than the Naive Bayes analysis (96.7%), this 
+network only predicts unseen labels with 89% accuracy. 
+<div >
+      <img src="/images/CNN2.png" alt="NBC" class="jayimage" width="500">
+    </div>
 Code Snippets Below<br><br>
 <!--style>.indented {
   padding-left: 50pt;
