@@ -721,16 +721,24 @@ Transform so each first and third word are paired with the second:
 ((The, ran), dog), ((dog, to), ran), ((ran, the), to), ((to, car), the)
 
 Then try to predict the first and third words using the middle word. Transform data to:
-(dog, the), (dog, ran), (ran, dog), (ran, to),…
+(dog, the), (dog, ran), (ran, dog), (ran, to), (to, ran), (to, the), (the, to), (the, car)
 
-Then maximize the sigmoidal (logistic regression) probability of seeing the a word in the context of its predictor, plus 
-the likelihood of not seeing k noise words in the context of the predictor:
+Then maximize the log sigmoidal (logistic regression) probability of seeing the a word in the context of its predictor, plus 
+the log likelihood of not seeing k noise words in the context of the predictor:
 
 <img src="/images/siglog.png" alt="NBC" class="jayimage" width="500">
+A Word2Vec model is often trained with one-hot encoding feeding a 3 layer neural network, predicting the distribtuion of 
+words associated with the target word:
 
+corpus = (the, dog, ran, to, car)
+w1 = dog
+w1_one_hot = [0,1,0,0,0]
+words associated with dog: (the, ran)
+distribution of association with dog: [.5,0,.5,0,0]
+<img src="/images/Word2VecNN.png" alt="NBC" class="jayimage" width="500">
+The vector of weights associated with j hidden neurons is taken as the vector representing the embedded word. 
  </pre></blockquote></p>
-The Word2Vec 
-model is simple to implement from the Gensim package:
+The Word2Vec model is simple to implement from the Gensim package:
 <p><blockquote><pre>
 from gensim.models import Word2Vec
 from sklearn.decomposition import PCA
