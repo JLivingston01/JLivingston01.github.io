@@ -815,6 +815,55 @@ Xarray = pad_sequences(encoded_docs, maxlen=maxlen, padding='post')
 The constructed network consists of 38-word sentences being mapped to 38X10 embeddings, which are flattened to a 380X1 input 
 for the hidden layer of sigmoid neurons, which then feed to 4 output neurons, representing the four labels:<br>
 <div><img src="/images/NNembedded.png" alt="NBC" class="jayimage" width="500"></div>
+This netword can be configured with keras:
+<p><blockquote><pre>
+
+from keras.utils import np_utils
+from sklearn.preprocessing import LabelEncoder
+#Convert text labels in tdf1Y to one-hot encoded dummies
+labs = np.array(tdf1Y)
+encoder2 = LabelEncoder()
+encoder2.fit(labs)
+encoded_Ytrain = encoder2.transform(labs)
+dummy_labs = np_utils.to_categorical(encoded_Ytrain)
+
+#Build the network Sequentially using Keras (Here importing keras from the tensorflow package
+#Loss functions for the network to minimize are in tensorflow.losses
+from tensorflow import keras
+from tensorflow import losses 
+import tensorflow
+
+model = keras.Sequential()
+
+model.add(keras.layers.Embedding(vocab_size, 10, input_length=max_length))
+model.add(keras.layers.Flatten())
+model.add(keras.layers.Dense(25, activation=tensorflow.nn.sigmoid))
+model.add(keras.layers.Dense(4, activation=tensorflow.nn.sigmoid))
+
+model.compile(optimizer=tensorflow.train.AdamOptimizer(), 
+              loss=losses.mean_squared_error,
+              metrics=['accuracy'])
+
+model.fit(Xarray, dummy_labs, epochs=28, verbose = 1)
+</pre></blockquote></p>
+This model describes training data with 99.8% accuracy and labels holdout data with 96.4% accuracy, an improvement over the 
+Naive Bayes Classifier. By labeling Uber and Lyft tweets according to these labels and re-evaluating sentiment, a comparison 
+of brand health shows the brands largely in parody with each other:
+<div >
+      <img src="/images/Sentiment_Topics_NN.png" alt="NBC" class="jayimage" width="500">
+    </div>
+<div >
+      <img src="/images/Time_Sentiment_Financial_NN.png" alt="NBC" class="jayimage" width="500">
+    </div>
+<div >
+      <img src="/images/Time_Sentiment_Service_NN.png" alt="NBC" class="jayimage" width="500">
+    </div>
+<div >
+      <img src="/images/Time_Sentiment_News_NN.png" alt="NBC" class="jayimage" width="500">
+    </div>
+<div >
+      <img src="/images/Time_Sentiment_Promotional_NN.png" alt="NBC" class="jayimage" width="500">
+    </div>
 <br><br>
 <!--style>.indented {
   padding-left: 50pt;
