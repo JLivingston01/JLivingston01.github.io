@@ -811,8 +811,10 @@ encoded_docs = [one_hot(i, vocab_size) for i in docs]
 max_length = maxlen
 
 Xarray = pad_sequences(encoded_docs, maxlen=maxlen, padding='post')
-
 </pre></blockquote></p>
+The constructed network consists of 38-word sentences being mapped to 38X10 embeddings, which are flattened to a 380X1 input 
+for the hidden layer of sigmoid neurons, which then feed to 4 output neurons, representing the four labels:
+<img src="/images/NNembeded.png" alt="NBC" class="jayimage" width="500">
 Code Snippets Below<br><br>
 <!--style>.indented {
   padding-left: 50pt;
