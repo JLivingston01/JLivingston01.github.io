@@ -138,8 +138,6 @@ Topic Classification:
 	3. Tweets are inspected to evaluate predictiveness of labeling model.
 	4. A Neural Network is designed to convolve over senteces and predict the label as an alternative to the Naive Bayes Method, and tweets are inspected for model predictiveness.
 	5. A Neural Network is designed to predict the label from the inclusion of key words and tweets are inspected for model predictiveness.
-	6. Term Frequency * Inverse Document Frequency is evaluated for tweets (TF IDF) analysis, to evaluate word importance in documents.
-	7. Latent Dirichlet allocation (LDA) is performed on tweets in the corpus, weighted by importance infered from TF IDF analysis.
 	
 Brand Comparison over Time:
 	1. Segmented Tweets are pivoted for daily average sentiment.
@@ -168,7 +166,7 @@ tab separated .txt file, and reading into python with pandas. I can then create 
 from unicode to descriptions, and replace emojis in tweets with these descriptions: 
 <p><blockquote><pre>
 #Load Emoji Unicode TSV (Make sure TBL is saved in txt file as utf-8)
-emojis = pd.read_csv('C://Users/jliv/Downloads/emojis.txt',sep = '\t', encoding = 'utf-8')
+emojis = pd.read_csv('path_to/emojis.txt',sep = '\t', encoding = 'utf-8')
 #Map of Unicode and Names
 emoji_map = pd.DataFrame()
 emoji_map['name'] = emojis['Name(s)']
@@ -889,24 +887,17 @@ of brand health shows the brands largely in parody with each other:
       <img src="/images/Time_Sentiment_Promotional_NBC.png" alt="uber_wordcloud" class="img">
     </div>
 </div>
-
-<!--style>.indented {
-  padding-left: 50pt;
-  padding-right: 50pt;
-}</style>
-<style>.tab {
-  padding-left: 50pt;
-}</style>
-<div class="indented"-->
-<p><blockquote><pre>
-
-</pre></blockquote></p>
-<h3>Outcomes and Learnings</h3>
- 
+When tweets are classified using the Neural Network and using the Naive Bayes Classifier, we can see that some tweets are classified 
+differently, but largely the learnings are the same. Lyft drives stronger promotional sentiment than Uber, and in terms of the other 
+topics, we see parody. A spike in Lyft's sentiment on 1/30/19 that the Naive Bayes Classifier associates with Service is now 
+classified as News sentiment by the neurel network. Still, on a daily level, we see noise and similar sentiment levels across Financial, 
+News and Service tweets.
 <h3>Summary and Takeaways</h3>
-<br><br>
-
+The language processing tools explored here are useful for attempting to quantify the health of brands, and to qualify business 
+related social chatter, but more broadly, these methods can be applied to analyze any text at your disposal that may interest you. 
+For example, one might create a training data set denoting spam email and legitimate email, build a classfication model for detection, 
+and detect messages on an ongoing basis using the model. Undirected techniques, such as Latent Direchlet Allocation, exist to attempt to 
+discover natural topics in documents, and with an amount of data more robust to noise, these topics can be very informative. 
 </p>
-<li><a href="/projects/hill_fit.html">See the Script</a></li>
 </body>
 </html>
