@@ -788,6 +788,23 @@ docmats = np.array(docmats)
 The resulting 'docmats' of tweets can be fed to convolutional or pooling layers.<br><br>
 This model described training data with 99% accuracy, and labeled holdout data with 93.5% accuracy, an improvement over 
 other designed networks thusfar, but still not as strong in classification as the Naive Bayes Classifier. <br><br>
+The weights represending embedded words can be trained as a part of the neural network, predicting the target labels, 
+rather than through a process external to the network such as Word2Vec. These embedding weights, while they won't 
+capture semantic relationships, as they are not trained to the semantic contexts of the words, they will be (hopefully)
+directly predictive of the target variable. 
+<p><blockquote><pre>
+
+docs = list(tdf1['processed_docs'])
+docs = [" ".join(i) for i in docs]
+
+maxlen = max([len(i) for i in tdf1['processed_docs']])
+vocab_size = len(UWs['wds'])
+encoded_docs = [one_hot(i, vocab_size) for i in docs]
+max_length = maxlen
+
+Xarray = pad_sequences(encoded_docs, maxlen=maxlen, padding='post')
+
+</pre></blockquote></p>
 Code Snippets Below<br><br>
 <!--style>.indented {
   padding-left: 50pt;
