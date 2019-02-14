@@ -789,10 +789,18 @@ The resulting 'docmats' of tweets can be fed to convolutional or pooling layers.
 This model described training data with 99% accuracy, and labeled holdout data with 93.5% accuracy, an improvement over 
 other designed networks thusfar, but still not as strong in classification as the Naive Bayes Classifier. <br><br>
 The weights represending embedded words can be trained as a part of the neural network, predicting the target labels, 
-rather than through a process external to the network such as Word2Vec. These embedding weights, while they won't 
-capture semantic relationships, as they are not trained to the semantic contexts of the words, they will be (hopefully)
-directly predictive of the target variable. 
+rather than through a process external to the network such as Word2Vec. These embedded weights, while they won't 
+capture semantic relationships, as they are not trained to the semantic contexts of the words, will be (hopefully)
+directly predictive of the target variable. To achieve this, one strategy is to one-hot encode words in the vocabulary, 
+use the encoding as a lookup to an initialized table of weights, feed the encoded weights to the first layer of the Network 
+and update the weights as the network is trained. To preprocess data for this strategy, keras.preprocessing provides helper 
+functions one_hot and pad_sequences. Function one_hot hashes words in the vocabulary to a value in the size of the vocabulary,
+and after replacing words with the hashed integer results in documents, pad_sequences will zero-pad documents so each document fed 
+to the network is of the same expected length (the length of the maximum document). Here is an implementation of this preprocess:
 <p><blockquote><pre>
+#tdf1 is a dataframe with tokenized 'processed_docs'
+from keras.preprocessing.text import one_hot
+from keras.preprocessing.sequence import pad_sequences
 
 docs = list(tdf1['processed_docs'])
 docs = [" ".join(i) for i in docs]
