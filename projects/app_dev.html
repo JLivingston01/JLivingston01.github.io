@@ -42,27 +42,10 @@
 							<li><a href="../index.html">Home</a></li>
 							<li><a href="../bio.html" class="button">Bio</a></li>
 							<li><a href="../projects.html" class="button">Projects</a></li>
-							<!-- li>
-								<a href="#" class="icon fa-angle-down">Layouts</a>
-								<ul>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="elements.html">Elements</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li -->
 						</ul>
 					</nav>
 				</header>
-<h1>Developing a Skeleton Web App</h1>
+<h1>Developing a Web App</h1>
 <p>
 <h3>Background</h3>
 I wanted demonstrate a simple skeleton app stack to meet a hypothetical business need and integate a few technologies 
@@ -81,7 +64,7 @@ any user friendly language that integrates well with MySql.
  <div class="item active">
       <img src="/images/app_schema.png" alt="appschema" height="450" width="auto">
     </div>
-<h3>Approach</h3>
+<h3>The User Schema</h3>
 My first step in building this web-app is to develop the shell of the user interface. I am hosting all files in a local 
 directory on my windows machine, which is the same directory I will cd into to run a PHP instance. The directory I will 
 work out of will be C://Users/{user}/webapp/ and I will save application pages into a www/ subdirectory. My home page, 
@@ -229,14 +212,15 @@ search.php:
 	</html>
 </xmp>
 </pre></blockquote></p>
-<h3>Designing a Machine Learning Algorithm</h3>
+Search.php is rather limited in functionality, but specifically allows the user to query records of one concentration with 
+a minimum number of 'experience'. A PHP foreach loop at each row prints the index number of the record pulled, and the 
+record's formatted name, followed by an html linebreak tag, printing each row on a new line. 
+<h3>The Database</h3>
+This web app leverages a MySQL database which is started using XAMPP as a web-development solution. To spin up a MySQL instance, 
+open the XAMPP control panel and start the MySQL server:
  <div class="item active">
-      <img src="/images/error_gradients.png" alt="error_grads" class="jayimage">
+      <img src="/images/xampp.png" alt="xampp" height="400" width="auto">
     </div>
- <div class="item active">
-      <img src="/images/param_updates.png" alt="Hill" class="jayimage">
-    </div>
-	
 <h3>Summary and Takeaways</h3>
 
 <li><a href="/projects/hill_fit.html">See the Script</a></li>
