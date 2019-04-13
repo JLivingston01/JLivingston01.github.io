@@ -109,7 +109,7 @@ index.html:
 </xmp>
 </pre></blockquote></p>
 Signup.html and Search.html contain html form elements to define parameters to pass to MySQL queries using in PHP pages, 
-using the form Post method:
+using the form Post method. Note how the signup.html form passes data to the action assigned, index.php:
 <p><blockquote><pre>
 signup.html:
 <xmp>
@@ -133,6 +133,98 @@ signup.html:
 	Experience: <input type="text" name="xp" /><br><br>
 	<input type="submit" />
 	</form>
+	</body>
+	</html>
+</xmp>
+insert.php:
+<xmp>
+	<?php
+	/* Attempt MySQL server connection. Assuming you are running MySQL
+	server with default setting (user 'root' with no password) */
+	$username = "root";
+	$dbname = "consultants";
+	$sql = "INSERT INTO consultants.applicants (firstname, lastname,concentration,experience)
+	VALUES
+	('$_POST[fn]','$_POST[ln]','$_POST[cn]','$_POST[xp]')";
+
+	$dbh = new PDO('mysql:host=localhost:3306;dbname=consultants', $username);
+	$sth = $dbh->query($sql);
+	$sth = null;
+	$dbh = null;
+	?>
+
+	<html>
+	<body>
+	<header id="header" class="alt">
+					<h1><a href="index.html">Home Page</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="signup.html">Apply</a></li>
+							<li><a href="search.html">Search</a></li>
+						</ul>
+					</nav>
+				</header>
+	<?php
+	Print("<h1>Congrats $_POST[fn], your application has been submitted</h1>")
+	?>
+	</body>
+	</html>
+</xmp>
+</pre></blockquote></p>
+Insert.php includes a couple of useful blocks. First, a PHP block that makes connection to the 
+local-host database and inserts data into a table we will create, and second, an html block with 
+a PHP response using the first name passed through the signup.html form to print a success message 
+to the user. The data recall schema is similarly designed:
+<p><blockquote><pre>
+search.html:
+<xmp>
+	<html>
+	<body>
+	<header id="header" class="alt">
+					<h1><a href="index.html">Home Page</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="signup.html">Apply</a></li>
+							<li><a href="search.html">Search</a></li>
+						</ul>
+					</nav>
+				</header>
+	<h1>Search for a consultant:</h1>
+	<form action="search.php" method="post">
+	Concentration: <input type="text" name="cn" /><br><br>
+	Experience: <input type="text" name="xp" /><br><br>
+	<input type="submit" />
+	</form>
+	</body>
+	</html>
+</xmp>
+search.php:
+<xmp>
+	<html>
+	<body>
+	<header id="header" class="alt">
+					<h1><a href="index.html">Home Page</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="signup.html">Apply</a></li>
+							<li><a href="search.html">Search</a></li>
+						</ul>
+					</nav>
+				</header>
+	<?php 
+	$username = "root";
+	$dbname = "consultants";
+	$sql = "select * from consultants.consultants where concentration = '$_POST[cn]' and experience >= '$_POST[xp]'";
+	$dbh = new PDO('mysql:host=localhost:3306;dbname=consultants', $username);
+	foreach($dbh->query($sql) as $row) {
+		echo $row['consultant_id']." ".$row['firstname']." ".$row['lastname'];
+		echo "<br>";
+		}
+	$dbh = null;
+	?>
 	</body>
 	</html>
 </xmp>
