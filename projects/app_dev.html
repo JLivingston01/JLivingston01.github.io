@@ -221,6 +221,88 @@ open the XAMPP control panel and start the MySQL server:
  <div class="item active">
       <img src="/images/xampp.png" alt="xampp" height="400" width="auto">
     </div>
+Once the MySQL server is running (in this case with the root user and no password for access), the table schema needs to be 
+initialized. This involves creating two tables: applicatnts and consultants. This can be done in any tool that is configured to 
+connect to a MySQL server and send MySQL commands. I use a local python script to quickly initialize both tables:
+<p><blockquote><pre>
+table_initialization.py:
+<xmp>
+	import pymysql
+	import pandas as pd
+	host = '127.0.0.1'
+	user = 'root'
+
+	#create database
+	connection = pymysql.connect(host = host, user = user, port  = 3306)
+	cursor = connection.cursor()
+
+	create = ("""create database consultants;""") 
+	cursor.execute(create)
+
+	use = ("""use consultants;""") 
+	cursor.execute(use)
+
+
+	#Create tables for users
+	applicants = ("""create table applicants (consultant_id INT NOT NULL AUTO_INCREMENT, firstname varchar(30), lastname varchar(30), concentration varchar(30),
+		experience varchar(3), rating varchar(1), approved boolean, PRIMARY KEY(consultant_id));""") 
+	cursor.execute(applicants)
+
+
+	consultants = ("""create table consultants (consultant_id INT NOT NULL AUTO_INCREMENT, firstname varchar(30), lastname varchar(30), concentration varchar(30),
+		experience varchar(3), rating varchar(1), approved varchar(5), PRIMARY KEY(consultant_id));""") 
+	cursor.execute(consultants)
+
+	cursor.close()
+	connection.close()
+</xmp>
+</pre></blockquote></p>
+Finally, I have a simple criteria check in python script to approve applicants for ingestion to consultants.
+<p><blockquote><pre>
+table_initialization.py:
+<xmp>
+	import pymysql
+	import pandas as pd
+	import numpy as np
+
+	host = '127.0.0.1'
+	user = 'root'
+
+	connection = pymysql.connect(host = host, user = user, port  = 3306)
+	cursor = connection.cursor()
+	
+	use = ("""use consultants;""") 
+	cursor.execute(use)
+
+	select = ("""select * from consultants.applicants;""") 
+	applicants = pd.read_sql(select,connection)
+	applicants['rating'] = '5'	
+
+	#Approval Criteria
+	applicants = applicants[applicants['experience'].str.isnumeric()]
+	approved = applicants[applicants['experience'].astype(int)>= 4]
+	approved['approved'] = 'True'
+
+	cursor.close()
+	connection.close()
+
+	#Insert approved records to consultants
+	connection = pymysql.connect(host = host, user = user, port  = 3306)
+	cursor = connection.cursor()
+	consultants = """insert into consultants.consultants (firstname,lastname, concentration, experience, rating, approved) values """
+	ts = []
+	for i in np.array(approved):
+		st = '('+"'"+str(i[1])+"',"+"'"+i[2]+"',"+"'"+i[3]+"',"+"'"+str(i[4])+"',"+"'"+str(i[5])+"',"+"'"+str(i[6])+"'"+')'
+		ts.append(st)
+	
+	consultants1 = consultants+",".join(ts)
+	cursor.execute(consultants1)
+
+	connection.commit()
+	cursor.close()
+	connection.close()
+</xmp>
+</pre></blockquote></p>
 <h3>Summary and Takeaways</h3>
 
 <li><a href="/projects/hill_fit.html">See the Script</a></li>
