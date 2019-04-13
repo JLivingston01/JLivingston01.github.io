@@ -64,6 +64,7 @@ any user friendly language that integrates well with MySql.
  <div class="item active">
       <img src="/images/app_schema.png" alt="appschema" height="450" width="auto">
     </div>
+You can try building your own application diagrams using the online <a href = https://www.draw.io/> here</a>.<br>
 <h3>The User Schema</h3>
 My first step in building this web-app is to develop the shell of the user interface. I am hosting all files in a local 
 directory on my windows machine, which is the same directory I will cd into to run a PHP instance. The directory I will 
@@ -220,7 +221,7 @@ This web app leverages a MySQL database which is started using XAMPP as a web-de
 open the XAMPP control panel and start the MySQL server:
  <div class="item active">
       <img src="/images/xampp.png" alt="xampp" height="400" width="auto">
-    </div>
+    </div><br>
 Once the MySQL server is running (in this case with the root user and no password for access), the table schema needs to be 
 initialized. This involves creating two tables: applicatnts and consultants. This can be done in any tool that is configured to 
 connect to a MySQL server and send MySQL commands. I use a local python script to quickly initialize both tables:
@@ -306,12 +307,12 @@ applicant_approval.py:
 This script can be scheduled using a chron or Windows job scheduler to run whenever we desire, but for now I will run the script when needed: 
 after applicants are entered into the applicant table.
 
-We are ready to start the app! All we need to do is start the PHP development server at the root of our project folder:
+We are ready to start the app! All we need to do is start the PHP development server at the root of our project folder:<br>
 <div class="item active">
       <img src="/images/cmd.png" alt="cmd" height="140" width="auto">
-    </div>
+    </div><br>
 	
-We can now open a browser and visit the www subdirectory to play with the app!
+We can now open a browser and visit the www subdirectory to play with the app!<br>
 <div class="item active">
       <img src="/images/app_index.png" alt="index" height="auto" width="450" style="border:2px solid black">
     </div>
@@ -321,15 +322,15 @@ We can now open a browser and visit the www subdirectory to play with the app!
 <div class="item active">
       <img src="/images/app_insert.png" alt="insert" height="auto" width="450" style="border:2px solid black">
     </div>
-
+<br>
 I entered records for myself and a fake person, John Smith. A quick select * from applicants confirms that our data has been recorded in the 
-database:
+database:<br>
 <div class="item active">
       <img src="/images/applicants_mysql.png" alt="applicants_mysql" height="70" width="auto">
     </div>
-	
+	<br>
 I then ran applicant_approval.py to push selected rows to consultants. Lets now query from consultants using the 
-search feature we built:	
+search feature we built:	<br>
 <div class="item active">
       <img src="/images/search_html.png" alt="signup" height="auto" width="450" style="border:2px solid black">
     </div>
