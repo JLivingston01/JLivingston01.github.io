@@ -310,6 +310,7 @@ We are ready to start the app! All we need to do is start the PHP development se
 <div class="item active">
       <img src="/images/cmd.png" alt="cmd" height="250" width="auto">
     </div>
+	
 We can now open a browser and visit the www subdirectory to play with the app!
 <div class="item active">
       <img src="/images/app_index.png" alt="index" height="450" width="auto">
@@ -321,7 +322,13 @@ We can now open a browser and visit the www subdirectory to play with the app!
       <img src="/images/app_insert.png" alt="insert" height="250" width="auto">
     </div>
 
-I entered records for myself and a fake person, John Smith. I then ran applicant_approval.py. Lets now query from Consultants using the 
+I entered records for myself and a fake person, John Smith. A quick select * from applicants confirms that our data has been recorded in the 
+database:
+<div class="item active">
+      <img src="/images/applicants_mysql.png" alt="applicants_mysql" height="250" width="auto">
+    </div>
+	
+I then ran applicant_approval.py to push selected rows to consultants. Lets now query from consultants using the 
 search feature we built:	
 
 
