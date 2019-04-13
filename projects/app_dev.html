@@ -84,7 +84,7 @@ any user friendly language that integrates well with MySql.
 <h3>Approach</h3>
 My first step in building this web-app is to develop the shell of the user interface. I am hosting all files in a local 
 directory on my windows machine, which is the same directory I will cd into to run a PHP instance. The directory I will 
-work out of will be C://Users/{user}/freelancer/ and I will save application pages into a www/ subdirectory. My home page, 
+work out of will be C://Users/{user}/webapp/ and I will save application pages into a www/ subdirectory. My home page, 
 index.html, will direct users to either the Search page or the Signup page:
 
 <p><blockquote><pre>
@@ -102,8 +102,37 @@ index.html:
 							</ul>
 						</nav>
 					</header>
-	<h1>Welcome to Freelancer!</h1><br>
+	<h1>Welcome to the Webapp!</h1><br>
 	<p>Apply to consult or Search for a consultant</p>
+	</body>
+	</html>
+</xmp>
+</pre></blockquote></p>
+Signup.html and Search.html contain html form elements to define parameters to pass to MySQL queries using in PHP pages, 
+using the form Post method:
+<p><blockquote><pre>
+signup.html:
+<xmp>
+	<html>
+	<body>
+	<header id="header" class="alt">
+					<h1><a href="index.html">Home Page</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="signup.html">Apply</a></li>
+							<li><a href="search.html">Search</a></li>
+						</ul>
+					</nav>
+				</header>
+	<h1>Apply to consult below</h1>
+	<form action="insert.php" method="post">
+	Firstname: <input type="text" name="fn" /><br><br>
+	Lastname: <input type="text" name="ln" /><br><br>
+	Concentration: <input type="text" name="cn" /><br><br>
+	Experience: <input type="text" name="xp" /><br><br>
+	<input type="submit" />
+	</form>
 	</body>
 	</html>
 </xmp>
