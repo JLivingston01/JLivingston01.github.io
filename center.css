@@ -9,3 +9,15 @@
   padding-left: 50pt;
   padding-right: 50pt;
 }
+
+.column {
+  float: left;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
