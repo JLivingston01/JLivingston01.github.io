@@ -58,26 +58,6 @@
   /* floating the title area left ensures that it can be placed side by side with the navigational elements, which would be floated to the left as well */
 }
 
-body {
-  font: normal 18px/1.5 "Montserrat", helvetica, arial, sans-serif;
-  /* This is a font shorthand that allows you to set many variables at one go, in this case its:
-  font weight:    normal;
-  font-size:      18px;
-  line-height:    1.5;
-  font-family:    "Montserrat", helvetica, arial, sans-serif; */
-}
-
-#title,
-nav {
-/* commas allow you to add more than one selector to have the same styles.
-Since we want the text in both #title and nav to be bold, we can specify font-weight: bold; to both of them in this manner */
-    font-weight: bold;
-}
-
-#title {
-  font-size: 60px;
-  /* This is to enlarge the font on the title text */
-}
 
 nav {
   line-height: 108px;
@@ -107,6 +87,29 @@ nav a {
   padding: 1em 0;
 }
 
+
+body {
+  font: normal 18px/1.5 "Montserrat", helvetica, arial, sans-serif;
+  /* This is a font shorthand that allows you to set many variables at one go, in this case its:
+  font weight:    normal;
+  font-size:      18px;
+  line-height:    1.5;
+  font-family:    "Montserrat", helvetica, arial, sans-serif; */
+}
+
+#title,
+nav {
+/* commas allow you to add more than one selector to have the same styles.
+Since we want the text in both #title and nav to be bold, we can specify font-weight: bold; to both of them in this manner */
+    font-weight: bold;
+}
+
+#title {
+  font-size: 60px;
+  /* This is to enlarge the font on the title text */
+}
+
+
 a {
   text-decoration: none;
   /* This removes the underline in anchor tags */
@@ -118,4 +121,20 @@ a {
 /* This targets links that were already visited before by the user  */
 {
   color: #faf3e7;
+}
+
+
+#title a:focus, /*Focus takes effect when the tab shortcut is used to navigate the links */
+#title a:hover,  /* Hover takes effect when you mouse enter the specific area */
+#title a:active  /* active takes effect when its the active page */
+{
+  color: #faf3e7;
+  text-decoration: none;
+  /* This ensures the header text doesn't change color on hover */
+}
+
+nav a:focus, nav a:hover, nav a:active
+{
+  color: #ce6f20;
+  text-decoration: none;
 }
