@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+nav {
+  line-height: 108px;
+  height: 108px;
+  float: right;
+  width: 65%;
+}
+
+nav li{
+  display: inline;
+}
+
+nav ul {
+  text-transform: uppercase;
+  /* This is to convert all letters to uppercase */
+  text-align:justify;
+  /* text-align: justify and the following few lines of codes inclusive allows my navigation elements to have equal spaces within between them no matter how many elements there are.*/
+}
+nav ul:after {
+  content:'';
+  display:inline-block;
+  width: 100%;
+  height: 0;
+}
+
+nav a {
+  padding: 1em 0;
+}
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/center.css"/>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131669567-1"></script>
