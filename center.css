@@ -58,30 +58,51 @@
   /* floating the title area left ensures that it can be placed side by side with the navigational elements, which would be floated to the left as well */
 }
 
-#nav {
+body {
+  font: normal 18px/1.5 "Montserrat", helvetica, arial, sans-serif;
+  /* This is a font shorthand that allows you to set many variables at one go, in this case its:
+  font weight:    normal;
+  font-size:      18px;
+  line-height:    1.5;
+  font-family:    "Montserrat", helvetica, arial, sans-serif; */
+}
+
+#title,
+nav {
+/* commas allow you to add more than one selector to have the same styles.
+Since we want the text in both #title and nav to be bold, we can specify font-weight: bold; to both of them in this manner */
+    font-weight: bold;
+}
+
+#title {
+  font-size: 60px;
+  /* This is to enlarge the font on the title text */
+}
+
+nav {
   line-height: 108px;
   height: 108px;
   float: right;
   width: 65%;
 }
 
-#nav li{
+nav li{
   display: inline;
 }
 
-#nav ul {
+nav ul {
   text-transform: uppercase;
   /* This is to convert all letters to uppercase */
   text-align:justify;
   /* text-align: justify and the following few lines of codes inclusive allows my navigation elements to have equal spaces within between them no matter how many elements there are.*/
 }
-#nav ul:after {
+nav ul:after {
   content:'';
   display:inline-block;
   width: 100%;
   height: 0;
 }
 
-#nav a {
+nav a {
   padding: 1em 0;
 }
