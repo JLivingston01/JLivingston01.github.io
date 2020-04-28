@@ -105,7 +105,7 @@ Since we want the text in both #title and nav to be bold, we can specify font-we
 }
 
 #title {
-  font-size: 60px;
+  font-size: 24px;
   /* This is to enlarge the font on the title text */
 }
 
