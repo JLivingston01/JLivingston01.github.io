@@ -106,3 +106,16 @@ nav ul:after {
 nav a {
   padding: 1em 0;
 }
+
+a {
+  text-decoration: none;
+  /* This removes the underline in anchor tags */
+}
+
+#title a, nav a,
+/* This targets the <a> tag within #title and #nav respectively */
+#title a:visited, nav a:visited
+/* This targets links that were already visited before by the user  */
+{
+  color: #faf3e7;
+}
