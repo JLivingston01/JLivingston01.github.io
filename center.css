@@ -73,7 +73,7 @@ table {
   margin-bottom: 81px;
   /* This ensures that there is a margin of 81px between the header of other elements */
 
-  /*overflow: hidden;*/
+  overflow: hidden;
   /* Overflow hidden is used because we will be floating all children elements. */
 }
 
