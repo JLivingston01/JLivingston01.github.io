@@ -123,6 +123,7 @@ nav ul {
   /* This is to convert all letters to uppercase */
   text-align:justify;
   /* text-align: justify and the following few lines of codes inclusive allows my navigation elements to have equal spaces within between them no matter how many elements there are.*/
+  color: #ab180f;
 }
 nav ul:after {
   content:'';
