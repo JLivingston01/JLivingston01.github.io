@@ -30,12 +30,60 @@
     g.type='text/javascript'; g.async=true; g.defer=true; g.src='//cdn.matomo.cloud/jlivingston01.matomo.cloud/piwik.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
+
+<script type="text/javascript">
+$(document).on("scroll",function(){
+    if($(document).scrollTop()>100){
+        $("header").removeClass("large").addClass("small");
+    } else{
+        $("header").removeClass("small").addClass("large");
+    }
+});
+</script>
+
 <!-- End Matomo Code -->
 <!-- Matomo Image Tracker-->
 <noscript>
 <img src="https://jlivingston01.matomo.cloud/piwik.php?idsite=1&amp;rec=1&amp;action_name=projects" style="border:0" alt="" />
 </noscript>
 <!-- End Matomo -->
+<style type="text/css">
+/* Importing Amaranth Font for menu text */
+@import url(https://fonts.googleapis.com/css?family=Amaranth);
+/* Basic layout */
+body{ background-color: #ebebeb; }
+ul{ float: right; }
+li{ display: inline; float: left;} img.logo{float: left;}
+/* Size and center the menu */ nav{ width: 960px; margin: 0 auto;} 
+
+section.stretch{ float: left; height: 1500px; width: 100%; }
+section.stretch p{ font-family: 'Amaranth', sans-serif; font-size: 30px; color: #969696; text-align: center; position: relative; margin-top: 250px; }
+section.stretch p.bottom{ top: 100%; } 
+
+header{ background: #C7C7C7; border-bottom: 1px solid #aaaaaa; float: left; width: 100%; position: fixed; z-index: 10; }
+header a{ color: #969696; text-decoration: none; font-family: 'Amaranth', sans-serif; text-transform: uppercase; font-size: 1em; }
+header a.active, header a:hover{ color: #3d3d3d; }
+header li{ margin-right: 30px; }
+
+/* Sizes for the bigger menu */
+header.large{ height: 120px; }
+header.large img{ width: 489px; height: 113px; }
+header.large li{ margin-top: 45px; }
+
+/* Sizes for the smaller menu */
+header.small{ height: 50px; }
+header.small img{ width: 287px; height: 69px; margin-top: -10px; }
+header.small li{ margin-top: 17px; }
+
+header,nav, a, img, li{
+  transition: all 1s;
+  -moz-transition: all 1s; /* Firefox 4 */
+  -webkit-transition: all 1s; /* Safari and Chrome */
+  -o-transition: all 1s; /* Opera */
+}
+
+</style>
+
 </head>
 <body>
 <!--header id="header" class="alt">
@@ -65,7 +113,7 @@
 						</ul>
 					</nav>
 				</header-->
-    <header class="large">
+<header class="large">
 	<h1 id="title"><a href="index.html">Jason Livingston: Analytics and Knowledge Center</a></h1>
     <nav>
 						<ul>
@@ -75,7 +123,7 @@
 
 						</ul>
 	</nav>
-    </header>				
+</header>				
 
 <h1>Jason's Interesting Projects</h1>
 <p>
