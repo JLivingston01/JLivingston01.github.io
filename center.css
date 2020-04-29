@@ -66,12 +66,14 @@ table {
   width: 75%;
 }
 
+.sidebar {
+  width: 140px;
+}
+
 #header {
   background-color: #2b2927;
   /* This shows the background color */
 
-  min-width: 960px;
-	
   margin-bottom: 81px;
   /* This ensures that there is a margin of 81px between the header of other elements */
 
