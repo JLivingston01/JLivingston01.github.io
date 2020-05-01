@@ -2,6 +2,9 @@
 <html>
 <head>
 
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/center.css"/>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -14,47 +17,115 @@
   gtag('config', 'UA-131669567-1');
 </script>
 <!-- End google Code -->
-<!-- Matomo -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-  _paq.push(["setCookieDomain", "*.jlivingston01.github.io"]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="https://jlivingston01.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src='//cdn.matomo.cloud/jlivingston01.matomo.cloud/piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
-<!-- Matomo Image Tracker-->
-<noscript>
-<img src="https://jlivingston01.matomo.cloud/piwik.php?idsite=1&amp;rec=1&amp;action_name=index" style="border:0" alt="" />
-</noscript>
-<!-- End Matomo -->
-</head>
 
+<script type="text/javascript">
+$(document).on("scroll",function(){
+    if($(document).scrollTop()>100){
+        $("header").removeClass("large").addClass("small");
+    } else{
+        $("header").removeClass("small").addClass("large");
+    }
+});
+</script>
+<style type="text/css">
+/* Importing Montserrat Font for menu text */
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+/* Basic layout */
+body{ background-color: #ebebeb; }
+ul{ float: right; }
+li{ display: inline; float: left;} img.logo{float: left;}
+/* Size and center the menu */ nav{ width: 960px; margin: 0 auto;} 
+
+header{
+	background: #2b2927; 
+	border-bottom: 1px solid #aaaaaa; 
+	/*margin-bottom: 81px;*/
+	float: left; 
+	width: 100%; 
+	/*position: fixed; */
+	z-index: 10;
+
+	}
+header a{ 
+	text-decoration: none; 
+	font-family: "Montserrat", helvetica, arial, sans-serif; 
+	font-size: 24px;
+	color: #ab180f;
+	}
+header a.active, header a:hover{ 
+	color: #ce6f20; }
+header li{ 
+	margin-right: 30px;
+	display: inline;}
+
+	
+header h1{ 
+	padding: 1em 0;
+	}
+
+nav1 {
+/* commas allow you to add more than one selector to have the same styles.
+Since we want the text in both #title and nav to be bold, we can specify font-weight: bold; to both of them in this manner */
+    font-weight: bold;
+	font-family: "Montserrat", helvetica, arial, sans-serif; 
+	font-size: 18px;
+	color: #ab180f;
+	
+  float: right;
+  width: 65%;
+}
+
+	
+nav1 ul {
+  text-transform: uppercase;
+  /* This is to convert all letters to uppercase */
+  text-align:justify;
+  /* text-align: justify and the following few lines of codes inclusive allows my navigation elements to have equal spaces within between them no matter how many elements there are.*/
+}
+	
+
+nav li{
+  display: inline;
+}
+
+
+/* Sizes for the bigger menu */
+header.large{ height: 120px; }
+header.large img{ width: 489px; height: 113px; }
+header.large li{ margin-top: 45px; }
+
+/* Sizes for the smaller menu */
+header.small{ height: 50px; }
+header.small img{ width: 287px; height: 69px; margin-top: -10px; }
+header.small li{ margin-top: 17px; }
+
+header,nav, a, img, li{
+  transition: all 1s;
+  -moz-transition: all 1s; /* Firefox 4 */
+  -webkit-transition: all 1s; /* Safari and Chrome */
+  -o-transition: all 1s; /* Opera */
+}
+
+
+</style>
+
+</head>
 <body>
 <title>Jason Livingston: Analytics and Knowledge Center</title>
-<div id="header">
-    <div class="wrap">
-        <div id="title-area">
-					<h1 id="title"><a href="index.html">Jason Livingston: Analytics and Knowledge Center</a></h1>
-		</div>				
-					<nav>
+<header class="large">
+	<title1>
+		<h1 id="title"><a href="index.html">Jason Livingston: Analytics and Knowledge Center</a></h1>
+	</title1>
+    <nav1>
 						<ul>
 							<li><a href="index.html">Home</a></li>
 							<li><a href="/bio.html">About</a></li>
 							<li><a href="/projects.html">Cases</a></li>
 
 						</ul>
-					</nav>
-	</div>
-</div>
+	</nav1>
+</header>				
+
 
 <div>
 <p>Welcome to my website where I will maintain a portfolio of my work, interests and ideas.<br><br>
