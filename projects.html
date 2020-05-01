@@ -58,19 +58,7 @@ header li{
 	
 header h1{ 
 	padding: 1em 0;
-	width: 40%;
 	}
-	
-header title1{
-	width: 40%;
-}
-
-nav1 ul {
-  text-transform: uppercase;
-  /* This is to convert all letters to uppercase */
-  text-align:justify;
-  /* text-align: justify and the following few lines of codes inclusive allows my navigation elements to have equal spaces within between them no matter how many elements there are.*/
-}
 
 nav1 {
 /* commas allow you to add more than one selector to have the same styles.
@@ -79,8 +67,27 @@ Since we want the text in both #title and nav to be bold, we can specify font-we
 	font-family: "Montserrat", helvetica, arial, sans-serif; 
 	font-size: 18px;
 	color: #ab180f;
+	
+  line-height: 108px;
+  height: 108px;
+  float: right;
+  width: 65%;
+}
+
+	
+nav1 ul {
+  text-transform: uppercase;
+  /* This is to convert all letters to uppercase */
+  text-align:justify;
+  /* text-align: justify and the following few lines of codes inclusive allows my navigation elements to have equal spaces within between them no matter how many elements there are.*/
 }
 	
+
+nav li{
+  display: inline;
+}
+
+
 /* Sizes for the bigger menu */
 header.large{ height: 120px; }
 header.large img{ width: 489px; height: 113px; }
@@ -99,22 +106,6 @@ header,nav, a, img, li{
 }
 
 
-#title-a {
-  display:block;
-  /* Display block allows setting of width and height values  */
-
-  line-height: 113px;
-  height: 113px;
-  /* height determines the amount of vertical space allocated for the header.
-
-  Also, a line-height that equals the height ensures that the element is centered on the horizontal axis */
-
-  width: 55%;
-  /*A small width is to ensure that there is space for navigational elements*/
-
-  float: left;
-  /* floating the title area left ensures that it can be placed side by side with the navigational elements, which would be floated to the left as well */
-}
 </style>
 
 </head>
