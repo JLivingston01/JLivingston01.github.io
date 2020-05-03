@@ -84,7 +84,7 @@
 	.container {
 		width: 60em;
 	}
-
+/*
 	@media screen and (max-width: 1680px) {
 
 		.container.\31 25\25 {
@@ -240,7 +240,7 @@
 		}
 
 	}
-
+*/
 /* Grid */
 
 	.row {
