@@ -1803,7 +1803,7 @@
 		line-height: 1.65em;
 		letter-spacing: -0.015em;
 	}
-
+/*
 	a {
 		-moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		-webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
@@ -1812,7 +1812,7 @@
 		color: #e89980;
 		text-decoration: none;
 	}
-
+*/
 		a:hover {
 			border-bottom-color: transparent;
 		}
