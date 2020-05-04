@@ -3300,8 +3300,8 @@
 		display: none;
 	}
 */
-
-	@media screen and (max-width: 840px) {
+/*936px*/
+	@media screen and (max-width: 1036px) {
 
 		/* Basic */
 /*
@@ -3525,8 +3525,8 @@
 	}
 
 /* Mobile */
-
-	@media screen and (max-width: 736px) {
+/*736px*/
+	@media screen and (max-width: 936px) {
 
 		/* Basic */
 /*
