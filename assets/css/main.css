@@ -3299,9 +3299,10 @@
 	#navPanel, #navButton {
 		display: none;
 	}
+*/
 
 	@media screen and (max-width: 840px) {
-*/
+
 		/* Basic */
 /*
 			html, body {
@@ -3327,7 +3328,7 @@
 			}
 
 		/* Box */
-/*
+
 			.box {
 				padding: 3em 2em;
 			}
@@ -3520,11 +3521,11 @@
 				-ms-transform: translateX(0);
 				transform: translateX(0);
 			}
-
+*/
 	}
 
 /* Mobile */
-/*
+
 	@media screen and (max-width: 736px) {
 
 		/* Basic */
@@ -3557,9 +3558,9 @@
 					padding-left: 0.5em;
 					padding-right: 0.5em;
 				}
-
+*/
 		/* Box */
-/*
+
 			.box {
 				margin: 1em;
 				overflow-x: hidden;
@@ -3652,11 +3653,11 @@
 					margin-left: 0;
 					padding-left: 0;
 				}
-
+*/
 	}
 
 /* Mobile (Portrait) */
-/*
+
 	@media screen and (max-width: 480px) {
 
 		/* Basic */
@@ -3710,7 +3711,7 @@
 					}
 
 		/* Box */
-/*
+
 			.box {
 				border-radius: 0;
 				box-shadow: none;
@@ -3760,5 +3761,5 @@
 			#cta {
 				padding: 2.5em 1em 3em 1em;
 			}
-
+*/
 	}
