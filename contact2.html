@@ -8,6 +8,14 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<script type="text/javascript">var submitted=false;</script>
+<script type="text/javascript">
+$('#gform').on('submit', function(e) {
+  $('#gform *').fadeOut(2000);
+  $('#gform').prepend('Thank you for contacting! Jason will follow up with you.');
+  });
+</script>
+
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -139,31 +147,36 @@ header,nav, a, img, li{
 							<li><a href="index.html">Home</a></li>
 							<li><a href="/bio.html">About</a></li>
 							<li><a href="/projects.html">Cases</a></li>
-							<li><a href="/contact2.html">Contact</a></li>
 
 						</ul>
 	</nav1>
 </header>				
 
 <div>
-<h1>Jason's Interesting Projects</h1>
-<p>
-This page is a directory of interesting projects related to several topics I have<br>
-taken interest in. These areas of interest include:<br><br>
- <li><a href="/projects/machinelearning.html" class="button">Engineering a Machine Learning Algorithm</a></li><br>
- <li><a href="/projects/textnlp.html" class="button">Textual Analyses of Social Media </li><br>
- <li><a href="/projects.html" class="button">Image Classification and Applications of Neural Networks using Tensor Flow (Coming Soon)</a></li><br>
- <li><a href="/projects/app_dev.html" class="button">Developing the Shell Website App using HTML, PHP, MySQL and Python </a></li><br>
- <li><a href="/projects.html" class="button">Bayesian Predictive Modeling using PyMC3 (Coming Soon)</a></li><br>
- <li><a href="/projects.html" class="button">Translating Data Tables between Formats and Languages (Coming Soon)</a></li><br>
- <li><a href="/projects.html" class="button">Data Engineering for the Data Scientist (Coming Soon)</a></li><br>
- 
+<br>
+<br>
 
- <br><br>
+<h1 id="sectiontitle">Contact</h1>
 
-</p>
+
+<form name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSdGvHlQixmCWFmTYG0ai74y_Ikhm9BKVgu3PSdbpG15-DK1yg/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
+  Name:<br>
+  <input type="text" name="entry.1008778476" id="entry.1008778476"><br>
+  Email:<br>
+  <input type="text" name="entry.1548601957" id="entry.1548601957">
+  Company:<br>
+  <input type="text" name="entry.1329330143" id="entry.1329330143"><br>
+  Message:<br>
+  <input type="text" name="entry.480896269" id="entry.480896269">
+  <input type="submit" value="Submit">
+</form>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+
 </div>
 
 
 </body>
 </html>
+
+<iframe s
