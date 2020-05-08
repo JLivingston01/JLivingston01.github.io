@@ -139,6 +139,19 @@ header,nav, a, img, li{
   -o-transition: all 1s; /* Opera */
 }
 
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
 
 </style>
 
@@ -180,7 +193,10 @@ header,nav, a, img, li{
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
+		<div class="imgtext">
       <img src="/images/3pillarspic.png" alt="Analytical Approach" class="jayimage">
+		<div class="bottom-left">Bottom Left</div>
+		</div>
     </div>
 
     <div class="item">
