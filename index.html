@@ -142,7 +142,7 @@ header,nav, a, img, li{
 .imgtext {
   position: relative;
   text-align: center;
-  color: white;
+  color: black;
 }
 
 /* Bottom left text */
@@ -151,6 +151,11 @@ header,nav, a, img, li{
   bottom: 8px;
   left: 16px;
 }
+
+ .imageContainer {
+       width:449px; 
+       height:300px; 
+ }
 
 
 </style>
@@ -193,10 +198,11 @@ header,nav, a, img, li{
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-		<div class="imgtext">
+		<!--div class="imgtext">
       <img src="/images/3pillarspic.png" alt="Analytical Approach" class="jayimage">
 		<div class="bottom-left">Bottom Left</div>
-		</div>
+		</div-->
+		<div class="imageContainer" style="background-image:/images/3pillarspic.png">Some Text</div>
     </div>
 
     <div class="item">
