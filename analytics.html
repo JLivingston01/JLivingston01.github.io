@@ -11,10 +11,12 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/center.css"/>
 
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--meta name="viewport" content="width=device-width, initial-scale=1" /-->
 <meta name="viewport" content="width=1000" >
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="assets/css/slick.css"/>
@@ -23,6 +25,7 @@
 <link rel="stylesheet" href="assets/css/main2.css" />
 <!--link rel="stylesheet" href="assets/css/boxicon.css" /-->
 <link rel="stylesheet" href="assets/css/core.css" />
+
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131669567-1"></script>
@@ -73,8 +76,8 @@ header a.active, header a:hover{
 	color: #ce6f20; }
 header li{ 
 	margin-right: 30px;
-	display: inline;
-	 /*float: left;*/}
+	display: inline;}
+
 	
 header h1{ 
 	padding: 1em 0;
@@ -107,6 +110,7 @@ nav li{
    float: left;
 }
 
+
 div h1 {
     font-weight: bold;
 	font-family: "Montserrat", helvetica, arial, sans-serif; 
@@ -117,19 +121,6 @@ div h1 {
 	
 }
 
-div p {
-	margin-left: 40px;
-	margin-right: 40px;
-}
-
-div p li{
-	margin-left: 40px;
-	margin-right: 40px;
-}
-div p li a{
-	margin-left: 40px;
-	margin-right: 40px;
-}
 
 /* Sizes for the bigger menu */
 header.large{ height: 120px; }
@@ -147,6 +138,32 @@ header,nav, a, img, li{
   -webkit-transition: all 1s; /* Safari and Chrome */
   -o-transition: all 1s; /* Opera */
 }
+
+.imgtext {
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+ .imageContainer {
+       width:449px; 
+       height:300px; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: contain;
+	font-weight: bold;
+	text-align: center;
+    line-height: 1.4;
+ }
+ 
 
 /* Add a black background color to the top navigation */
 .topnav {
@@ -265,6 +282,7 @@ header,nav, a, img, li{
 }
 
 
+
 </style>
 
 </head>
@@ -275,7 +293,7 @@ header,nav, a, img, li{
 		<!--h1 id="title"><a href="index.html">TheDataProfessional by Jason Livingston</a></h1-->
 		<img src="/images/linkedin_banner_image_1.png" alt="logo" />
 	</title1>
-    <!--nav1>
+     <!--nav1>
 						<ul>
 							<li><a href="index.html">Home</a></li>
 							<li><a href="/bio.html">About</a></li>
@@ -286,7 +304,7 @@ header,nav, a, img, li{
 	</nav1-->
 	
 	<div class="topnav" id="myTopnav">
-  <a href="index.html" >Home</a>
+  <a href="index.html" class="active">Home</a>
   <a href="/bio.html">About</a>
   <div class="dropdown" style="position: inherit;">
     <button class="dropbtn" style="
@@ -295,34 +313,68 @@ header,nav, a, img, li{
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/analytics.html">Analytics</a>
+      <a href="/analytics.html" class="active">Analytics</a>
       <a href="#">Workshops</a>
-      <a href="/projects.html" class="active">TDP Blog</a>
+      <a href="/projects.html">TDP Blog</a>
     </div>
   </div>
   <a href="/contact2.html">Contact</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </header>				
 
-<div>
-<h1>Jason's Interesting Projects</h1>
-<p>
-This page is a directory of interesting projects related to several topics I have<br>
-taken interest in. These areas of interest include:<br>
- <li><a href="/projects/machinelearning.html" class="button">Engineering a Machine Learning Algorithm</a></li><br>
- <li><a href="/projects/textnlp.html" class="button">Textual Analyses of Social Media</a></li><br>
- <li><a href="/projects.html" class="button">Image Classification and Applications of Neural Networks using Tensor Flow (Coming Soon)</a></li><br>
- <li><a href="/projects/app_dev.html" class="button">Developing the Shell Website App using HTML, PHP, MySQL and Python </a></li><br>
- <li><a href="/projects.html" class="button">Bayesian Predictive Modeling using PyMC3 (Coming Soon)</a></li><br>
- <li><a href="/projects.html" class="button">Translating Data Tables between Formats and Languages (Coming Soon)</a></li><br>
- <li><a href="/projects.html" class="button">Data Engineering for the Data Scientist (Coming Soon)</a></li><br>
- 
 
- <br><br>
+<div>
+<br><br><br>
+<br>
+<br>
+
+
+
+					<section class="box special features">
+						<div class="features-row">
+							<section>
+								<span class="icon"><img src="images/ecological (1).png" style = "width: 110px; height: 110px;"/></span>
+								<h3>Machine Learning Engineering</h3>
+								<p>With experience in Business, Marketing and Website Analytics, and backgrounds in Natural Language Processing, Machine Learning and AI Research, Jason is prepared to consult for and augment analytics projects.</p>
+							</section>
+							<section>
+								<span class="icon"><img src="images/light-bulb.png" style = "width: 110px; height: 110px;"/></span>
+								<h3>Data Scraping and Sourcing</h3>
+								<p>An Associate Adjunct Faculty Member in Columbia University's Applied Analytics MS Program, teaching and tutoring are passions of his. Reach out to discuss private tutoring and group workshops.</p>
+							</section>
+						</div>
+						<div class="features-row">
+							<section>
+								<span class="icon"><img src="images/business-and-finance.png" style = "width: 110px; height: 110px;"/></span>
+								<h3>Website Tagging and Analytics</h3>
+								<p>For education or curiosity, review Jason's Cases and Research projects for inspiration or to see if Jason can help you with your upcoming analytics projects.</p>
+							</section>
+							<section>
+								<span class="icon"><img src="images/business (1).png" style = "width: 110px; height: 110px;"/></span>
+								<h3>Mixed Media and Business Modeling</h3>
+								<p>Jason is happy to connect with analytics professionals and curious business persons. Feel free to reach out via LinkedIn.</p>
+							</section>
+						</div>
+						<div class="features-row">
+							<section>
+								<span class="icon"><img src="images/business-and-finance.png" style = "width: 110px; height: 110px;"/></span>
+								<h3>Analyzing your Text</h3>
+								<p>For education or curiosity, review Jason's Cases and Research projects for inspiration or to see if Jason can help you with your upcoming analytics projects.</p>
+							</section>
+							<section>
+								<span class="icon"><img src="images/business (1).png" style = "width: 110px; height: 110px;"/></span>
+								<h3>Dashboard Applications and Reporting</h3>
+								<p>Jason is happy to connect with analytics professionals and curious business persons. Feel free to reach out via LinkedIn.</p>
+							</section>
+						</div>
+					</section>
 
 </p>
+
 </div>
 
-
 </body>
+<footer>
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>
 </html>
