@@ -306,8 +306,9 @@ header,nav, a, img, li{
 </header>				
 
 
-<h1>An Analysis of Twitter Brand Sentiment and Topic Modeling</h1>
+<h1 style="font-weight:bold;">An Analysis of Twitter Brand Sentiment and Topic Modeling</h1>
 <p>
+<br>
 *Warning* - The text analyzed in this article has not been cleaned for profanity. This is an analysis of 17 days of tweets for brands Uber and Lyft.
 <style>.column {
   float: left;
@@ -338,15 +339,16 @@ header,nav, a, img, li{
       <img src="/images/uber_wordcloud.png" alt="uber_wordcloud" class="img">
     </div>
 </div>
-<h3>Background</h3>
+<h3 style="font-weight:bold;">Background</h3>
 While exploring metrics that may serve as useful in improving Mixed Media Model predictiveness, 
 I decided to try to quantify brand health as an estimate of social sentiment, i.e. tweets about 
 brands scored for how positively or negatively tinged they may be. With sentimentized tweets, I 
 could then estimate how the average sentiment changes over time, estimate the average sentiment of
 tweets including certain key words, and recommend actionable next steps to clients, related to 
 affecting their brand messaging through advertising, or improving operational aspects of the business 
-where failures drive complaints and drive away customers.<br>
-<h3>The Data</h3>
+where failures drive complaints and drive away customers.<br><br>
+<h3 style="font-weight:bold;">The Data</h3>
+<br>
 The data used here is optained from the standard Twitter developer search API. <br><br>
 
 A Note about accessing the Twitter standard API:<br>
@@ -363,7 +365,7 @@ recorded along with the tweet itself. The Standard API returns a sample of 100 t
 recency of up to 10 days, so this analysis is conducted against a sample of tweets and not a 
 comprehensive record of tweets. The brands I examine here are ride-sharing competitors Lyft
 and Uber.
-<h3>Approach</h3>
+<h3 style="font-weight:bold;">Approach</h3>
 This analysis primarily concerns data collection and deriving sentiment, topic classification, evaluating sentiment over time and generating word cloud reports as follows:
 <p><blockquote><pre>
 Data Collection:
@@ -390,7 +392,7 @@ Brand Comparison over Time:
 	
 </blockquote></pre></p>
 
-<h3>Data Collection and Intro to VADER Sentimentizer</h3>
+<h3 style="font-weight:bold;">Data Collection and Intro to VADER Sentimentizer</h3>
 A sample of 100 tweets, a mixture of the most recent tweets and the most popular tweets, are collected each day for each brand using the
 Twitter Standard Search API. It is important to remember to search for tweets using the parameter "tweet_mode=extended" in your query 
 string to ensure all characters beyond number 140 are captured in your data. Another potentially tricky of pulling full tweets is that 
@@ -550,7 +552,8 @@ With tweets now associated with sentiment scores, I can focus on answering a cou
 1. What keywords are associated with each brand, and how polarizing are the connotations?<br>
 
 2. How does sentiment compare between the brands on average and over time?
-<h3>Word Clouding and Comparing</h3>
+<br>
+<h3 style="font-weight:bold;">Word Clouding and Comparing</h3>
 When developing a word cloud, I am interested in size representing the frequency of use and color representing the 
 polarity of the word when used. I don't simply want to color words by their crowd sourced valence scores. Rather, for 
 each word, I want to evaluate the average compound sentiment of tweets that used the word, and color-code by that 
@@ -695,7 +698,9 @@ less green (less positive) than the Lyft cloud. Another observation of note is s
 words wage and worker, and an investigation shows Lyft's resistance to new minimum wage legislation in New York City has 
 been poorly received. Much of the green-ness of the Lyft cloud, though, is attributable to promotional tweets, or informative 
 tweets about a positive service Lyft offered during the limited collection window. 
-<h3>Naive Bayes Topic Modeling and Summary Analytics</h3>
+<br>
+<h3 style="font-weight:bold;">Naive Bayes Topic Modeling and Summary Analytics</h3>
+<br>
 Understanding the topics tweets relate to is important for targeting areas for brand-health improvement. In order to guess the 
 topics of tweets in an automated way, I use a general strategy of building a labeled collection of tweets through the same API
 pull and text cleaning process used to pull and clean Uber and Lyft tweets, training models against this corpus, then predicting 
@@ -1106,7 +1111,9 @@ differently, but largely the learnings are the same. Lyft drives stronger promot
 topics, we see parody. A spike in Lyft's sentiment on 1/30/19 that the Naive Bayes Classifier associates with Service is now 
 classified as News sentiment by the neurel network. Still, on a daily level, we see noise and similar sentiment levels across Financial, 
 News and Service tweets.
-<h3>Summary and Takeaways</h3>
+<br>
+<h3 style="font-weight:bold;">Summary and Takeaways</h3>
+<br>
 The language processing tools explored here are useful for attempting to quantify the health of brands, and to qualify business 
 related social chatter, but more broadly, these methods can be applied to analyze any text at your disposal that may interest you. 
 For example, one might create a training data set denoting spam email and legitimate email, build a classfication model for detection, 
