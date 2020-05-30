@@ -339,14 +339,17 @@ header,nav, a, img, li{
       <img src="/images/uber_wordcloud.png" alt="uber_wordcloud" class="img">
     </div>
 </div>
+<br>
 <h3 style="font-weight:bold;">Background</h3>
+<br>
 While exploring metrics that may serve as useful in improving Mixed Media Model predictiveness, 
 I decided to try to quantify brand health as an estimate of social sentiment, i.e. tweets about 
 brands scored for how positively or negatively tinged they may be. With sentimentized tweets, I 
 could then estimate how the average sentiment changes over time, estimate the average sentiment of
 tweets including certain key words, and recommend actionable next steps to clients, related to 
 affecting their brand messaging through advertising, or improving operational aspects of the business 
-where failures drive complaints and drive away customers.<br><br>
+where failures drive complaints and drive away customers.<br>
+<br>
 <h3 style="font-weight:bold;">The Data</h3>
 <br>
 The data used here is optained from the standard Twitter developer search API. <br><br>
@@ -365,8 +368,10 @@ recorded along with the tweet itself. The Standard API returns a sample of 100 t
 recency of up to 10 days, so this analysis is conducted against a sample of tweets and not a 
 comprehensive record of tweets. The brands I examine here are ride-sharing competitors Lyft
 and Uber.
+<br>
 <h3 style="font-weight:bold;">Approach</h3>
-This analysis primarily concerns data collection and deriving sentiment, topic classification, evaluating sentiment over time and generating word cloud reports as follows:
+<br>
+This analysis primarily concerns data collection and deriving sentiment, topic classification, evaluating sentiment over time and generating word cloud reports as follows:<br>
 <p><blockquote><pre>
 Data Collection:
 	1. One-hundered tweets per day, for ten days and for each brand are accessed via the API endpoint.
@@ -390,7 +395,7 @@ Brand Comparison over Time:
 	2. Segmented comparisons are evaluated to target nuances in brand health.
 	3. Evaluation is made overall and within each predicted topic derived from the strongest topic model.
 	
-</blockquote></pre></p>
+</pre></blockquote></p>
 
 <h3 style="font-weight:bold;">Data Collection and Intro to VADER Sentimentizer</h3>
 A sample of 100 tweets, a mixture of the most recent tweets and the most popular tweets, are collected each day for each brand using the
@@ -398,18 +403,18 @@ Twitter Standard Search API. It is important to remember to search for tweets us
 string to ensure all characters beyond number 140 are captured in your data. Another potentially tricky of pulling full tweets is that 
 retweeted tweets will contain a truncated tweet for the main tweet text, but will contain the full tweet in the nested retweeted data 
 within the JSON document. To account for this nuance, I use a try statement to read the tweet in the nested retweeted data of the 
-document, otherwise the main tweet text is read:
+document, otherwise the main tweet text is read:<br>
 <p><blockquote><pre>
 for i in range(len(statuses)):
     try:
         text.append(statuses[i]['retweeted_status']['full_text'])
     except:
         text.append(statuses[i]['full_text'])
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 Tweets need to be cleaned for programatic readability. The first stage of my cleaning will involve replacing emojis and un-rendered emoji 
 unicode with descriptions of the emojis. I have sourced these from <a href="https://github.com/wooorm/gemoji/blob/master/support.md">here</a> by copying the table into a
 tab separated .txt file, and reading into python with pandas. I can then create a mapping from rendered emojis to decriptions, and another
-from unicode to descriptions, and replace emojis in tweets with these descriptions: 
+from unicode to descriptions, and replace emojis in tweets with these descriptions: <br>
 <p><blockquote><pre>
 #Load Emoji Unicode TSV (Make sure TBL is saved in txt file as utf-8)
 emojis = pd.read_csv('path_to/emojis.txt',sep = '\t', encoding = 'utf-8')
@@ -447,10 +452,10 @@ for i in text:
     for k,v in emoji_dict.items():
         x = x.replace(k, v)
     emoji_clean.append(x)
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 The next step in my cleaning exercise is to use regular expressions to recognize many website URLs that may
 be present in tweets and remove these from the text. I search for 6 common URL patterns. I also reduce the 
-text to alphabet characters (or spaces separating words):
+text to alphabet characters (or spaces separating words):<br>
 <p><blockquote><pre>
 tweetvector_clean = []
 for i in emoji_clean:
@@ -464,10 +469,10 @@ for i in emoji_clean:
 	x="".join([i for i in x if (i.isalpha())|(i==" ")])
     tweetvector_clean.append(x)
 	
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 The next process in this text cleaning exercise is to tokenize documents so meaningless stopwords can be evaluated and
 removed. I use the python Natural Language Tool Kit (NLTK) for much of this textual analysis, and I evaluate tweet 
-stop words using a stop word bank from NLTK. I also pass tweets through an NLTK tokenization function for tokenizing:
+stop words using a stop word bank from NLTK. I also pass tweets through an NLTK tokenization function for tokenizing:<br>
 <p><blockquote><pre>
 Import nltk
 
@@ -490,7 +495,7 @@ final_tweets = []
 for i in tweetvector_stopped:
     x = " ".join(i)
     final_tweets.append(x)
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 With tweets cleaned of meaningless words and symbols, text can then be fed to a sentimentizer to attempt to quantify 
 the sentiment of the statement. I use the VADER sentimentizer through the Natural Language Tool Kit. A detailed 
 account of VADER's development can be found <a href="http://comp.social.gatech.edu/papers/icwsm14.vader.hutto.pdf">here</a>. Vader stands for Valence Aware Dictionary for 
@@ -498,7 +503,7 @@ sEntiment Reasoning, and is primarily focused on creating a sentiment lexicon wh
 negatively connotated when used semantically. The developed lexicon is atuned for evaluating social media statements, and 
 word Valence scores are point estimates derived from crowd sourced sentiment assessments (Mechanical Turk). Tweets 
 can be evaluated for the percentage of words classified as positive, negative or neutral, and the normalized sum of word 
-valences can estimate the compound sentiment of the tweet. Accessing VADER sentiment scoring is simple with NLTK:
+valences can estimate the compound sentiment of the tweet. Accessing VADER sentiment scoring is simple with NLTK:<br>
 <p><blockquote><pre>
 sid = nltk.sentiment.vader.SentimentIntensityAnalyzer()
 compound = []
@@ -515,12 +520,12 @@ for i in final_tweets:
     neutral.append(neu)
     negative.append(neg)
     positive.append(pos)
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 Finally, with sentimentized tweets, I can evaluate the stems of words so that words of like-stems and lemmas can be 
 analyzed together (e.g. Say, Said, Says are all lemmatized to Say). This is largely necessary for LDA analysis, but
 also limits the scope of the wordclouding exercise to being more manageable. I do so using stemming and lemmatizing
 from NLTK. A note about the code sample, final_tweets2 is a version of data final_tweets with terms 'uber' and 'lyft'
-(exceedingly common) removed so these are not considered in topic models or word clouds:
+(exceedingly common) removed so these are not considered in topic models or word clouds:<br>
 <p><blockquote><pre>
 from nltk.stem import WordNetLemmatizer
 from nltk.stem import SnowballStemmer
@@ -546,20 +551,20 @@ merged = []
 for i in processed_docs:
     merged.append(" ".join(i))
 docdf['final_tweets2_stemmed'] = merged
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 With tweets now associated with sentiment scores, I can focus on answering a couple of interesting questions:<br>
 
 1. What keywords are associated with each brand, and how polarizing are the connotations?<br>
 
 2. How does sentiment compare between the brands on average and over time?
 <br>
-<h3 style="font-weight:bold;">Word Clouding and Comparing</h3>
+<h3 style="font-weight:bold;">Word Clouding and Comparing</h3><br>
 When developing a word cloud, I am interested in size representing the frequency of use and color representing the 
 polarity of the word when used. I don't simply want to color words by their crowd sourced valence scores. Rather, for 
 each word, I want to evaluate the average compound sentiment of tweets that used the word, and color-code by that 
 standard. With cleaned tweets mapped to compound scores following VADER sentimentizing, I can re-tokenize tweets, 
 map words the tweet compound scores where words appear, then use a pivot table to list distinct words by frequency 
-of occurance and average tweet compound sentiment when used:
+of occurance and average tweet compound sentiment when used:<br>
 <p><blockquote><pre>
 tweetlist = list(tweetdf['final_tweets2'])
 
@@ -610,14 +615,14 @@ wordssent.sort_values(by = 'count', ascending = False, inplace = True)
 
 wordssent.reset_index(drop = False, inplace = True)
  
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 I am implementing a wordcloud with the derived information using the python package wordcloud. The package contains an example function 
 for mapping a single color to groups of words that should be that exact color, so I need to transform my list of compound scores into 
 an (R,G,B) string, and I do so formulaically from the average compound score of each word, and the minimum and maximum average compound 
-scores:
+scores:<br>
 <div>
       <img src="/images/conditional_formating.png" alt="formatting">
-    </div>
+    </div><br>
 <p><blockquote><pre>
 #List Unique Words and Colors derived from Compound score together
 UW = []
@@ -638,11 +643,11 @@ for i in colorset:
             pass
     color_to_words[i] = words_by_color
 	
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 The wordcloud package github provides examples for applying colors selectively to words in a number of ways. Here I use the simple 
 grouped color function class to create a word: color mapping from the color_to_words mapping already created. This function simply
 makes values in each value list within the color_to_words hash table the key for mapping back to the key value from the color_to_words 
-hash table. The resulting dict is used for recoloring words within the wordcloud package:
+hash table. The resulting dict is used for recoloring words within the wordcloud package:<br>
 <p><blockquote><pre>
 class SimpleGroupedColorFunc(object):
     """Create a color function object which assigns EXACT colors
@@ -677,7 +682,7 @@ plt.figure( figsize=(8,6) )
 plt.imshow(wordcloud)
 plt.axis("off")
 plt.title("Lyft Word Cloud")
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 </style>
 <div class="row">
 <div class="column">
@@ -686,7 +691,7 @@ plt.title("Lyft Word Cloud")
 <div class="column">
       <img src="/images/uber_wordcloud.png" alt="uber_wordcloud" class="img">
     </div>
-</div>
+</div><br>
 Only lemmas with more than 30 appearances in each brand's word corpus are shown in these word clouds. For comparative purposes, 
 the compmin and compmax are taken to be -1 and 1 for both brands, normalizing all data against the same scale. The resulting 
 word clouds for each brand reveal positive connotations around Lyft's free ride offers and promotional codes, and positive 
@@ -707,13 +712,13 @@ pull and text cleaning process used to pull and clean Uber and Lyft tweets, trai
 the labels of Uber and Lyft tweets. The first topic model I use to predict labels is the Naive Bayes Classifier.<br><br>
 A Naive Bayes Classifier can be constructed using known probabilities of document features, and those of user defined labels in 
 training data. This method is an application of Bayes Theorem, with the "Naive" assumption that features are indepentent of each 
-other. Using this model, one might define the probability of some Label_a for a document with features X as:
+other. Using this model, one might define the probability of some Label_a for a document with features X as:<br>
 <div >
       <img src="/images/naive_bayes_classifier.png" alt="NBC" class="jayimage">
-    </div>
+    </div><br>
 But because p(X) is a data dependent constant for all potential labels, only the numerator needs to be evaluated for each candidate 
 label for a document, and the largest result is selected as the document label. <br><br>
-Here is a simple example to conceptualize predicting labels with this model:
+Here is a simple example to conceptualize predicting labels with this model:<br>
 <p><blockquote><pre>
 Consider 4 Sentences and labels:
 <table>
@@ -743,12 +748,12 @@ Evaluating p(Cat) for 'Meow Cute':
 	p(Label_a|X) ~ p(Label)*p(X|Label): p(Cat)*p(Meow|Cat) = .5*.5 = .25
 	
 p(Cat) > p(Dog), by the maximum a posteriori (MAP) rule, Cat is the selected label.
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 The Naive Bayes Classifier can be imported from the NLTK package. My strategy for applying the package is to collect the 
 cleaned corpus of unique words in the training tweet corpus, limit the number of features to consider to the N most common 
 and meaningful words, and evaluate te likelihood of candidate labels against that feature vector. Here I limit the feature 
 vector to the most common 300 words and words within the absolute frequency range within the corpus of 20 - 30 (after 
-removing stop words). Here is an example of implementing the NLTK Naive Bayes Classifier:
+removing stop words). Here is an example of implementing the NLTK Naive Bayes Classifier:<br>
 <p><blockquote><pre>
 #Function to state True/False if a feature is in a document
 def document_features(document):
@@ -839,7 +844,7 @@ Most Informative Features
              contains(|) = True             news : servic =     48.6 : 1.0
             contains(ai) = True           financ : news   =     46.5 : 1.0
 0.9594858257775737
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 The classifier describes the training data with 96% accuracy. Similarly, when I randomize the tweet order and 
 hold out 25% for predicting the label, the classifier predicts with 95.4% accuracy on unseen tweets. The built 
 classifier is then used to label Lyft and Uber tweet topics:
@@ -861,60 +866,60 @@ for i in tweets_split:
 
 tweetdf['NB_label'] = new_labels
 tweetdf['NB_label_prob'] = probs
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 Evaluating the average compound tweet sentiment by tweet topic may yield some interesting findings. Particularly, 
 much of Lyft's positive sentiment may be inflated by a surge of tweets related to promotional codes and free rides. 
-One would find that relatively few Uber tweets have been classified as promotional to begin with:
+One would find that relatively few Uber tweets have been classified as promotional to begin with:<br>
 <div >
       <img src="/images/Topics_Sentiment_NBC.png" alt="NBC" class="jayimage" width="500">
-    </div>
+    </div><br>
 Over this limited time window, daily average sentiment is noisy for the two brands, but Lyft appears broadly 
 healthier (For longer time windows I like to look at rolling averages and how these may diverge). Do not forget 
-that this may be related to being more promotional overall:
+that this may be related to being more promotional overall:<br>
 <div >
       <img src="/images/Time_Sentiment_NBC.png" alt="NBC" class="jayimage" width="500">
-    </div>
+    </div><br>
 In terms of financial tweets, Uber and Lyft demonstrate highly correlated sentiment, which passes the logic test 
 that market news about the ride share space is more likely to reference both brands and affect both businesses 
-than service complaints or promotions relating to one brand:
+than service complaints or promotions relating to one brand:<br>
 <div >
       <img src="/images/Time_Sentiment_Financial_NBC.png" alt="NBC" class="jayimage" width="500">
-    </div>
+    </div><br>
 Lyft may demonstrate some positivity diverging from Uber in news related tweets. This may motivate the data scientist 
 to perform a keyword analysis on these tweets in particular to understand the major differences. Another wordcloud may 
-serve well for this purpose (I am not generating the new word clouds at this time):
+serve well for this purpose (I am not generating the new word clouds at this time):<br>
 <div >
       <img src="/images/Time_Sentiment_News_NBC.png" alt="NBC" class="jayimage" width="500">
-    </div>
+    </div><br>
 Uber registers far fewer promotional tweets as previously stated, but the Lyft promotional tweets provide a strong 
-baseline of positive sentmient to the tweet corpus:
+baseline of positive sentmient to the tweet corpus:<br>
 <div >
       <img src="/images/Time_Sentiment_Promotional_NBC.png" alt="NBC" class="jayimage" width="500">
-    </div>
+    </div><br>
 Uber service tweets seem to have a downward inflection during this period, which seems to drive the larger decline 
 in Uber's brand sentiment during the period. I would also analyze keywords from these tweets to understand the 
-specifics of potential service failures:
+specifics of potential service failures:<br>
 <div >
       <img src="/images/Time_Sentiment_Service_NBC.png" alt="NBC" class="jayimage" width="500">
-    </div>
+    </div><br>
 To verify these findings or discover any potential learnings from a second model that the Naive Bayes Classifier could 
 not distinguish, I also construct a neural network to learn the Uber and Lyft tweet topics from the corpus of collected 
 tweets. I do so to verify if meaningful classification improvements can be made when stepping away from the Naive 
-assumption of feature independence. 
-<h3>Neural Network Topic Modeling from Doc Features</h3>
+assumption of feature independence. <br>
+<h3 style="font-weight:bold;">Neural Network Topic Modeling from Doc Features</h3><br>
 I approach Neural Network modeling using Tensorflow to develop a simple, deep feature model that considers the same inputs
 as the Naive Bayes Model, and to develop a network designed to convolve over embedded sentences before training with some 
-deepness. I do so for comparative purposes with the Naive Bayes method. 
+deepness. I do so for comparative purposes with the Naive Bayes method. <br>
 <div >
       <img src="/images/NN1config.png" alt="NBC" class="jayimage" width="500">
-    </div>
+    </div><br>
 This example network represents one tested network against the 787 tweet features evaluated in the Naive Bayes analysis. 
 This network uses Rectivied Linear Unit activation in the hidden layers and sigmoid activation in the output layer for 
 predicting the four labels. While the network describes training data better than the Naive Bayes analysis (96.7%), this 
-network only predicts unseen labels with 89% accuracy. 
+network only predicts unseen labels with 89% accuracy. <br>
 <div >
       <img src="/images/CNN2.png" alt="NBC" class="jayimage" width="500">
-    </div>
+    </div><br>
 This second network design consideres the 2500 most common words from the training tweet corpus, arranges these binaries 
 into an ordered (L -> R, U -> D by word frequency) 50X50 matrix and convolves over the matrix in a similar fashion to an 
 image analysis, flattens the output of convolution to one dimension, and outputs that result to two hidden layers of 25 
@@ -930,7 +935,7 @@ space, recording a 1 for values in the matrix where a word is mapped, and a zero
 The Word2Vec model can be created from a Skip Gram algorithm, in which a word is used as an estimator to predict the 
 prior and following words in the document. More specifically, we are interested in maximizing the likelihood of 
 predicting a proximal word and of NOT predicting any of several noise words that are not in immediate proximity to the 
-predictor word. A short summary of Word2Vec:
+predictor word. A short summary of Word2Vec:<br>
  <p><blockquote><pre>
 Given this Sentence: The dog ran to the car 
 
@@ -954,8 +959,8 @@ words associated with dog: (the, ran)
 distribution of association with dog: [.5,0,.5,0,0]
 <img src="/images/Word2VecNN.png" alt="NBC" class="jayimage" width="500">
 The vector of weights associated with j hidden neurons is taken as the vector representing the embedded word. 
- </pre></blockquote></p>
-The Word2Vec model is simple to implement from the Gensim package:
+ </pre></blockquote></p><br>
+The Word2Vec model is simple to implement from the Gensim package:<br>
 <p><blockquote><pre>
 from gensim.models import Word2Vec
 from sklearn.decomposition import PCA
@@ -1001,7 +1006,7 @@ for i in list(tdf1['processed_docs']):
         pass
 
 docmats = np.array(docmats)
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 The resulting 'docmats' of tweets can be fed to convolutional or pooling layers.<br><br>
 This model described training data with 99% accuracy, and labeled holdout data with 93.5% accuracy, an improvement over 
 other designed networks thusfar, but still not as strong in classification as the Naive Bayes Classifier. <br><br>
@@ -1013,7 +1018,7 @@ use the encoding as a lookup to an initialized table of weights, feed the encode
 and update the weights as the network is trained. To preprocess data for this strategy, keras.preprocessing provides helper 
 functions one_hot and pad_sequences. Function one_hot hashes words in the vocabulary to a value in the size of the vocabulary,
 and after replacing words with the hashed integer results in documents, pad_sequences will zero-pad documents so each document fed 
-to the network is of the same expected length (the length of the maximum document). Here is an implementation of this preprocess:
+to the network is of the same expected length (the length of the maximum document). Here is an implementation of this preprocess:<br>
 <p><blockquote><pre>
 #tdf1 is a dataframe with tokenized 'processed_docs'
 from keras.preprocessing.text import one_hot
@@ -1028,11 +1033,11 @@ encoded_docs = [one_hot(i, vocab_size) for i in docs]
 max_length = maxlen
 
 Xarray = pad_sequences(encoded_docs, maxlen=maxlen, padding='post')
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 The constructed network consists of 38-word sentences being mapped to 38X10 embeddings, which are flattened to a 380X1 input 
 for the hidden layer of sigmoid neurons, which then feed to 4 output neurons, representing the four labels:<br>
-<div><img src="/images/NNembedded.png" alt="NBC" class="jayimage" width="500"></div>
-This netword can be configured with keras:
+<div><img src="/images/NNembedded.png" alt="NBC" class="jayimage" width="500"></div><br>
+This netword can be configured with keras:<br>
 <p><blockquote><pre>
 
 from keras.utils import np_utils
@@ -1062,10 +1067,10 @@ model.compile(optimizer=tensorflow.train.AdamOptimizer(),
               metrics=['accuracy'])
 
 model.fit(Xarray, dummy_labs, epochs=28, verbose = 1)
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 This model describes training data with 99.8% accuracy and labels holdout data with 96.4% accuracy, an improvement over the 
 Naive Bayes Classifier. By labeling Uber and Lyft tweets according to these labels and re-evaluating sentiment, a comparison 
-of brand health shows the brands largely in parody with each other:
+of brand health shows the brands largely in parody with each other:<br>
 <div class="row">
 <div class="column">
       <img src="/images/Sentiment_Topics_NN.png" alt="lyft_wordcloud" class="img">
@@ -1105,7 +1110,7 @@ of brand health shows the brands largely in parody with each other:
 <div class="column">
       <img src="/images/Time_Sentiment_Promotional_NBC.png" alt="uber_wordcloud" class="img">
     </div>
-</div>
+</div><br>
 When tweets are classified using the Neural Network and using the Naive Bayes Classifier, we can see that some tweets are classified 
 differently, but largely the learnings are the same. Lyft drives stronger promotional sentiment than Uber, and in terms of the other 
 topics, we see parody. A spike in Lyft's sentiment on 1/30/19 that the Naive Bayes Classifier associates with Service is now 
