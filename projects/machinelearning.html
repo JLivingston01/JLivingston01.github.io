@@ -313,13 +313,13 @@ I often used to focus analyses on business analyics in a marketing context. I wa
 would affect the growth and health of businesses, but I also needed to understand how the maturity of businesses   
 affects the effectiveness of marketing. I resolved that growth-curve modeling may be a reasonable approximation for
 the maturity of a startup. <br><br>
-<h3>The Data</h3>
+<h3 style="font-weight:bold;">The Data</h3>
 <br>
 In practice, I researched this concept and implemented a test using a company's Key Performance Indicator. In this 
 demonstration, have pulled normalized Google search volume from Google Trends for two different companies          
 (subscription model startups) in order to demonstrate the concepts I applied. It may be helpful to consider the KPI
 here "Cumulative Google Search Volume over time".<br><br>
-<h3>Approach</h3>
+<h3 style="font-weight:bold;">Approach</h3>
 <br>
 While working with Mixed Media Models, I was introduced to an interesting feature transformation function, the Hill
 transformation, a sigmoidal equation that can assume many shapes as dictated by its parameters. The goal of my     
@@ -334,7 +334,7 @@ c is an introduced parameter to allow this equation to become asymptotic between
 normalized data to surpass the historical maximum. The target KPI data is to be normalized between 0 and 1 before  
 attempting to fit the Hill function. The KPI minimum and maximum values can then be utilized for rescaling the Hill
 fit to the scale of the non-normalized KPI data (the de_normalize function shown below in the code snippets).<br><br>
-<h3>Designing a Machine Learning Algorithm</h3>
+<h3 style="font-weight:bold;">Designing a Machine Learning Algorithm</h3>
 <br>
 In order to learn parameters k, s and c, where the cumulative data is represented by some function Hill(t,k,s,c), I
 calculate the partial derivatives of some cost function in terms of each parameter, then use these partial         
