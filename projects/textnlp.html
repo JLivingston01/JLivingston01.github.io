@@ -557,7 +557,7 @@ With tweets now associated with sentiment scores, I can focus on answering a cou
 1. What keywords are associated with each brand, and how polarizing are the connotations?<br>
 
 2. How does sentiment compare between the brands on average and over time?
-<br>
+<br><br>
 <h3 style="font-weight:bold;">Word Clouding and Comparing</h3><br>
 When developing a word cloud, I am interested in size representing the frequency of use and color representing the 
 polarity of the word when used. I don't simply want to color words by their crowd sourced valence scores. Rather, for 
@@ -703,7 +703,7 @@ less green (less positive) than the Lyft cloud. Another observation of note is s
 words wage and worker, and an investigation shows Lyft's resistance to new minimum wage legislation in New York City has 
 been poorly received. Much of the green-ness of the Lyft cloud, though, is attributable to promotional tweets, or informative 
 tweets about a positive service Lyft offered during the limited collection window. 
-<br>
+<br><br>
 <h3 style="font-weight:bold;">Naive Bayes Topic Modeling and Summary Analytics</h3>
 <br>
 Understanding the topics tweets relate to is important for targeting areas for brand-health improvement. In order to guess the 
@@ -905,7 +905,7 @@ specifics of potential service failures:<br>
 To verify these findings or discover any potential learnings from a second model that the Naive Bayes Classifier could 
 not distinguish, I also construct a neural network to learn the Uber and Lyft tweet topics from the corpus of collected 
 tweets. I do so to verify if meaningful classification improvements can be made when stepping away from the Naive 
-assumption of feature independence. <br>
+assumption of feature independence. <br><br>
 <h3 style="font-weight:bold;">Neural Network Topic Modeling from Doc Features</h3><br>
 I approach Neural Network modeling using Tensorflow to develop a simple, deep feature model that considers the same inputs
 as the Naive Bayes Model, and to develop a network designed to convolve over embedded sentences before training with some 
@@ -1116,7 +1116,7 @@ differently, but largely the learnings are the same. Lyft drives stronger promot
 topics, we see parody. A spike in Lyft's sentiment on 1/30/19 that the Naive Bayes Classifier associates with Service is now 
 classified as News sentiment by the neurel network. Still, on a daily level, we see noise and similar sentiment levels across Financial, 
 News and Service tweets.
-<br>
+<br><br>
 <h3 style="font-weight:bold;">Summary and Takeaways</h3>
 <br>
 The language processing tools explored here are useful for attempting to quantify the health of brands, and to qualify business 
