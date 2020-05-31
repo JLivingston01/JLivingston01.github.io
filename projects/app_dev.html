@@ -304,13 +304,14 @@ header,nav, a, img, li{
   <a href="/contact2.html">Contact</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </header>	
-<h1>Developing a Web App</h1>
+<div style="margin-left:40px;margin-right:40px;">
+<h1 style="font-weight:bold;">Developing a Web App</h1>
 <p>
-<h3>Background</h3>
+<h3 style="font-weight:bold;">Background</h3><br>
 I wanted demonstrate a simple skeleton app stack to meet a hypothetical business need and integate a few technologies 
 to work together to achieve functionality. The need here is simple: to store and recall information in the context of 
-an app for finding freelancing consultants.<br>
-<h3>The Tools</h3>
+an app for finding freelancing consultants.<br><br>
+<h3 style="font-weight:bold;">The Tools</h3><br>
 This app is primarily developed in HTML, PHP and MySQL and is hosted locally on windows. There is some room for 
 integrating Python processes as well, for running analyses the app may leverage, as well as maintenance of the MySQL 
 database. We must first ensure that these tools are installed to run locally. I have installed the XAMPP Control Panel 
@@ -319,12 +320,12 @@ well as XAMPP's MySQL implementation for data storage. XAMPP can be downloaded <
 The schema of this app is depicted in the following diagram. The function of this app is simply to store and recall 
 information, using HTML forms, PHP and MySQL. I've added a layer "applicant approval" based on some admin-defined 
 criteria to demonstrate the integration of a pythonic analytics process. Of course, such a process could be written in 
-any user friendly language that integrates well with MySql.
+any user friendly language that integrates well with MySql.<br>
  <div class="item active">
       <img src="/images/app_schema.png" alt="appschema" height="450" width="auto">
-    </div>
-You can try building your own application diagrams using the online <a href = "https://www.draw.io/"> here</a>.<br>
-<h3>The User Schema</h3>
+    </div><br>
+You can try building your own application diagrams using the online <a href = "https://www.draw.io/"> here</a>.<br><br>
+<h3 style="font-weight:bold;">The User Schema</h3><br>
 My first step in building this web-app is to develop the shell of the user interface. I am hosting all files in a local 
 directory on my windows machine, which is the same directory I will cd into to run a PHP instance. The directory I will 
 work out of will be C://Users/{user}/webapp/ and I will save application pages into a www/ subdirectory. My home page, 
@@ -474,16 +475,16 @@ search.php:
 </pre></blockquote></p>
 Search.php is rather limited in functionality, but specifically allows the user to query records of one concentration with 
 a minimum number of 'experience'. A PHP foreach loop at each row prints the index number of the record pulled, and the 
-record's formatted name, followed by an html linebreak tag, printing each row on a new line. 
-<h3>The Database</h3>
+record's formatted name, followed by an html linebreak tag, printing each row on a new line. <br><br>
+<h3 style="font-weight:bold;">The Database</h3><br>
 This web app leverages a MySQL database which is started using XAMPP as a web-development solution. To spin up a MySQL instance, 
-open the XAMPP control panel and start the MySQL server:
+open the XAMPP control panel and start the MySQL server:<br>
  <div class="item active">
       <img src="/images/xampp.png" alt="xampp" height="400" width="auto">
-    </div><br>
+    </div><br><br>
 Once the MySQL server is running (in this case with the root user and no password for access), the table schema needs to be 
 initialized. This involves creating two tables: applicatnts and consultants. This can be done in any tool that is configured to 
-connect to a MySQL server and send MySQL commands. I use a local python script to quickly initialize both tables:
+connect to a MySQL server and send MySQL commands. I use a local python script to quickly initialize both tables:<br>
 <p><blockquote><pre>
 table_initialization.py:
 <xmp>
@@ -516,8 +517,8 @@ table_initialization.py:
 	cursor.close()
 	connection.close()
 </xmp>
-</pre></blockquote></p>
-Finally, I have a simple criteria check in python script to approve applicants for ingestion to consultants.
+</pre></blockquote></p><br>
+Finally, I have a simple criteria check in python script to approve applicants for ingestion to consultants.<br>
 <p><blockquote><pre>
 applicant_approval.py:
 <xmp>
@@ -562,7 +563,7 @@ applicant_approval.py:
 	cursor.close()
 	connection.close()
 </xmp>
-</pre></blockquote></p>
+</pre></blockquote></p><br>
 This script can be scheduled using a chron or Windows job scheduler to run whenever we desire, but for now I will run the script when needed: 
 after applicants are entered into the applicant table.
 
@@ -596,8 +597,8 @@ search feature we built:	<br>
 <div class="item active">
       <img src="/images/search_php.png" alt="insert" height="auto" width="450" style="border:2px solid black">
     </div>
-
-<h3>Summary and Takeaways</h3>
+<br><br>
+<h3 style="font-weight:bold;">Summary and Takeaways</h3><br>
 Unlike my exercises presented in NLP and customized Machine Learning solutions, I have not developed a web-application as a client-facing solution. 
 This exercise was useful for me to become more fluent in application diagramming, and in looking more closely at PHP implementations, something that 
 I do work with in my work as a data scientist.
@@ -607,6 +608,6 @@ I think this exercise is a useful one for two reasons: <br><br>
 developing data lakes, processes and for formalizing analyses in easily communicated ways.<br><br>
 2. Understanding HTML and PHP implementations, and how PHP integrates with databases to functionalize a website, is an important skill for 
 troubleshooting web-applications that may be encountered and causing data collection issues. 
-
+</div>
 </body>
 </html>
