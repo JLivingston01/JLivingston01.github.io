@@ -1,30 +1,378 @@
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th>A</th>
-      <th>B</th>
+      <th>Symbol</th>
+      <th>Industry</th>
+      <th>Latest Close</th>
+      <th>Geometric Mean Return 5Y</th>
+      <th>5Y Volatility</th>
+      <th>PE to Industry Median</th>
+      <th>PEG to Industry Median</th>
+      <th>PS to Industry Median</th>
+      <th>Buy</th>
+      <th>Rating</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
-      <td>yes</td>
+      <td>TSM</td>
+      <td>Semiconductors</td>
+      <td>$128.44</td>
+      <td>45.86%</td>
+      <td>0.296</td>
+      <td>0.03</td>
+      <td>0.08</td>
+      <td>0.06</td>
+      <td>100.0%</td>
+      <td>91.24</td>
     </tr>
     <tr>
-      <td>3</td>
-      <td>no</td>
+      <td>TPTX</td>
+      <td>Biotechnology</td>
+      <td>$131.56</td>
+      <td>120.0%</td>
+      <td>0.678</td>
+      <td>nan</td>
+      <td>0.3</td>
+      <td>nan</td>
+      <td>100.0%</td>
+      <td>82.02</td>
     </tr>
     <tr>
-      <td>4</td>
-      <td>yes</td>
+      <td>AY</td>
+      <td>Utilities—Renewable</td>
+      <td>$42.89</td>
+      <td>27.17%</td>
+      <td>0.316</td>
+      <td>0.53</td>
+      <td>0.52</td>
+      <td>0.15</td>
+      <td>100.0%</td>
+      <td>81.92</td>
     </tr>
     <tr>
-      <td>5</td>
-      <td>yes</td>
+      <td>UMC</td>
+      <td>Semiconductors</td>
+      <td>$9.48</td>
+      <td>42.59%</td>
+      <td>0.378</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>nan%</td>
+      <td>81.61</td>
     </tr>
     <tr>
-      <td>7</td>
-      <td>no</td>
+      <td>BIO</td>
+      <td>Medical Devices</td>
+      <td>$596.64</td>
+      <td>36.17%</td>
+      <td>0.3</td>
+      <td>0.04</td>
+      <td>0.5</td>
+      <td>1.0</td>
+      <td>nan%</td>
+      <td>81.31</td>
+    </tr>
+    <tr>
+      <td>HHR</td>
+      <td>Staffing &amp; Employment Services</td>
+      <td>$31.2</td>
+      <td>52.39%</td>
+      <td>0.655</td>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>100.0%</td>
+      <td>81.29</td>
+    </tr>
+    <tr>
+      <td>SRAC</td>
+      <td>Shell Companies</td>
+      <td>$23.47</td>
+      <td>136.12%</td>
+      <td>0.547</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan%</td>
+      <td>80.78</td>
+    </tr>
+    <tr>
+      <td>NUAN</td>
+      <td>Software—Application</td>
+      <td>$47.28</td>
+      <td>25.57%</td>
+      <td>0.332</td>
+      <td>nan</td>
+      <td>0.91</td>
+      <td>nan</td>
+      <td>100.0%</td>
+      <td>80.64</td>
+    </tr>
+    <tr>
+      <td>LOGI</td>
+      <td>Computer Hardware</td>
+      <td>$109.86</td>
+      <td>50.62%</td>
+      <td>0.338</td>
+      <td>0.78</td>
+      <td>1.0</td>
+      <td>0.79</td>
+      <td>100.0%</td>
+      <td>80.13</td>
+    </tr>
+    <tr>
+      <td>NTES</td>
+      <td>Internet Content &amp; Information</td>
+      <td>$123.37</td>
+      <td>34.68%</td>
+      <td>0.403</td>
+      <td>0.49</td>
+      <td>0.31</td>
+      <td>nan</td>
+      <td>100.0%</td>
+      <td>80.02</td>
+    </tr>
+    <tr>
+      <td>AES</td>
+      <td>Utilities—Diversified</td>
+      <td>$25.75</td>
+      <td>25.87%</td>
+      <td>0.342</td>
+      <td>nan</td>
+      <td>0.69</td>
+      <td>nan</td>
+      <td>100.0%</td>
+      <td>79.98</td>
+    </tr>
+    <tr>
+      <td>BWMX</td>
+      <td>Specialty Retail</td>
+      <td>$37.74</td>
+      <td>101.9%</td>
+      <td>0.761</td>
+      <td>nan</td>
+      <td>0.23</td>
+      <td>nan</td>
+      <td>100.0%</td>
+      <td>79.73</td>
+    </tr>
+    <tr>
+      <td>SSPK</td>
+      <td>Shell Companies</td>
+      <td>$20.52</td>
+      <td>104.59%</td>
+      <td>0.554</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan%</td>
+      <td>79.54</td>
+    </tr>
+    <tr>
+      <td>BCYC</td>
+      <td>Biotechnology</td>
+      <td>$28.49</td>
+      <td>170.3%</td>
+      <td>0.953</td>
+      <td>nan</td>
+      <td>0.19</td>
+      <td>nan</td>
+      <td>100.0%</td>
+      <td>79.33</td>
+    </tr>
+    <tr>
+      <td>JOE</td>
+      <td>Real Estate—Diversified</td>
+      <td>$49.5</td>
+      <td>27.68%</td>
+      <td>0.315</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan%</td>
+      <td>78.7</td>
+    </tr>
+    <tr>
+      <td>GRVY</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>$174.11</td>
+      <td>152.24%</td>
+      <td>0.969</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>nan%</td>
+      <td>78.28</td>
+    </tr>
+    <tr>
+      <td>ZEN</td>
+      <td>Software—Application</td>
+      <td>$153.15</td>
+      <td>48.72%</td>
+      <td>0.432</td>
+      <td>nan</td>
+      <td>1.63</td>
+      <td>nan</td>
+      <td>100.0%</td>
+      <td>78.25</td>
+    </tr>
+    <tr>
+      <td>ATRC</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>$60.73</td>
+      <td>27.86%</td>
+      <td>0.408</td>
+      <td>nan</td>
+      <td>0.96</td>
+      <td>nan</td>
+      <td>100.0%</td>
+      <td>78.18</td>
+    </tr>
+    <tr>
+      <td>HDB</td>
+      <td>Banks—Regional</td>
+      <td>$80.08</td>
+      <td>22.76%</td>
+      <td>0.307</td>
+      <td>0.04</td>
+      <td>0.05</td>
+      <td>0.04</td>
+      <td>nan%</td>
+      <td>77.92</td>
+    </tr>
+    <tr>
+      <td>TBIO</td>
+      <td>Biotechnology</td>
+      <td>$24.2</td>
+      <td>105.69%</td>
+      <td>0.931</td>
+      <td>0.64</td>
+      <td>0.03</td>
+      <td>nan</td>
+      <td>100.0%</td>
+      <td>77.69</td>
+    </tr>
+    <tr>
+      <td>CRL</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>$272.4</td>
+      <td>30.63%</td>
+      <td>0.318</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>80.0%</td>
+      <td>77.68</td>
+    </tr>
+    <tr>
+      <td>VCYT</td>
+      <td>Biotechnology</td>
+      <td>$65.03</td>
+      <td>62.1%</td>
+      <td>0.566</td>
+      <td>nan</td>
+      <td>0.14</td>
+      <td>nan</td>
+      <td>66.67%</td>
+      <td>77.58</td>
+    </tr>
+    <tr>
+      <td>ERIC</td>
+      <td>Communication Equipment</td>
+      <td>$12.78</td>
+      <td>9.84%</td>
+      <td>0.363</td>
+      <td>0.04</td>
+      <td>0.08</td>
+      <td>0.07</td>
+      <td>100.0%</td>
+      <td>77.48</td>
+    </tr>
+    <tr>
+      <td>SGEN</td>
+      <td>Biotechnology</td>
+      <td>$166.05</td>
+      <td>38.25%</td>
+      <td>0.444</td>
+      <td>0.29</td>
+      <td>0.03</td>
+      <td>nan</td>
+      <td>50.0%</td>
+      <td>77.44</td>
+    </tr>
+    <tr>
+      <td>TEAM</td>
+      <td>Software—Application</td>
+      <td>$248.79</td>
+      <td>59.63%</td>
+      <td>0.417</td>
+      <td>nan</td>
+      <td>1.57</td>
+      <td>nan</td>
+      <td>85.71%</td>
+      <td>77.34</td>
+    </tr>
+    <tr>
+      <td>PEGA</td>
+      <td>Software—Application</td>
+      <td>$134.88</td>
+      <td>42.15%</td>
+      <td>0.347</td>
+      <td>nan</td>
+      <td>1.15</td>
+      <td>nan</td>
+      <td>80.0%</td>
+      <td>77.22</td>
+    </tr>
+    <tr>
+      <td>RMD</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>$206.67</td>
+      <td>30.96%</td>
+      <td>0.315</td>
+      <td>0.63</td>
+      <td>0.72</td>
+      <td>0.89</td>
+      <td>nan%</td>
+      <td>77.19</td>
+    </tr>
+    <tr>
+      <td>PKI</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>$151.13</td>
+      <td>27.01%</td>
+      <td>0.267</td>
+      <td>0.68</td>
+      <td>0.58</td>
+      <td>0.55</td>
+      <td>66.67%</td>
+      <td>77.03</td>
+    </tr>
+    <tr>
+      <td>TECH</td>
+      <td>Biotechnology</td>
+      <td>$376.76</td>
+      <td>35.94%</td>
+      <td>0.276</td>
+      <td>2.71</td>
+      <td>0.08</td>
+      <td>nan</td>
+      <td>66.67%</td>
+      <td>76.84</td>
+    </tr>
+    <tr>
+      <td>LH</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>$233.39</td>
+      <td>16.59%</td>
+      <td>0.295</td>
+      <td>0.23</td>
+      <td>0.19</td>
+      <td>0.17</td>
+      <td>100.0%</td>
+      <td>76.62</td>
     </tr>
   </tbody>
 </table>
