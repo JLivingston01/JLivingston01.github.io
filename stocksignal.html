@@ -47,6 +47,14 @@ $(document).on("scroll",function(){
     }
 });
 </script>
+
+
+<script> 
+$(function(){
+  $("#includedContent").load("table.html"); 
+});
+</script> 
+
 <style type="text/css">
 /* Importing Montserrat Font for menu text */
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -323,7 +331,7 @@ header,nav, a, img, li{
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </header>				
 
-<div>
+
 <div>
 <p>
 This is StockSignal: the product of an algorithm to evaluate the outlook of Equities that have a history 
@@ -335,11 +343,12 @@ valuation in terms of Earnings, Growth and Sales, and recent changes in fundamen
 This table is updated daily with the Top-30 StockSignal Picks. 
 
 </p>
+
+<div id="includedContent"></div>
+
 </div>
 
-<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>A</th>\n      <th>B</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>1</td>\n      <td>yes</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>3</td>\n      <td>no</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>4</td>\n      <td>yes</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>5</td>\n      <td>yes</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>7</td>\n      <td>no</td>\n    </tr>\n  </tbody>\n</table>
 
-</div>
 
 </body>
 </html>
