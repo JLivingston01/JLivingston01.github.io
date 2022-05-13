@@ -1,7 +1,21 @@
+<!DOCTYPE html>
+<html>
 
-{% extends "base.html" %}
+<script> 
+$(function(){
+  $("#headLoader").load("head.html"); 
+});
+</script> 
+<script> 
+$(function(){
+  $("#headerLoader").load("header.html"); 
+});
+</script> 
 
-{% block content %}
+<div id="headLoader"></div>
+
+<body>
+<div id="headerLoader"></div>
 
 <div>
 
@@ -70,4 +84,6 @@ program, teaching courses in Machine Learning: Concepts and Applications.
 </div>
 
 </div>
-{% endblock %}
+
+</body>
+</html>
