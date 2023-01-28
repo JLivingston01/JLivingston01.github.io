@@ -59,7 +59,7 @@ header {
 }
 
 .grid-item {
-    text-align: center;
+    text-align: left;
     padding: 50px;;
     border: 5px solid rgba(95, 95, 95, 0.618);
 }
