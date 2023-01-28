@@ -2,373 +2,121 @@
 <html>
 <head>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/center.css"/>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=1000" >
-<link rel="stylesheet" href="assets/css/slick.css"/>
-<link rel="stylesheet" href="assets/css/slick-theme.css"/>
-<link rel="stylesheet" href="assets/css/main2.css" />
-<link rel="stylesheet" href="assets/css/core.css" />
-
-
-<script type="text/javascript">
-$(document).on("scroll",function(){
-    if($(document).scrollTop()>100){
-        $("header").removeClass("large").addClass("small");
-    } else{
-        $("header").removeClass("small").addClass("large");
-    }
-});
-</script>
-
-<script> 
-$(function(){
-  $("#headerLoader").load("header.html"); 
-});
-</script> 
-
-<style type="text/css">
-/* Importing Montserrat Font for menu text */
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-/* Basic layout */
-body{ background-color: #f5f5f5; }
-ul{ float: right; }
-li{ display: inline;} img.logo{float: left;}
-/* Size and center the menu */ nav{ width: 960px; margin: 0 auto;} 
-
-header{
-	background: #2b2927; 
-	border-bottom: 1px solid #aaaaaa; 
-	/*margin-bottom: 81px;*/
-	float: left; 
-	width: 100%; 
-	/*position: fixed; */
-	z-index: 10;
-
-	}
-header a{ 
-	text-decoration: none; 
-	font-family: "Montserrat", helvetica, arial, sans-serif; 
-	font-size: 24px;
-	color: #faf3e7;
-	}
-header a.active, header a:hover{ 
-	color: #ce6f20; }
-header li{ 
-	margin-right: 30px;
-	display: inline;}
-
-	
-header h1{ 
-	padding: 1em 0;
-	margin-left: 50px;
-	}
-
-nav1 {
-/* commas allow you to add more than one selector to have the same styles.
-Since we want the text in both #title and nav to be bold, we can specify font-weight: bold; to both of them in this manner */
-    font-weight: bold;
-	font-family: "Montserrat", helvetica, arial, sans-serif; 
-	font-size: 18px;
-	color: #ab180f;
-	
-  float: right;
-  width: 65%;
-}
-
-	
-nav1 ul {
-  text-transform: uppercase;
-  /* This is to convert all letters to uppercase */
-  text-align:justify;
-  /* text-align: justify and the following few lines of codes inclusive allows my navigation elements to have equal spaces within between them no matter how many elements there are.*/
-}
-	
-
-nav li{
-  display: inline;
-   float: left;
-}
-
-
-div h1 {
-  font-weight: bold;
-	font-family: "Montserrat", helvetica, arial, sans-serif; 
-	font-size: 18px;
-	color: #ab180f;
-	padding: 1em 0;
-	margin-left: 50px;
-	
-}
-
-
-/* Sizes for the bigger menu */
-header.large{ height: 120px; }
-header.large img{ width: auto; height: 120px; }
-header.large li{ margin-top: 45px; }
-
-/* Sizes for the smaller menu */
-header.small{ height: 50px; }
-header.small img{ width: auto; height: 50px; margin-top: -10px; }
-header.small li{ margin-top: 17px; }
-
-header,nav, a, img, li{
-  transition: all 1s;
-  -moz-transition: all 1s; /* Firefox 4 */
-  -webkit-transition: all 1s; /* Safari and Chrome */
-  -o-transition: all 1s; /* Opera */
-}
-
-.imgtext {
-  position: relative;
-  text-align: center;
-  color: black;
-}
-
-/* Bottom left text */
-.bottom-left {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
-}
-
- .imageContainer {
-       width:449px; 
-       height:300px; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-size: contain;
-	font-weight: bold;
-	text-align: center;
-    line-height: 1.4;
- }
- 
-
-/* Add a black background color to the top navigation */
-.topnav {
-  overflow: hidden;
-  float: right;
-    margin-top: 63px;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Add an active class to highlight the current page */
-.active {
-  color: white;
-}
-
-/* Hide the link that should open and close the topnav on small screens */
-.topnav .icon {
-  display: none;
-}
-
-/* Dropdown container - needed to position the dropdown content */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* Style the dropdown button to fit inside the topnav */
-.dropdown .dropbtn {
-  font-size: 17px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-/* Style the dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Style the links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-/* Add a dark background on topnav links and the dropdown button on hover */
-.topnav a:hover, .dropdown:hover .dropbtn {
-  background-color: #555;
-  color: white;
-}
-
-/* Add a grey background to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Show the dropdown menu when the user moves the mouse over the dropdown button */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child), .dropdown .dropbtn {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .topnav.responsive .dropdown {float: none;}
-  .topnav.responsive .dropdown-content {position: relative;}
-  .topnav.responsive .dropdown .dropbtn {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-}
-
-
-
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/style.css"/>
 
 </head>
 <body>
-<div id="headerLoader"></div>		
 
+<div class="grid-container">
 
-<div>
-<br><br><br>
-<!--h1 id="sectiontitle">Welcome to TheDataProfessional</h1-->
+  <title>TheDataProfessional</title>
 
+  <header class="grid-item item1">
+    <h1>
+      Jason Livingston
+    </h1>
+    <h3>
+      Data Scientist in New York City
+    </h3>
+  </header>
 
-<!--hide>Please visit   my <a href="/bio.html">bio</a> to learn more about me, and take a look at my <a href="/projects.html">projects</a>.</hide-->
-<br>
+  <section class="grid-item item3">
+    <img src="images/new-headshot.jpg" class="header_img" />
+  </section>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top: 63px;">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" id="carbutton1" data-slide-to="0" class="active" onclick="_paq.push(['trackEvent', 'Carousel', 'Select 1']);"></li>
-    <li data-target="#myCarousel" id="carbutton2" data-slide-to="1"  onclick="_paq.push(['trackEvent', 'Carousel', 'Select 2']);"></li>
-    <li data-target="#myCarousel" id="carbutton3" data-slide-to="2"  onclick="_paq.push(['trackEvent', 'Carousel', 'Select 3']);"></li>
-  </ol>
+  <section class="grid-item item2">
+    <ul>
+      <li>
+        <a href="index.html">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/about.html">
+          About
+        </a>
+      </li>
+      <li>
+        <a href="/projects.html">
+          Data Science
+        </a>
+      </li>
+      <li>
+        <a href="/goalkeeping.html">
+          Soccer
+        </a>
+      </li>
+      <li>
+        <a href="/contact.html">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </section>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <!--div class="item active">
-		<div class="imageContainer" style="color: snow;background: linear-gradient(rgba(28,133,178, .6),rgba(28,133,178, .1)),url('/images/headshot.png');background-size: contain;">Data Scientist interested in<br>sharing and problem solving with the community</div>
-    </div-->
-	<div class="item active">
-      <img src="/images/new-headshot.jpg" alt="JLIV" class="jayimage">
-    </div>
-	
-    <div class="item">
-      <img src="/images/graduation.jpg" alt="Smart JLIV" class="jayimage">
-    </div>
-	
-    <div class="item">
-      <img src="/images/tableau_ws.jpg" alt="teaching" class="jayimage">
-    </div>
-  </div>
+  <section class="grid-item item4">
+    <a href="/about.html">
+      <img src="images/shake-hands.png" class="icon"/>
+    </a>
+    <a href="/about.html" class="hyperlink" >
+      <h3>Greetings</h3>
+    </a>
+    <p>
+      Welcome! I'm Jason, a Data Scientist based in NYC.
+      I have many interests, both professional and personal.
+      Please visit my <a href="/about.html" class="hyperlink">about</a> page to learn more.
+    </p>
+  </section>
+  <section class="grid-item item5">
+    <a href="/projects.html">
+      <img src="images/light-bulb.png" class="icon"/>
+    </a>
+    <a href="/projects.html" class="hyperlink">
+      <h3>Projects</h3>
+    </a>
+    <p>
+      I develop and maintain personal Machine Learning projects some of which receive write-ups here. 
+      Please visit my <a href="/projects.html" class="hyperlink">projects</a> page to learn more.
+    </p>
+  </section>
+  <section class="grid-item item6">
+    <a href="/goalkeeping.html">
+      <img src="images/soccer-ball.png" class="icon"/>
+    </a>
+    <a href="/goalkeeping.html" class="hyperlink">
+      <h3>Soccer and Goalkeeping</h3>
+    </a>
+    <p>
+      I am a former collegiate soccer goalkeeper, and an occasional goalkeeping coach. 
+      If you are interested talking soccer, competitively or for fun, 
+      please visit my <a href="/goalkeeping.html" class="hyperlink">soccer-about</a> page to learn more.
+    </p>
+  </section>
+  <section class="grid-item item7">
+    <a href="/contact.html" >
+      <img src="images/business (1).png" class="icon"/>
+    </a>
+    <a href="/contact.html" class="hyperlink">
+      <h3>Connecting</h3>
+    </a>
+    <p>
+      I am happy to connect with analytics professionals and any with shared interests. 
+      Feel free to reach out via 
+      <a href="https://linkedin.com/in/jason-livingston-a8bb9325" target="_blank" class="hyperlink">
+        LinkedIn
+      </a> or 
+      <a href="mailto:jason@thedataprofessional.com?subject=Contact Jason" target="_blank" class="hyperlink">
+        shoot me an email!
+      </a>
+    </p>
+  </section>
 
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel"  id="carleft" data-slide="prev" onclick="_paq.push(['trackEvent', 'Carousel', 'Scroll Left']);">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" id="carright" data-slide="next" onclick="_paq.push(['trackEvent', 'Carousel', 'Scroll Right']);">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
-
-<br>
-
-
-<!--div>Joke of the Day:<br>
-"I hate when people ask me what I'll be doing next year <br>
-I don't have 2020 vision ;)" <br><br></div-->
-
-					<section class="box special features">
-						<div class="features-row">
-							<section>
-								<span class="icon"><a href="/about.html"><img src="images/shake-hands.png" style = "width: 110px; height: 110px;"/></a></span>
-								<a href="/about.html" ><h3 style="margin: 0 0 0.5em 0;">Greetings</h3></a>
-								<p style="color: black">Welcome! I'm Jason, a Data Scientist based in NYC. I have many interests, both professional and personal. Please visit my <a href="/about.html">about</a> page to learn more.</p>
-							</section>
-							<section>
-								<span class="icon"><a href="/projects.html"><img src="images/light-bulb.png" style = "width: 110px; height: 110px;"/></a></span>
-								<a href="/projects.html" ><h3 style="margin: 0 0 0.5em 0;">Projects</h3></a>
-								<p style="color: black">I develop and maintain personal Machine Learning projects some of which receive write-ups here. Please visit my <a href="/projects.html">projects</a> page to learn more.</p>
-							</section>
-						</div>
-						<div class="features-row">
-							<section>
-								<span class="icon"><a href="/goalkeeping.html"><img src="images/soccer-ball.png" style = "width: 110px; height: 110px;"/></a></span>
-								<a href="/goalkeeping.html" ><h3 style="margin: 0 0 0.5em 0;">Soccer and Goalkeeping</h3></a>
-								<p style="color: black">I am a former collegiate soccer goalkeeper, and an occasional goalkeeping coach. If you are 
-								interested talking soccer, competitively or for fun, please visit my <a href="/goalkeeping.html">soccer-about</a>
-								page to learn more.</p>
-							</section>
-							<section>
-								<span class="icon"><a href="/contact.html"><img src="images/business (1).png" style = "width: 110px; height: 110px;"/></a></span>
-								<a href="/contact.html" ><h3 style="margin: 0 0 0.5em 0;">Building Connections</h3></a>
-								<p style="color: black">I am happy to connect with analytics professionals and any with shared interests. Feel free to reach out via <a href="https://linkedin.com/in/jason-livingston-a8bb9325" target="_blank">LinkedIn</a> or 
-								<a href="mailto:jason@thedataprofessional.com?subject=Contact Jason" target="_blank">shoot me an email</a>!</p>
-							</section>
-						</div>
-						
-					</section>
-
-</p>
-
-</div>
-
+  
 </body>
 <footer>
 <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

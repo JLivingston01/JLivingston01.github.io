@@ -1,391 +1,143 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/center.css"/>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!--meta name="viewport" content="width=device-width, initial-scale=1" /-->
-<meta name="viewport" content="width=1000" >
-<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<link rel="stylesheet" href="assets/css/slick.css"/>
-<link rel="stylesheet" href="assets/css/slick-theme.css"/>
-<!--link rel="stylesheet" href="assets/css/main.css" /-->
-<link rel="stylesheet" href="assets/css/main2.css" />
-<!--link rel="stylesheet" href="assets/css/boxicon.css" /-->
-<link rel="stylesheet" href="assets/css/core.css" />
-
-
-<script type="text/javascript">
-$(document).on("scroll",function(){
-    if($(document).scrollTop()>100){
-        $("header").removeClass("large").addClass("small");
-    } else{
-        $("header").removeClass("small").addClass("large");
-    }
-});
-</script>
-
-<script> 
-$(function(){
-  $("#headerLoader").load("header.html"); 
-});
-</script> 
-
-
-<style type="text/css">
-/* Importing Montserrat Font for menu text */
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-/* Basic layout */
-body{ background-color: #ebebeb; }
-ul{ float: right; }
-/*li{ display: inline;} */
-img.logo{float: left;}
-/* Size and center the menu */ nav{ width: 960px; margin: 0 auto;} 
-
-header{
-	background: #2b2927; 
-	border-bottom: 1px solid #aaaaaa; 
-	/*margin-bottom: 81px;*/
-	float: left; 
-	width: 100%; 
-	/*position: fixed; */
-	z-index: 10;
-
-	}
-header a{ 
-	text-decoration: none; 
-	font-family: "Montserrat", helvetica, arial, sans-serif; 
-	font-size: 24px;
-	color: #faf3e7;
-	}
-header a.active, header a:hover{ 
-	color: #ce6f20; }
-header li{ 
-	margin-right: 30px;
-	display: inline;}
-
-	
-header h1{ 
-	padding: 1em 0;
-	margin-left: 50px;
-	}
-
-nav1 {
-/* commas allow you to add more than one selector to have the same styles.
-Since we want the text in both #title and nav to be bold, we can specify font-weight: bold; to both of them in this manner */
-    font-weight: bold;
-	font-family: "Montserrat", helvetica, arial, sans-serif; 
-	font-size: 18px;
-	color: #ab180f;
-	
-  float: right;
-  width: 65%;
-}
-
-	
-nav1 ul {
-  text-transform: uppercase;
-  /* This is to convert all letters to uppercase */
-  text-align:justify;
-  /* text-align: justify and the following few lines of codes inclusive allows my navigation elements to have equal spaces within between them no matter how many elements there are.*/
-}
-	
-
-nav li{
-  display: inline;
-   float: left;
-}
-
-
-div h1 {
-    font-weight: bold;
-	font-family: "Montserrat", helvetica, arial, sans-serif; 
-	font-size: 18px;
-	color: #ab180f;
-	padding: 1em 0;
-	margin-left: 50px;
-	
-}
-
-
-/* Sizes for the bigger menu */
-header.large{ height: 120px; }
-header.large img{ width: auto; height: 120px; }
-header.large li{ margin-top: 45px; }
-
-/* Sizes for the smaller menu */
-header.small{ height: 50px; }
-header.small img{ width: auto; height: 50px; margin-top: -10px; }
-header.small li{ margin-top: 17px; }
-
-header,nav, a, img, li{
-  transition: all 1s;
-  -moz-transition: all 1s; /* Firefox 4 */
-  -webkit-transition: all 1s; /* Safari and Chrome */
-  -o-transition: all 1s; /* Opera */
-}
-
-.imgtext {
-  position: relative;
-  text-align: center;
-  color: black;
-}
-
-/* Bottom left text */
-.bottom-left {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
-}
-
- .imageContainer {
-       width:449px; 
-       height:300px; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-size: contain;
-	font-weight: bold;
-	text-align: center;
-    line-height: 1.4;
- }
- 
-
-/* Add a black background color to the top navigation */
-.topnav {
-  overflow: hidden;
-  float: right;
-    margin-top: 63px;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Add an active class to highlight the current page */
-.active {
-  color: white;
-}
-
-/* Hide the link that should open and close the topnav on small screens */
-.topnav .icon {
-  display: none;
-}
-
-/* Dropdown container - needed to position the dropdown content */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* Style the dropdown button to fit inside the topnav */
-.dropdown .dropbtn {
-  font-size: 17px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-/* Style the dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Style the links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-/* Add a dark background on topnav links and the dropdown button on hover */
-.topnav a:hover, .dropdown:hover .dropbtn {
-  background-color: #555;
-  color: white;
-}
-
-/* Add a grey background to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Show the dropdown menu when the user moves the mouse over the dropdown button */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child), .dropdown .dropbtn {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .topnav.responsive .dropdown {float: none;}
-  .topnav.responsive .dropdown-content {position: relative;}
-  .topnav.responsive .dropdown .dropbtn {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-}
-
-
-
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="assets/css/style.css"/>
 
 </head>
 <body>
-<div id="headerLoader"></div>
-
-
-
-
-<div>
-
-<br><br><br>
-
-<!--h1 id="sectiontitle">About Jason Livingston</h1-->
-
-<!--div class="item active">
-      <img src="/images/headshot.png" alt="JLIV" class="jayimage">
-    </div-->
-<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top: 63px;">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" id="carbutton1" data-slide-to="0" class="active" onclick="_paq.push(['trackEvent', 'Carousel', 'Select 1']);"></li>
-    <li data-target="#myCarousel" id="carbutton2" data-slide-to="1"  onclick="_paq.push(['trackEvent', 'Carousel', 'Select 2']);"></li>
-    <li data-target="#myCarousel" id="carbutton3" data-slide-to="2"  onclick="_paq.push(['trackEvent', 'Carousel', 'Select 3']);"></li>
-    <li data-target="#myCarousel" id="carbutton4" data-slide-to="3"  onclick="_paq.push(['trackEvent', 'Carousel', 'Select 4']);"></li>
-    <li data-target="#myCarousel" id="carbutton4" data-slide-to="4"  onclick="_paq.push(['trackEvent', 'Carousel', 'Select 5']);"></li>
-    <li data-target="#myCarousel" id="carbutton4" data-slide-to="5"  onclick="_paq.push(['trackEvent', 'Carousel', 'Select 6']);"></li>
-    <li data-target="#myCarousel" id="carbutton4" data-slide-to="6"  onclick="_paq.push(['trackEvent', 'Carousel', 'Select 7']);"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="/images/pregame.JPG" alt="AKFC" class="jayimage">
-    </div>
+  <div class="grid-container">
   
-    <div class="item">
-      <img src="/images/team.jpg" alt="CTX" class="jayimage">
-    </div>
+    <header class="grid-item item3">
+      <h1>
+        Jason Livingston
+      </h1>
+      <h3>
+        Soccer and Goalkeeping
+      </h3>
+    </header>
+  
+    <section class="grid-item item1 ">
+      <img src="images/pregame.JPG" class="teaching_img" />
+    </section>
+  
+    <section class="grid-item item2">
+      <ul>
+        <li>
+          <a href="index.html">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/about.html">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/projects.html">
+            Data Science
+          </a>
+        </li>
+        <li>
+          <a href="/goalkeeping.html">
+            Soccer
+          </a>
+        </li>
+        <li>
+          <a href="/contact.html">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </section>
 
-    <div class="item">
-      <img src="/images/headshot_soccer.jpg" alt="Soccer" class="jayimage">
-    </div>
+    <section class="grid-item itembio">
+      <p>
+        I am a Goalkeeping coach and a former collegiate 
+        and club soccer player with training experience in professional, 
+        amateur and youth settings. 
+	      While studying and playing as a college senior, 
+        I enjoyed working with the Austin Aztex during the 2015 USL season.
+      </p>
+      <p>I still enjoy coaching goalkeepers in the NYC area, 
+        and also connecting over the game. Feel free to 
+        <a href="/contact.html">contact me</a> if you would like to 
+	      connect over soccer.
+      </p>
+    </section>
+      
+    <section class="grid-item item6">
+      <h1>
+        Playing
+      </h1><br>
+      <h3>
+        Texas A&M University - Corpus Christi Men's Club, TCSL | 2011 - 2014
+      </h3>
+      <h5>
+        Captain, Club President
+      </h5><br>
+      <h3>
+        Concordia University Texas Tornados, NCAA DIII| 2014 - 2015
+      </h3>
+      <h5>
+        National College Athlete Honor Society inductee, 2016
+      </h5><br><br>
+      <h1>
+        Licensing
+      </h1><br>
+      <h3>
+        United Soccer Coaches/NSCAA 
+      </h3>
+      <h5>
+        Goalkeeping Level 1
+      </h5><br>
+      <h3>
+        United States Soccer Federation
+      </h3>
+      <h5>
+        USSF Grassroots 11v11
+      </h5>
+    </section>
 
-    <div class="item">
-      <img src="/images/king_kenny.jpg" alt="Aztex" class="jayimage">
-    </div>
-	
-    <div class="item">
-      <img src="/images/king_landon.JPG" alt="Aztex2" class="jayimage">
-    </div>
-	
-    <div class="item">
-      <img src="/images/onfield1.JPG" alt="CTX1" class="jayimage">
-    </div>
-	
-    <div class="item">
-      <img src="/images/onfield2.PNG" alt="CTX2" class="jayimage">
-    </div>
-	
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel"  id="carleft" data-slide="prev" onclick="_paq.push(['trackEvent', 'Carousel', 'Scroll Left']);">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" id="carright" data-slide="next" onclick="_paq.push(['trackEvent', 'Carousel', 'Scroll Right']);">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-<br>
-<br>
-<div>
-<p style="margin-top: 0px;margin-bottom: 0px;margin-left: 40px;color: black">
-	I am a Goalkeeping coach and a former collegiate and club soccer player with training experience in professional, amateur and youth settings. 
-	While studying and playing as a college senior, I enjoyed working with the Austin Aztex during the 2015 USL season. I still enjoy coaching 
-	goalkeepers in the NYC area, and also connecting over the game. Feel free to <a href="/contact.html">contact me</a> if you would like to 
-	connect over soccer!<br>
-	<br>
-	As a Player:<br>
-	<br>
-	-  Texas A&M University Corpus Christi Men’s Club; Corpus Christi TX, TCSL, 2011-2014<br>
-	&emsp;- Captain, President<br>
-	-  Concordia University Texas Tornados; Austin TX, American Southwest Conference NCAA DIII, 2014-2015<br>
-	&emsp;- National College Athlete Honor Society inductee, 2016<br>
-	<br>
-	As a Coach:<br>
-	<br>
-	-  Goalkeeping Trainer; Procat Goalkeeping Academy; Corpus Christi TX, 2011-2013<br>
-	-  Goalkeeping and Assistant Coach; John Paul II High School; Corpus Christi TX, 2013-2014<br>
-	-  Goalkeeping Trainer; Austin Texans; Austin TX, 2015-2016<br>
-	-  Assistant to Goalkeeping, Strength and Conditioning and Athletic Training; Austin Aztex, USL Pro; Austin TX, 2015<br>
-	-  Goalkeeping Coach; Astoria Knights FC, New York NY, 2020-2021<br>
-	<br>
-	Licensure:<br>
-	-  United Soccer Coaches/NSCAA Goalkeeping Level 1<br>
-	-  USSF Grassroots 11v11<br>
-	<br>
-	</p>
-</div>
+    <section class="grid-item item7">
+      <h1>
+        Coaching
+      </h1><br>
+      <h3>
+        Procat Goalkeeping Academy, Corpus Christi, TX | 2011 - 2013
+      </h3>
+      <h5>
+        Goalkeeping Trainer
+      </h5><br>
+      <h3>
+        John Paul II High School, Corpus Christi, TX | 2013 - 2014
+      </h3>
+      <h5>
+        Volunteer Goalkeeping and Assistant Coach
+      </h5><br>
+      <h3>
+        Austin Texans, Austin, TX | 2015 - 2016
+      </h3>
+      <h5>
+        Goalkeeping Trainer
+      </h5><br>
+      <h3>
+        Austin Aztex, Austin, TX | USL Pro | 2015
+      </h3>
+      <h5>
+        Assistant to Goalkeeping, Strength and Conditioning and Athletic Training
+      </h5><br>
+      <h3>
+        Astoria Knights FC, New York, NY | UPSL | 2020-2021
+      </h3>
+      <h5>
+        Goalkeeping Coach
+      </h5><br>
+    </section>
 
 </div>
 
