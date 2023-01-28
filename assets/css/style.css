@@ -31,13 +31,19 @@ li a:hover {
     max-width: 100%;
 }
 
+.teaching_img {
+    max-height: 600px;
+    max-width: 100%;
+}
+
 body {
     background-image: linear-gradient(to bottom right, #000000, #ffffffe6);
+    background-attachment: fixed;
 }
 
 header {
     margin: 0;
-    padding: 0;
+    padding: 100px;
     /*border: 1px solid rgba(247, 241, 241, 0.8);*/
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
@@ -60,7 +66,7 @@ header {
 
 .grid-item {
     text-align: left;
-    padding: 50px;;
+    padding: 50px;
     border: 5px solid rgba(95, 95, 95, 0.618);
 }
 
@@ -121,7 +127,65 @@ header {
 
 h1 {
     margin-top: auto;
+    /*font-size: 2vw;*/
 }
 h3 {
     margin-bottom: auto;
+    /*font-size: 1vw;*/
+}
+
+@media screen and (max-width: 800px) {
+    .grid-container {
+      grid-template-columns: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+
+    .grid-item {
+        text-align: left;
+        padding: 10px;
+        border: 5px solid rgba(95, 95, 95, 0.618);
+        width: 100%;
+    }
+
+    .item1 {
+        grid-column: 1;
+        grid-row:1;
+        padding: 8px 16px 8px 16px;
+    }
+
+    .item3 {
+        grid-column: 1;
+        grid-row:2;
+        padding: 8px 16px;
+
+    }
+
+    .item2 {   
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .item4 {   
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    .item5 {   
+        grid-column: 1;
+        grid-row: 5;
+    }
+
+    .item6 {   
+        grid-column: 1;
+        grid-row: 6;
+    }
+
+    .item7 {   
+        grid-column: 1;
+        grid-row: 7;
+    }
+    
+    .itembio {   
+        grid-column: 1;
+        grid-row: 4;
+    }
 }
