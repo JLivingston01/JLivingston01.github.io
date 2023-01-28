@@ -149,7 +149,7 @@ h3 {
     .item1 {
         grid-column: 1;
         grid-row:1;
-        padding: 8px 16px 8px 16px;
+        padding: 8px 16px;
     }
 
     .item3 {
@@ -162,30 +162,36 @@ h3 {
     .item2 {   
         grid-column: 1;
         grid-row: 3;
+        padding: 8px 16px;
     }
 
     .item4 {   
         grid-column: 1;
         grid-row: 4;
+        padding: 8px 16px;
     }
 
     .item5 {   
         grid-column: 1;
         grid-row: 5;
+        padding: 8px 16px;
     }
 
     .item6 {   
         grid-column: 1;
         grid-row: 6;
+        padding: 8px 16px;
     }
 
     .item7 {   
         grid-column: 1;
         grid-row: 7;
+        padding: 8px 16px;
     }
     
     .itembio {   
         grid-column: 1;
         grid-row: 4;
+        padding: 8px 16px;
     }
 }
