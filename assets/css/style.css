@@ -1,197 +1,199 @@
-
-ul {
-    display: grid;
-    list-style-type: none;
+body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    /*overflow: hidden; horizontal*/
-    /*width: 200px;*/
-    background-color: #323232;
-    padding-inline-start: 0px;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
-    margin: 0;
-}
-
-li a {
-    display: grid;
-    color: white;
-    /*text-align: center; horizontal*/
-    padding: 8px 16px;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-li a:hover {
-    background-color: #111;
-}
-
-.header_img {
-    max-height: 600px;
-    max-width: 100%;
-}
-
-.teaching_img {
-    max-height: 600px;
-    max-width: 100%;
-}
-
-body {
-    background-image: linear-gradient(to bottom right, #000000, #ffffffe6);
-    background-attachment: fixed;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
 header {
-    margin: 0;
-    padding: 100px;
-    /*border: 1px solid rgba(247, 241, 241, 0.8);*/
-    font-family: Arial, Helvetica, sans-serif;
-    display: grid;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.icon {
-    max-width: 110px;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.grid-container {
-    display: grid;
-    gap: 1px;
-    grid-template-columns: 25% 37.5% 37.5%;
-    /*border: 1px solid white;*/
-    font-family: Arial, Helvetica, sans-serif;
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 5px 0;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li {
+    margin-right: 20px;
+}
+
+.nav-list a {
     text-decoration: none;
-    color: white;
-    margin: 0;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-.grid-item {
-    text-align: left;
-    padding: 50px;
-    border: 5px solid rgba(95, 95, 95, 0.618);
+.nav-list a:hover {
+    color: #3498db;
 }
 
-.item1 {
-    grid-column: 1 / span 2;
-    grid-row: 1;
+#hero {
     text-align: center;
     padding: 50px;
 }
 
-.item2 {
-    grid-column: 1;
-    grid-row: 2 / span 3;
-    background-color: #323232;
+#hero img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 5px solid #fff;
 }
 
-.item3 {
-    grid-column: 3;
-    grid-row: 1;
+.hero-page-img {
+    width: 250px;
+    height: 250px;
 }
 
-.item4 {
-    grid-column: 2;
-    grid-row: 2;
-    background-color: #323232;
+#hero h1 {
+    margin-top: 20px;
+    font-size: 2em;
+    color: #333;
 }
 
-.item5 {
-    grid-column: 3;
-    grid-row: 2;
-    background-color: #323232;
+
+section {
+    padding: 50px;
+    text-align: center;
 }
 
-.item6 {
-    grid-column: 2;
-    grid-row: 3;
-    background-color: #323232;
-}
-
-.item7 {
-    grid-column: 3;
-    grid-row: 3;
-    background-color: #323232;
-}
-
-.itembio {
-    grid-column: 2 / span 2;
-    grid-row: 2;
-    background-color: #323232;
-}
-
-.hyperlink {
+section a {
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(132, 216, 255);
-    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.3s;
 }
 
-h1 {
-    margin-top: auto;
-    /*font-size: 2vw;*/
-}
-h3 {
-    margin-bottom: auto;
-    /*font-size: 1vw;*/
+section a:hover {
+    transform: translateY(-5px);
 }
 
-@media screen and (max-width: 800px) {
-    .grid-container {
-      grid-template-columns: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+section img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+section h3 {
+    margin: 0;
+    color: #333;
+}
+
+section p {
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+}
+
+section p a {
+    color: #3498db;
+    text-decoration: underline;
+    transition: color 0.3s;
+    display: inline;
+    align-items: none;
+    border: none;
+    padding: 0px;
+    transition: none;
+}
+
+section p a:hover {
+    color: #2980b9;
+    transform: none;
+}
+
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 768px) {
+    #hero {
+        padding: 20px;
     }
 
-    .grid-item {
+    #hero img {
+        width: 100px;
+        height: 100px;
+    }
+
+    #hero h1 {
+        font-size: 1.5em;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    section a {
+        padding: 10px;
+    }
+
+    section img {
+        width: 100px;
+        height: 100px;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        width: 50%;
+        position: absolute;
+        top: 60px; /* Adjust as needed */
+        left: 0;
+        background-color: #333;
+    }
+
+    .nav-list.show {
+        display: flex;
+    }
+
+    .nav-list li {
+        margin: 0;
         text-align: left;
         padding: 10px;
-        border: 5px solid rgba(95, 95, 95, 0.618);
-        width: 100%;
+        border-bottom: 1px solid #fff;
     }
 
-    .item1 {
-        grid-column: 1;
-        grid-row:1;
-        padding: 8px 16px;
+    .nav-list a {
+        display: block;
     }
 
-    .item3 {
-        grid-column: 1;
-        grid-row:2;
-        padding: 8px 16px;
-
-    }
-
-    .item2 {   
-        grid-column: 1;
-        grid-row: 3;
-        padding: 8px 16px;
-    }
-
-    .item4 {   
-        grid-column: 1;
-        grid-row: 4;
-        padding: 8px 16px;
-    }
-
-    .item5 {   
-        grid-column: 1;
-        grid-row: 5;
-        padding: 8px 16px;
-    }
-
-    .item6 {   
-        grid-column: 1;
-        grid-row: 6;
-        padding: 8px 16px;
-    }
-
-    .item7 {   
-        grid-column: 1;
-        grid-row: 7;
-        padding: 8px 16px;
-    }
-    
-    .itembio {   
-        grid-column: 1;
-        grid-row: 4;
-        padding: 8px 16px;
+    .nav-list a:hover {
+        background-color: #555;
     }
 }

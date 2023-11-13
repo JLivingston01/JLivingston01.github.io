@@ -2,31 +2,21 @@
 <html>
 <head>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="assets/css/style.css"/>
 
 </head>
 <body>
-  <div class="grid-container">
   
-    <header class="grid-item item3">
-      <h1>
-        Jason Livingston
-      </h1>
-      <h3>
-        Contact
-      </h3>
-    </header>
-  
-    <section class="grid-item item1 ">
-      <img src="images/new-headshot.jpg" class="header_img" />
-    </section>
-  
-    <section class="grid-item item2">
-      <ul>
+  <header>
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav style="width: 80%;">
+      <ul class="nav-list">
         <li>
           <a href="index.html">
             Home
@@ -53,18 +43,28 @@
           </a>
         </li>
       </ul>
-    </section>
+    </nav>
+  </header>
 
-    <section class="grid-item itembio">
-      <p>
-        If you'd like to connect or collaborate, please reach out via 
-        <a href="https://linkedin.com/in/jason-livingston-a8bb9325" target="_blank" class="hyperlink">
-          LinkedIn</a>, or 
-          <a href="mailto:jason@thedataprofessional.com?subject=Contact Jason" target="_blank" class="hyperlink">
-            email me</a>
-      </p>
-    </section>
-  </div>
+  <section id="hero">
+    <img src="images/new-headshot.jpg"  />
+    <h1>
+      Jason Livingston
+    </h1>
+    <h3>
+      Contact
+    </h3>
+  </section>
+
+  <section >
+    <p>
+      If you'd like to connect or collaborate, please reach out via 
+      <a href="https://linkedin.com/in/jason-livingston-a8bb9325" target="_blank" class="hyperlink">
+        LinkedIn</a>, or 
+        <a href="mailto:jason@thedataprofessional.com?subject=Contact Jason" target="_blank" class="hyperlink">
+          email me</a>
+    </p>
+  </section>
 
 </body>
 </html>
