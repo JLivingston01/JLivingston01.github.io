@@ -2,31 +2,21 @@
 <html>
 <head>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="assets/css/style.css"/>
 
 </head>
 <body>
-  <div class="grid-container">
 
-    <header class="grid-item item3">
-      <h1>
-        Jason Livingston
-      </h1>
-      <h3>
-        Data Science and Programming
-      </h3>
-    </header>
-  
-    <section class="grid-item item1 ">
-      <img src="images/tableau_ws.jpg" class="teaching_img" />
-    </section>
-  
-    <section class="grid-item item2">
-      <ul>
+  <header>
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav style="width: 80%;">
+      <ul class="nav-list">
         <li>
           <a href="index.html">
             Home
@@ -53,9 +43,21 @@
           </a>
         </li>
       </ul>
-    </section>
+    </nav>
+  </header>
 
-    <section class="grid-item itembio">
+  
+  <section id="hero">
+    <img src="images/tableau_ws.jpg" />
+    <h1>
+      Jason Livingston
+    </h1>
+    <h3>
+      Data Science and Programming
+    </h3>
+  </section>
+
+    <section>
       <p>
         My personal projects are highlights from the Machine Learning 
         and Python work that I like do in my free time.
@@ -67,8 +69,6 @@
         </a>.
       </p>
     </section>
-
-</div>
 
 </body>
 </html>

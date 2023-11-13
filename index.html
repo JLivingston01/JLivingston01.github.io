@@ -2,80 +2,79 @@
 <html>
 <head>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="assets/css/style.css"/>
+<title>TheDataProfessional</title>
 
 </head>
 <body>
 
-<div class="grid-container">
+  <header>
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav style="width: 80%;">
+      <ul class="nav-list">
+        <li>
+          <a href="index.html">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/about.html">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/projects.html">
+            Data Science
+          </a>
+        </li>
+        <li>
+          <a href="/goalkeeping.html">
+            Soccer
+          </a>
+        </li>
+        <li>
+          <a href="/contact.html">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <title>TheDataProfessional</title>
-
-  <header class="grid-item item1">
+  <section id="hero">
+    <img src="images/new-headshot.jpg" class="header_img" />
     <h1>
       Jason Livingston
     </h1>
     <h3>
       Data Scientist in New York City
     </h3>
-  </header>
-
-  <section class="grid-item item3">
-    <img src="images/new-headshot.jpg" class="header_img" />
   </section>
 
-  <section class="grid-item item2">
-    <ul>
-      <li>
-        <a href="index.html">
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="/about.html">
-          About
-        </a>
-      </li>
-      <li>
-        <a href="/projects.html">
-          Data Science
-        </a>
-      </li>
-      <li>
-        <a href="/goalkeeping.html">
-          Soccer
-        </a>
-      </li>
-      <li>
-        <a href="/contact.html">
-          Contact
-        </a>
-      </li>
-    </ul>
-  </section>
 
-  <section class="grid-item item4">
-    <a href="/about.html">
+  <section id="about" >
+    <a class="iconlink" href="/about.html">
       <img src="images/shake-hands.png" class="icon"/>
-    </a>
-    <a href="/about.html" class="hyperlink" >
       <h3>Greetings</h3>
     </a>
-    <p>
-      Welcome! I'm Jason, a Data Scientist based in NYC.
-      I have many interests, both professional and personal.
-      Please visit my <a href="/about.html" class="hyperlink">about</a> page to learn more.
-    </p>
+    <div>
+      <p>
+        Welcome! I'm Jason, a Data Scientist based in NYC.
+        I have many interests, both professional and personal.
+        Please visit my <a href="/about.html" class="hyperlink">about</a> page to learn more.
+      </p>
+    </div>
+    
   </section>
-  <section class="grid-item item5">
+  <section id="projects">
     <a href="/projects.html">
       <img src="images/light-bulb.png" class="icon"/>
-    </a>
-    <a href="/projects.html" class="hyperlink">
       <h3>Projects</h3>
     </a>
     <p>
@@ -83,24 +82,20 @@
       Please visit my <a href="/projects.html" class="hyperlink">projects</a> page to learn more.
     </p>
   </section>
-  <section class="grid-item item6">
+  <section id="soccer">
     <a href="/goalkeeping.html">
       <img src="images/soccer-ball.png" class="icon"/>
-    </a>
-    <a href="/goalkeeping.html" class="hyperlink">
       <h3>Soccer and Goalkeeping</h3>
     </a>
     <p>
       I am a former collegiate soccer goalkeeper, and an occasional goalkeeping coach. 
       If you are interested talking soccer, competitively or for fun, 
-      please visit my <a href="/goalkeeping.html" class="hyperlink">soccer-about</a> page to learn more.
+      please visit my <a href="/goalkeeping.html" class="hyperlink">soccer</a> page to learn more.
     </p>
   </section>
-  <section class="grid-item item7">
+  <section id="contact">
     <a href="/contact.html" >
       <img src="images/business (1).png" class="icon"/>
-    </a>
-    <a href="/contact.html" class="hyperlink">
       <h3>Connecting</h3>
     </a>
     <p>
@@ -115,10 +110,9 @@
     </p>
   </section>
 
-</div>
   
 </body>
 <footer>
-<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" class="hyperlink">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" class="hyperlink">www.flaticon.com</a></div>
+<p>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" class="hyperlink">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" class="hyperlink">www.flaticon.com</a></p>
 </footer>
 </html>

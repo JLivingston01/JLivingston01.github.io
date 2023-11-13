@@ -2,60 +2,61 @@
 <html>
 <head>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="assets/css/style.css"/>
 
 </head>
 <body>
-<div class="grid-container">
+  
+  <header>
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav style="width: 80%;">
+      <ul class="nav-list">
+        <li>
+          <a href="index.html">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/about.html">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/projects.html">
+            Data Science
+          </a>
+        </li>
+        <li>
+          <a href="/goalkeeping.html">
+            Soccer
+          </a>
+        </li>
+        <li>
+          <a href="/contact.html">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <header class="grid-item item3">
+  <section id="hero">
+    <img src="images/tableau_ws.jpg"  />
     <h1>
       Jason Livingston
     </h1>
     <h3>
       About Me
     </h3>
-  </header>
-
-  <section class="grid-item item1 ">
-    <img src="images/tableau_ws.jpg" class="teaching_img" />
   </section>
 
-  <section class="grid-item item2">
-    <ul>
-      <li>
-        <a href="index.html">
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="/about.html">
-          About
-        </a>
-      </li>
-      <li>
-        <a href="/projects.html">
-          Data Science
-        </a>
-      </li>
-      <li>
-        <a href="/goalkeeping.html">
-          Soccer
-        </a>
-      </li>
-      <li>
-        <a href="/contact.html">
-          Contact
-        </a>
-      </li>
-    </ul>
-  </section>
-
-  <section class="grid-item itembio">
+  <section >
     <p>
       I'm Jason Livingston, a Senior Manager of Data Science based in New York City. I have
       practiced as a Senior Data Scientist, a Manager of Marketing Analytics, and as a Business
@@ -80,7 +81,7 @@
       Machine Learning and Data Science Consulting. 
     </p>
   </section>
-  <section class="grid-item item6">
+  <section >
     <h1>
       Career
     </h1><br>
@@ -119,7 +120,7 @@
     </h5>
   </section>
 
-  <section class="grid-item item7">
+  <section >
     <h1>
       Education
     </h1><br>
@@ -137,7 +138,15 @@
     </h5><br>
   </section>
 
-</div>
+
+<script>
+  const menuToggle = document.getElementById('mobile-menu');
+  const navList = document.querySelector('.nav-list');
+
+  menuToggle.addEventListener('click', function () {
+      navList.classList.toggle('show');
+  });
+</script>
 
 </body>
 </html>
