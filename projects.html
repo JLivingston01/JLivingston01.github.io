@@ -70,5 +70,13 @@
       </p>
     </section>
 
+    <script>
+      const menuToggle = document.getElementById('mobile-menu');
+      const navList = document.querySelector('.nav-list');
+    
+      menuToggle.addEventListener('click', function () {
+          navList.classList.toggle('show');
+      });
+    </script>
 </body>
 </html>

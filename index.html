@@ -110,7 +110,15 @@
     </p>
   </section>
 
+
+  <script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
   
+    menuToggle.addEventListener('click', function () {
+        navList.classList.toggle('show');
+    });
+  </script>
 </body>
 <footer>
 <p>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" class="hyperlink">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" class="hyperlink">www.flaticon.com</a></p>
